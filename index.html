@@ -1,0 +1,1145 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>IT Group — Digital Solutions Studio</title>
+  <meta name="description" content="Websites, e-commerce and digital marketing for ambitious businesses.">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap">
+
+  <link rel="stylesheet" href="css/base.css?v=1">
+  <link rel="stylesheet" href="css/header.css?v=1">
+  <link rel="stylesheet" href="css/hero.css?v=1">
+  <link rel="stylesheet" href="css/services.css?v=1">
+  <link rel="stylesheet" href="css/cases.css?v=1">
+  <link rel="stylesheet" href="css/process.css?v=1">
+  <link rel="stylesheet" href="css/advantages.css?v=1">
+  <link rel="stylesheet" href="css/reviews.css?v=1">
+  <link rel="stylesheet" href="css/cta.css?v=1">
+  <link rel="stylesheet" href="css/footer.css?v=1">
+  <link rel="stylesheet" href="css/blur-bar.css?v=1">
+  <link rel="stylesheet" href="css/mega.css?v=1">
+  <link rel="stylesheet" href="css/navmenu.css?v=1">
+  <link rel="stylesheet" href="css/modal.css?v=1">
+  <link rel="stylesheet" href="css/anim.css?v=1">
+
+  <!-- анимации появления включаются только если работает js -->
+  <script>document.documentElement.classList.add("has-anim");</script>
+</head>
+<body>
+
+  <!-- ===== HEADER ===== -->
+  <header class="header">
+    <div class="container header__inner">
+      <div class="header__brand">
+        <a class="logo header__logo" href="/" aria-label="IT Group — home">
+          <svg class="logo__icon" viewBox="0 0 25 29" aria-hidden="true">
+            <path class="logo__icon-bg" d="M12 0H25V19A10 10 0 0 1 15 29H0V12A12 12 0 0 1 12 0Z"/>
+            <path d="M14.5 0H22A3 3 0 0 1 25 3V6A8 8 0 0 1 17 14H12.5V2A2 2 0 0 1 14.5 0Z" fill="currentColor"/>
+            <rect x="0" y="15" width="11.5" height="14" rx="2" fill="currentColor"/>
+          </svg>
+          <span class="logo__text">IT GROUP</span>
+        </a>
+      </div>
+
+      <nav class="header__nav" id="header-nav" aria-label="Main navigation">
+        <ul class="header__nav-list">
+          <li class="header__nav-item"><a class="header__nav-link header__nav-link--active" href="#about">About us</a></li>
+          <li class="header__nav-item header__nav-item--mega">
+            <button class="header__nav-link header__nav-toggle" type="button" aria-expanded="false" aria-controls="services-mega">
+              Services
+              <svg class="header__nav-chevron" viewBox="0 0 12 12" aria-hidden="true"><path d="m3 4.5 3 3 3-3"/></svg>
+            </button>
+
+            <div class="mega" id="services-mega">
+              <div class="mega__inner">
+                <div class="mega__intro">
+                  <p class="mega__label">Services</p>
+                  <p class="mega__title">Digital solutions for a smarter tomorrow.</p>
+                  <p class="mega__text">We deliver end-to-end digital products and services that help businesses grow, scale and stay ahead.</p>
+                  <a class="mega__more" href="#services">
+                    <span class="mega__more-icon">
+                      <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+                    </span>
+                    All services
+                  </a>
+                  <img class="mega__spiral mega__spiral--intro" src="images/spiral6.webp" width="1061" height="858" alt="" loading="lazy">
+                </div>
+
+                <ul class="mega__list">
+              <li class="mega__item">
+                <a class="mega__link" href="#services">
+                  <span class="mega__icon">
+                    <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M9.5 8.5 6 12l3.5 3.5M14.5 8.5 18 12l-3.5 3.5"/></svg>
+                  </span>
+                  <span class="mega__body">
+                    <span class="mega__name">Custom Software Development</span>
+                    <span class="mega__desc">Scalable web and mobile solutions built for your business.</span>
+                  </span>
+                  <svg class="mega__arrow" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+                </a>
+              </li>
+              <li class="mega__item">
+                <a class="mega__link" href="#services">
+                  <span class="mega__icon">
+                    <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7.5 18.5h9a3.75 3.75 0 0 0 .4-7.48 5.25 5.25 0 0 0-10.1-1.2A3.9 3.9 0 0 0 7.5 18.5Z"/></svg>
+                  </span>
+                  <span class="mega__body">
+                    <span class="mega__name">Cloud Solutions</span>
+                    <span class="mega__desc">Secure, flexible and cost-effective infrastructure and migration.</span>
+                  </span>
+                  <svg class="mega__arrow" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+                </a>
+              </li>
+              <li class="mega__item">
+                <a class="mega__link" href="#services">
+                  <span class="mega__icon">
+                    <svg viewBox="0 0 24 24" aria-hidden="true"><rect x="7" y="3.25" width="10" height="17.5" rx="2.5"/><path d="M10.75 17.5h2.5"/></svg>
+                  </span>
+                  <span class="mega__body">
+                    <span class="mega__name">Mobile Apps</span>
+                    <span class="mega__desc">Native and cross-platform apps for iOS and Android.</span>
+                  </span>
+                  <svg class="mega__arrow" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+                </a>
+              </li>
+              <li class="mega__item">
+                <a class="mega__link" href="#services">
+                  <span class="mega__icon">
+                    <svg viewBox="0 0 24 24" aria-hidden="true"><ellipse cx="12" cy="6.5" rx="6" ry="2.75"/><path d="M6 6.5v11c0 1.52 2.69 2.75 6 2.75s6-1.23 6-2.75v-11"/><path d="M6 12c0 1.52 2.69 2.75 6 2.75s6-1.23 6-2.75"/></svg>
+                  </span>
+                  <span class="mega__body">
+                    <span class="mega__name">IT Consulting</span>
+                    <span class="mega__desc">Expert guidance for your technology strategy and growth.</span>
+                  </span>
+                  <svg class="mega__arrow" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+                </a>
+              </li>
+              <li class="mega__item">
+                <a class="mega__link" href="#services">
+                  <span class="mega__icon">
+                    <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3.25 5.75 6v5.5c0 3.9 2.6 7.4 6.25 8.6 3.65-1.2 6.25-4.7 6.25-8.6V6L12 3.25Z"/><path d="m9.5 12 1.9 1.9 3.6-3.9"/></svg>
+                  </span>
+                  <span class="mega__body">
+                    <span class="mega__name">Support &amp; Maintenance</span>
+                    <span class="mega__desc">Keep your systems reliable, secure and up to date.</span>
+                  </span>
+                  <svg class="mega__arrow" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+                </a>
+              </li>
+                </ul>
+
+                <div class="mega__aside">
+                  <img class="mega__spiral mega__spiral--aside" src="images/spiral7.webp" width="1223" height="922" alt="" loading="lazy">
+                  <p class="mega__label">Our expertise</p>
+                  <p class="mega__title mega__title--aside">From idea to impact.</p>
+                  <p class="mega__text">We turn complex challenges into simple, scalable solutions.</p>
+                  <a class="mega__learn" href="#process">
+                    Learn more
+                    <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+                  </a>
+                </div>
+              </div>
+            </div>
+          </li>
+          <li class="header__nav-item"><a class="header__nav-link" href="#cases">Cases</a></li>
+          <li class="header__nav-item"><a class="header__nav-link" href="#blog">Blog</a></li>
+          <li class="header__nav-item"><a class="header__nav-link" href="#contacts">Contacts</a></li>
+        </ul>
+        <a class="btn btn--dark header__nav-btn" data-modal-open href="#contacts">
+          Get a consultation
+          <svg class="btn__icon" viewBox="0 0 16 16" aria-hidden="true"><path d="M2.5 8h11M9 3.5 13.5 8 9 12.5"/></svg>
+        </a>
+      </nav>
+
+      <div class="header__actions">
+        <div class="lang header__lang">
+          <button class="lang__btn" type="button" aria-expanded="false" aria-controls="lang-list" aria-label="Change language">
+            EN
+            <svg class="lang__arrow" viewBox="0 0 12 12" aria-hidden="true"><path d="m3 4.5 3 3 3-3"/></svg>
+          </button>
+          <ul class="lang__list" id="lang-list">
+            <li><a class="lang__link lang__link--active" href="#" hreflang="en">EN</a></li>
+            <li><a class="lang__link" href="#" hreflang="ru">RU</a></li>
+            <li><a class="lang__link" href="#" hreflang="lv">LV</a></li>
+          </ul>
+        </div>
+
+        <a class="btn btn--dark btn--sm header__btn" data-modal-open href="#contacts">
+          Get a consultation
+          <svg class="btn__icon" viewBox="0 0 16 16" aria-hidden="true"><path d="M2.5 8h11M9 3.5 13.5 8 9 12.5"/></svg>
+        </a>
+
+        <button class="burger header__burger" type="button" aria-expanded="false" aria-controls="header-nav" aria-label="Open menu">
+          <span class="burger__line"></span>
+          <span class="burger__line"></span>
+        </button>
+      </div>
+    </div>
+  </header>
+
+
+  <!-- ===== Полноэкранное меню (мобильное) ===== -->
+  <div class="navmenu" id="navmenu" aria-hidden="true">
+    <div class="navmenu__pane">
+      <div class="navmenu__head">
+        <a class="logo navmenu__logo" href="/" aria-label="IT Group — home">
+          <svg class="logo__icon" viewBox="0 0 25 29" aria-hidden="true">
+            <path class="logo__icon-bg" d="M12 0H25V19A10 10 0 0 1 15 29H0V12A12 12 0 0 1 12 0Z"/>
+            <path d="M14.5 0H22A3 3 0 0 1 25 3V6A8 8 0 0 1 17 14H12.5V2A2 2 0 0 1 14.5 0Z" fill="currentColor"/>
+            <rect x="0" y="15" width="11.5" height="14" rx="2" fill="currentColor"/>
+          </svg>
+          <span class="logo__text">IT GROUP</span>
+        </a>
+
+        <button class="navmenu__close" type="button" data-nav-close aria-label="Close menu">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="m7 7 10 10M17 7 7 17"/></svg>
+        </button>
+      </div>
+
+      <div class="navmenu__levels">
+        <nav class="navmenu__level navmenu__level--main" aria-label="Mobile navigation">
+          <ul class="navmenu__list">
+            <li class="navmenu__item">
+              <a class="navmenu__link" href="#about">
+                <span class="navmenu__num">01</span>
+                <span class="navmenu__label">About us</span>
+              </a>
+            </li>
+            <li class="navmenu__item">
+              <button class="navmenu__link navmenu__link--toggle" type="button" data-nav-sub aria-expanded="false" aria-controls="navmenu-services">
+                <span class="navmenu__num">02</span>
+                <span class="navmenu__label">Services</span>
+                <svg class="navmenu__chevron" viewBox="0 0 24 24" aria-hidden="true"><path d="m9 5 7 7-7 7"/></svg>
+              </button>
+            </li>
+            <li class="navmenu__item">
+              <a class="navmenu__link" href="#cases">
+                <span class="navmenu__num">03</span>
+                <span class="navmenu__label">Cases</span>
+              </a>
+            </li>
+            <li class="navmenu__item">
+              <a class="navmenu__link" href="#blog">
+                <span class="navmenu__num">04</span>
+                <span class="navmenu__label">Blog</span>
+              </a>
+            </li>
+            <li class="navmenu__item">
+              <a class="navmenu__link" href="#contacts">
+                <span class="navmenu__num">05</span>
+                <span class="navmenu__label">Contacts</span>
+              </a>
+            </li>
+          </ul>
+        </nav>
+
+        <div class="navmenu__level navmenu__level--sub" id="navmenu-services">
+          <button class="navmenu__back" type="button" data-nav-back>
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M19 12H5M11 6l-6 6 6 6"/></svg>
+            Services
+          </button>
+
+          <ul class="navmenu__sub-list">
+            <li class="navmenu__sub-item">
+              <a class="navmenu__sub-link" href="#services">
+                <span class="navmenu__sub-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M9.5 8.5 6 12l3.5 3.5M14.5 8.5 18 12l-3.5 3.5"/></svg></span>
+                <span class="navmenu__sub-body">
+                  <span class="navmenu__sub-name">Custom Software Development</span>
+                  <span class="navmenu__sub-desc">Web and mobile solutions</span>
+                </span>
+                <svg class="navmenu__sub-arrow" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+              </a>
+            </li>
+            <li class="navmenu__sub-item">
+              <a class="navmenu__sub-link" href="#services">
+                <span class="navmenu__sub-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7.5 18.5h9a3.75 3.75 0 0 0 .4-7.48 5.25 5.25 0 0 0-10.1-1.2A3.9 3.9 0 0 0 7.5 18.5Z"/></svg></span>
+                <span class="navmenu__sub-body">
+                  <span class="navmenu__sub-name">Cloud Solutions</span>
+                  <span class="navmenu__sub-desc">Infrastructure and migration</span>
+                </span>
+                <svg class="navmenu__sub-arrow" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+              </a>
+            </li>
+            <li class="navmenu__sub-item">
+              <a class="navmenu__sub-link" href="#services">
+                <span class="navmenu__sub-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="7" y="3.25" width="10" height="17.5" rx="2.5"/><path d="M10.75 17.5h2.5"/></svg></span>
+                <span class="navmenu__sub-body">
+                  <span class="navmenu__sub-name">Mobile Apps</span>
+                  <span class="navmenu__sub-desc">iOS and Android</span>
+                </span>
+                <svg class="navmenu__sub-arrow" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+              </a>
+            </li>
+            <li class="navmenu__sub-item">
+              <a class="navmenu__sub-link" href="#services">
+                <span class="navmenu__sub-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><ellipse cx="12" cy="6.5" rx="6" ry="2.75"/><path d="M6 6.5v11c0 1.52 2.69 2.75 6 2.75s6-1.23 6-2.75v-11"/><path d="M6 12c0 1.52 2.69 2.75 6 2.75s6-1.23 6-2.75"/></svg></span>
+                <span class="navmenu__sub-body">
+                  <span class="navmenu__sub-name">IT Consulting</span>
+                  <span class="navmenu__sub-desc">Strategy and growth</span>
+                </span>
+                <svg class="navmenu__sub-arrow" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+              </a>
+            </li>
+            <li class="navmenu__sub-item">
+              <a class="navmenu__sub-link" href="#services">
+                <span class="navmenu__sub-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3.25 5.75 6v5.5c0 3.9 2.6 7.4 6.25 8.6 3.65-1.2 6.25-4.7 6.25-8.6V6L12 3.25Z"/><path d="m9.5 12 1.9 1.9 3.6-3.9"/></svg></span>
+                <span class="navmenu__sub-body">
+                  <span class="navmenu__sub-name">Support &amp; Maintenance</span>
+                  <span class="navmenu__sub-desc">Reliable and secure</span>
+                </span>
+                <svg class="navmenu__sub-arrow" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+              </a>
+            </li>
+          </ul>
+
+          <a class="navmenu__all" href="#services">
+            All services
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+          </a>
+        </div>
+      </div>
+
+      <div class="navmenu__foot">
+        <div class="navmenu__langs">
+          <a class="navmenu__lang navmenu__lang--active" href="#" hreflang="en">EN</a>
+          <a class="navmenu__lang" href="#" hreflang="ru">RU</a>
+          <a class="navmenu__lang" href="#" hreflang="lv">LV</a>
+        </div>
+
+        <button class="btn btn--dark navmenu__btn" type="button" data-modal-open>
+          Get a consultation
+          <svg class="btn__icon" viewBox="0 0 16 16" aria-hidden="true"><path d="M2.5 8h11M9 3.5 13.5 8 9 12.5"/></svg>
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <main>
+    <!-- ===== HERO ===== -->
+    <section class="hero" id="about">
+      <div class="container hero__inner">
+        <div class="hero__content">
+          <p class="hero__label" data-animate="split" data-split="chars">Digital solutions studio</p>
+          <h1 class="hero__title" data-animate="split" data-split="words">We build digital experiences that bring real business results.</h1>
+          <p class="hero__text" data-animate="fade-up">Websites, e-commerce and digital marketing for ambitious businesses. We turn your ideas into powerful online products that attract customers and grow your revenue.</p>
+
+          <div class="hero__actions" data-animate="fade-up">
+            <a class="btn btn--dark hero__btn" data-modal-open href="#contacts">
+              Get a consultation
+              <svg class="btn__icon" viewBox="0 0 16 16" aria-hidden="true"><path d="M2.5 8h11M9 3.5 13.5 8 9 12.5"/></svg>
+            </a>
+
+            <button class="play hero__play" type="button">
+              <span class="play__icon">
+                <svg viewBox="0 0 16 16" aria-hidden="true"><path d="M5 3.2v9.6a.6.6 0 0 0 .9.5l7.6-4.8a.6.6 0 0 0 0-1L5.9 2.7a.6.6 0 0 0-.9.5Z"/></svg>
+              </span>
+              <span class="play__text">
+                <span class="play__title">Watch our story</span>
+                <span class="play__duration">1 min</span>
+              </span>
+            </button>
+          </div>
+        </div>
+
+        <div class="hero__media">
+          <img class="hero__image" data-animate="slide-left" src="images/main-section.webp" width="1570" height="749"
+               alt="IT Group website shown on a laptop and a smartphone" fetchpriority="high">
+
+          <a class="hero__card" data-animate="fade-down" href="#services">
+            <span class="hero__card-icon">
+              <svg viewBox="0 0 20 20" aria-hidden="true">
+                <circle cx="5" cy="5" r="2.2"/><circle cx="15" cy="5" r="2.2"/>
+                <circle cx="10" cy="10" r="2.2"/>
+                <circle cx="5" cy="15" r="2.2"/><circle cx="15" cy="15" r="2.2"/>
+              </svg>
+            </span>
+            <span class="hero__card-text">Modern websites for growing businesses</span>
+            <svg class="hero__card-arrow" viewBox="0 0 16 16" aria-hidden="true"><path d="M2.5 8h11M9 3.5 13.5 8 9 12.5"/></svg>
+          </a>
+
+          <div class="hero__counter" data-animate="fade" aria-hidden="true">
+            <span class="hero__counter-current">01</span>
+            <span class="hero__counter-line"></span>
+            <span class="hero__counter-total">03</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== SERVICES ===== -->
+    <section class="services" id="services">
+      <div class="container">
+        <div class="services__box" data-progress="0.76 0.12">
+          <div class="services__intro">
+            <div class="services__intro-track">
+              <div class="services__intro-content">
+                <p class="section-label">02 / Our services</p>
+                <h2 class="section-title" data-split="words">Digital solutions for every business need.</h2>
+                <p class="section-text services__text">From modern websites to mobile apps, we create digital products that help businesses grow, work more efficiently and reach new customers.</p>
+                <a class="btn btn--dark services__btn" href="#services">
+                  Explore all services
+                  <svg class="btn__icon btn__icon--diagonal" viewBox="0 0 16 16" aria-hidden="true"><path d="M4.5 11.5 11.5 4.5M5.5 4.5h6v6"/></svg>
+                </a>
+              </div>
+            </div>
+
+            <div class="services__visual" data-reveal="0.9 0.4">
+              <img class="services__spiral" src="images/spiral.webp" width="1132" height="949" alt="" loading="lazy">
+            </div>
+          </div>
+
+          <ul class="services__list" data-reveal-stagger>
+              <li data-reveal="0.9 0.45" class="services__item services__item--half">
+                <article class="service-card">
+                  <span class="service-card__icon">
+                    <svg viewBox="0 0 24 24" aria-hidden="true"><rect x="2.75" y="3.75" width="18.5" height="12.5" rx="2.25"/><path d="M8.5 20.25h7M12 16.25v4"/><path d="m10 8-2 2 2 2M14 8l2 2-2 2"/></svg>
+                  </span>
+                  <span class="service-card__num">01 /</span>
+                  <h3 class="service-card__title">Web Development</h3>
+                  <p class="service-card__text">Modern websites, corporate platforms and custom web solutions designed around your business goals.</p>
+                  <div class="service-card__footer">
+                    <ul class="service-card__tags">
+                      <li class="service-card__tag">Corporate websites</li>
+                      <li class="service-card__tag">Landing pages</li>
+                      <li class="service-card__tag">Custom development</li>
+                    </ul>
+                    <a class="service-card__arrow" href="#contacts" aria-label="Web Development — learn more">
+                      <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+                    </a>
+                  </div>
+                </article>
+              </li>
+              <li data-reveal="0.9 0.45" class="services__item services__item--half">
+                <article class="service-card service-card--dark">
+                  <span class="service-card__icon">
+                    <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5.2 8.25h13.6a1 1 0 0 1 1 1.1l-.95 10.1a2 2 0 0 1-2 1.8H7.15a2 2 0 0 1-2-1.8L4.2 9.35a1 1 0 0 1 1-1.1Z"/><path d="M8.75 8.25V7a3.25 3.25 0 0 1 6.5 0v1.25"/><path d="M9.25 12.5a2.75 2.75 0 0 0 5.5 0"/></svg>
+                  </span>
+                  <span class="service-card__num">02 /</span>
+                  <h3 class="service-card__title">E-commerce</h3>
+                  <p class="service-card__text">Online stores that make shopping easier and help businesses turn visitors into customers.</p>
+                  <div class="service-card__footer">
+                    <ul class="service-card__tags">
+                      <li class="service-card__tag">Online stores</li>
+                      <li class="service-card__tag">Payment integration</li>
+                      <li class="service-card__tag">E-commerce solutions</li>
+                    </ul>
+                    <a class="service-card__arrow" href="#contacts" aria-label="E-commerce — learn more">
+                      <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+                    </a>
+                  </div>
+                </article>
+              </li>
+              <li data-reveal="0.9 0.45" class="services__item services__item--half">
+                <article class="service-card">
+                  <span class="service-card__icon">
+                    <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3.25 3.25 7.75 12 12.25l8.75-4.5L12 3.25Z"/><path d="m3.25 12 8.75 4.5 8.75-4.5"/><path d="m3.25 16.25 8.75 4.5 8.75-4.5"/></svg>
+                  </span>
+                  <span class="service-card__num">03 /</span>
+                  <h3 class="service-card__title">UI/UX Design</h3>
+                  <p class="service-card__text">Clear, intuitive and premium digital experiences that combine visual quality with usability.</p>
+                  <div class="service-card__footer">
+                    <ul class="service-card__tags">
+                      <li class="service-card__tag">UX research</li>
+                      <li class="service-card__tag">Interface design</li>
+                      <li class="service-card__tag">Design systems</li>
+                    </ul>
+                    <a class="service-card__arrow" href="#contacts" aria-label="UI/UX Design — learn more">
+                      <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+                    </a>
+                  </div>
+                </article>
+              </li>
+              <li data-reveal="0.9 0.45" class="services__item services__item--half">
+                <article class="service-card">
+                  <span class="service-card__icon">
+                    <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="10.5" cy="10.5" r="6.75"/><path d="m15.5 15.5 5 5"/><path d="m7.25 12.25 2.25-2.25 1.75 1.75 2.5-2.5"/></svg>
+                  </span>
+                  <span class="service-card__num">04 /</span>
+                  <h3 class="service-card__title">SEO &amp; Promotion</h3>
+                  <p class="service-card__text">Strategies and digital solutions that help your business become more visible and attract relevant customers.</p>
+                  <div class="service-card__footer">
+                    <ul class="service-card__tags">
+                      <li class="service-card__tag">SEO</li>
+                      <li class="service-card__tag">Analytics</li>
+                      <li class="service-card__tag">Digital marketing</li>
+                    </ul>
+                    <a class="service-card__arrow" href="#contacts" aria-label="SEO & Promotion — learn more">
+                      <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+                    </a>
+                  </div>
+                </article>
+              </li>
+              <li data-reveal="0.9 0.45" class="services__item services__item--third">
+                <article class="service-card">
+                  <span class="service-card__icon">
+                    <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3.75 10.25v3.5a1.5 1.5 0 0 0 1.5 1.5h1.5l6.5 4V4.75l-6.5 4h-1.5a1.5 1.5 0 0 0-1.5 1.5Z"/><path d="M6.75 15.25 8 20.25"/><path d="M16.5 9.5a3.5 3.5 0 0 1 0 5"/><path d="M19 7a7 7 0 0 1 0 10"/></svg>
+                  </span>
+                  <span class="service-card__num">05 /</span>
+                  <h3 class="service-card__title">Digital Marketing</h3>
+                  <p class="service-card__text">Targeted campaigns and digital channels that bring your brand closer to the right audience.</p>
+                  <div class="service-card__footer">
+                    <ul class="service-card__tags">
+                      <li class="service-card__tag">SMM</li>
+                      <li class="service-card__tag">PPC</li>
+                      <li class="service-card__tag">Content marketing</li>
+                    </ul>
+                    <a class="service-card__arrow" href="#contacts" aria-label="Digital Marketing — learn more">
+                      <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+                    </a>
+                  </div>
+                </article>
+              </li>
+              <li data-reveal="0.9 0.45" class="services__item services__item--third">
+                <article class="service-card">
+                  <span class="service-card__icon">
+                    <svg viewBox="0 0 24 24" aria-hidden="true"><rect x="6.25" y="2.75" width="11.5" height="18.5" rx="2.75"/><path d="M10.75 5.75h2.5M11 18h2"/></svg>
+                  </span>
+                  <span class="service-card__num">06 /</span>
+                  <h3 class="service-card__title">Mobile Apps</h3>
+                  <p class="service-card__text">Custom mobile applications for iOS and Android that solve real business tasks.</p>
+                  <div class="service-card__footer">
+                    <ul class="service-card__tags">
+                      <li class="service-card__tag">iOS</li>
+                      <li class="service-card__tag">Android</li>
+                      <li class="service-card__tag">App maintenance</li>
+                    </ul>
+                    <a class="service-card__arrow" href="#contacts" aria-label="Mobile Apps — learn more">
+                      <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+                    </a>
+                  </div>
+                </article>
+              </li>
+              <li data-reveal="0.9 0.45" class="services__item services__item--third">
+                <article class="service-card">
+                  <span class="service-card__icon">
+                    <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M19.09 12.37 21.11 13.87 19.77 17.12 17.28 16.75 16.75 17.28 17.12 19.77 13.87 21.11 12.37 19.09 11.63 19.09 10.13 21.11 6.88 19.77 7.25 17.28 6.72 16.75 4.23 17.12 2.89 13.87 4.91 12.37 4.91 11.63 2.89 10.13 4.23 6.88 6.72 7.25 7.25 6.72 6.88 4.23 10.13 2.89 11.63 4.91 12.37 4.91 13.87 2.89 17.12 4.23 16.75 6.72 17.28 7.25 19.77 6.88 21.11 10.13 19.09 11.63Z"/><circle cx="12" cy="12" r="3"/></svg>
+                  </span>
+                  <span class="service-card__num">07 /</span>
+                  <h3 class="service-card__title">Custom IT Solutions</h3>
+                  <p class="service-card__text">Tailored integrations and digital systems built for your specific business needs.</p>
+                  <div class="service-card__footer">
+                    <ul class="service-card__tags">
+                      <li class="service-card__tag">Integrations</li>
+                      <li class="service-card__tag">Business systems</li>
+                      <li class="service-card__tag">Automation</li>
+                    </ul>
+                    <a class="service-card__arrow" href="#contacts" aria-label="Custom IT Solutions — learn more">
+                      <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+                    </a>
+                  </div>
+                </article>
+              </li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== CASES ===== -->
+    <section class="cases" id="cases">
+      <div class="container">
+        <div class="cases__head" data-progress="0.8 0.2">
+          <div class="cases__intro">
+            <p class="section-label">03 / Selected work</p>
+            <h2 class="section-title" data-split="words">Digital experiences made for real businesses.</h2>
+            <p class="section-text cases__text">We create websites, online stores and digital products that help brands grow and achieve their goals.</p>
+            <a class="btn btn--dark" href="#cases">
+              View all projects
+              <svg class="btn__icon btn__icon--diagonal" viewBox="0 0 16 16" aria-hidden="true"><path d="M4.5 11.5 11.5 4.5M5.5 4.5h6v6"/></svg>
+            </a>
+          </div>
+
+          <div class="cases__aside">
+            <p class="cases__note">Every project is a unique solution, built on strategy, modern technologies and a deep understanding of your business.</p>
+            <ul class="stats cases__stats" data-reveal-stagger>
+              <li class="stats__item" data-reveal="0.88 0.5">
+                <span class="stats__value" data-count="0.88 0.42">50+</span>
+                <span class="stats__label">Completed projects</span>
+              </li>
+              <li class="stats__item" data-reveal="0.88 0.5">
+                <span class="stats__value" data-count="0.88 0.42">7+</span>
+                <span class="stats__label">Industries</span>
+              </li>
+              <li class="stats__item" data-reveal="0.88 0.5">
+                <span class="stats__value" data-count="0.88 0.42">100%</span>
+                <span class="stats__label">Client satisfaction</span>
+              </li>
+            </ul>
+          </div>
+        </div>
+
+          <ul class="cases__grid" data-reveal-stagger>
+            <li data-reveal="0.9 0.45" class="cases__item cases__item--featured">
+              <a class="case-card" href="#cases">
+                <div class="case-card__media">
+                  <img class="case-card__image" src="images/projects/lanos.webp" width="1536" height="1024" alt="Lanos corporate website shown on a laptop" loading="lazy">
+                  <span class="case-card__badge">01 / Industry</span>
+                </div>
+                <div class="case-card__info">
+                  <div class="case-card__text">
+                    <h3 class="case-card__title">Lanos</h3>
+                    <p class="case-card__subtitle">Corporate website</p>
+                    <p class="case-card__tag">Web Development</p>
+                  </div>
+                  <span class="case-card__arrow"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
+                </div>
+              </a>
+            </li>
+            <li data-reveal="0.9 0.45" class="cases__item cases__item--half">
+              <a class="case-card" href="#cases">
+                <div class="case-card__media">
+                  <img class="case-card__image" src="images/projects/smiltenes.webp" width="1536" height="1024" alt="Smiltenes Tehnikums website shown on a desktop monitor" loading="lazy">
+                  <span class="case-card__badge">02 / Education</span>
+                </div>
+                <div class="case-card__info">
+                  <div class="case-card__text">
+                    <h3 class="case-card__title">Smiltenes Tehnikums</h3>
+                    <p class="case-card__subtitle">Education portal</p>
+                    <p class="case-card__tag">Web Development</p>
+                  </div>
+                  <span class="case-card__arrow"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
+                </div>
+              </a>
+            </li>
+            <li data-reveal="0.9 0.45" class="cases__item cases__item--half">
+              <a class="case-card" href="#cases">
+                <div class="case-card__media">
+                  <img class="case-card__image" src="images/projects/rlb.webp" width="1536" height="1024" alt="Rīgas Latviešu biedrība website shown on a desktop monitor" loading="lazy">
+                  <span class="case-card__badge">03 / Culture</span>
+                </div>
+                <div class="case-card__info">
+                  <div class="case-card__text">
+                    <h3 class="case-card__title">Rīgas Latviešu biedrība</h3>
+                    <p class="case-card__subtitle">Events website</p>
+                    <p class="case-card__tag">Web Development</p>
+                  </div>
+                  <span class="case-card__arrow"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
+                </div>
+              </a>
+            </li>
+            <li data-reveal="0.9 0.45" class="cases__item cases__item--wide">
+              <a class="case-card case-card--cta" href="#contacts">
+                <div class="case-card__media">
+                  <span class="case-card__badge">04 / Your project</span>
+                </div>
+                <div class="case-card__info">
+                  <div class="case-card__text">
+                    <h3 class="case-card__title">Your project could be next</h3>
+                    <p class="case-card__subtitle">Websites, online stores and digital products</p>
+                    <p class="case-card__tag">Start a project</p>
+                  </div>
+                  <span class="case-card__arrow"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
+                </div>
+              </a>
+            </li>
+          </ul>
+
+        <!-- постепенное размытие: прилипает к низу экрана, пока видна эта секция -->
+        <div class="blur-bar" aria-hidden="true">
+          <span class="blur-bar__layer"></span>
+          <span class="blur-bar__layer"></span>
+          <span class="blur-bar__layer"></span>
+          <span class="blur-bar__layer"></span>
+          <span class="blur-bar__layer"></span>
+          <span class="blur-bar__layer"></span>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== PROCESS ===== -->
+    <section class="process" id="process">
+      <div class="container">
+        <div class="process__head" data-progress="0.8 0.2">
+          <div class="process__intro">
+            <p class="section-label">04 / How we work</p>
+            <h2 class="section-title" data-split="words">From idea to a digital solution.</h2>
+            <p class="section-text process__text">A clear and thoughtful process that turns your business goals into digital products that work.</p>
+            <a class="btn btn--dark process__btn" data-modal-open href="#contacts">
+              Start your project
+              <svg class="btn__icon btn__icon--diagonal" viewBox="0 0 16 16" aria-hidden="true"><path d="M4.5 11.5 11.5 4.5M5.5 4.5h6v6"/></svg>
+            </a>
+          </div>
+
+          <div class="process__aside">
+            <p class="process__note">
+              <span class="process__note-icon" aria-hidden="true"></span>
+              <span class="process__note-text">One team.<br>From strategy to launch.</span>
+            </p>
+
+            <div class="process__visual">
+              <img class="process__spiral" src="images/spiral2.webp" width="1258" height="949" alt="" loading="lazy">
+            </div>
+          </div>
+        </div>
+
+        <ul class="process__list" data-progress="0.92 0.3">
+            <li class="process__item">
+              <article class="step-card">
+                <span class="step-card__icon">
+                  <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="11" cy="11" r="6.5"/><path d="m15.8 15.8 4.7 4.7"/></svg>
+                </span>
+                <span class="step-card__num">01</span>
+                <h3 class="step-card__title">Discovery</h3>
+                <p class="step-card__text">We get to know your business, audience and goals to find the right direction for your project.</p>
+                <a class="step-card__more" href="#contacts">
+                  Learn more
+                  <svg viewBox="0 0 16 16" aria-hidden="true"><path d="M4.5 11.5 11.5 4.5M5.5 4.5h6v6"/></svg>
+                </a>
+              </article>
+            </li>
+            <li class="process__item">
+              <article class="step-card step-card--dark">
+                <span class="step-card__icon">
+                  <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 20.2 5.2 15.8 15.9 5.1a2.2 2.2 0 0 1 3.1 3.1L8.3 18.9 4 20.2Z"/><path d="m14.2 6.8 3.1 3.1"/></svg>
+                </span>
+                <span class="step-card__num">02</span>
+                <h3 class="step-card__title">Strategy &amp; Design</h3>
+                <p class="step-card__text">We shape the structure, UX/UI and visual concept of your future product.</p>
+                <a class="step-card__more" href="#contacts">
+                  Learn more
+                  <svg viewBox="0 0 16 16" aria-hidden="true"><path d="M4.5 11.5 11.5 4.5M5.5 4.5h6v6"/></svg>
+                </a>
+              </article>
+            </li>
+            <li class="process__item">
+              <article class="step-card">
+                <span class="step-card__icon">
+                  <svg viewBox="0 0 24 24" aria-hidden="true"><path d="m9 7.5-4.5 4.5L9 16.5"/><path d="m15 7.5 4.5 4.5L15 16.5"/></svg>
+                </span>
+                <span class="step-card__num">03</span>
+                <h3 class="step-card__title">Development</h3>
+                <p class="step-card__text">We build the solution, integrate necessary features and test the result.</p>
+                <a class="step-card__more" href="#contacts">
+                  Learn more
+                  <svg viewBox="0 0 16 16" aria-hidden="true"><path d="M4.5 11.5 11.5 4.5M5.5 4.5h6v6"/></svg>
+                </a>
+              </article>
+            </li>
+            <li class="process__item">
+              <article class="step-card">
+                <span class="step-card__icon">
+                  <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M13.3 4.3c3.2-2 6.4-1.4 6.4-1.4s.6 3.2-1.4 6.4c-1.9 3-6.2 6.5-6.2 6.5L7 11s3.4-4.4 6.3-6.7Z"/><circle cx="15.2" cy="8.8" r="1.5"/><path d="M7.3 10.2 4.2 11.5l2.2 2.2M13.8 16.9l-1.3 3.1-2.2-2.2"/><path d="M6.3 17.6c-.9.9-1.1 3.4-1.1 3.4s2.5-.2 3.4-1.1a1.6 1.6 0 0 0-2.3-2.3Z"/></svg>
+                </span>
+                <span class="step-card__num">04</span>
+                <h3 class="step-card__title">Launch &amp; Support</h3>
+                <p class="step-card__text">We launch the project and help with further development and support.</p>
+                <a class="step-card__more" href="#contacts">
+                  Learn more
+                  <svg viewBox="0 0 16 16" aria-hidden="true"><path d="M4.5 11.5 11.5 4.5M5.5 4.5h6v6"/></svg>
+                </a>
+              </article>
+            </li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- ===== ADVANTAGES ===== -->
+    <section class="advantages" id="advantages">
+      <div class="container advantages__inner" data-progress="0.8 0.2">
+        <div class="advantages__intro">
+          <p class="section-label">05 / Why IT Group</p>
+          <h2 class="section-title" data-split="words">We build with purpose.<br>Not just pixels.</h2>
+          <p class="section-text advantages__text">We combine strategy, design and technology to create digital solutions that make a difference for your business.</p>
+
+          <div class="advantages__media">
+            <img class="advantages__photo" src="images/advantages.webp" width="1536" height="1024" alt="Команда IT Group за работой в офисе" loading="lazy">
+            <span class="advantages__badge">Our team</span>
+            <a class="advantages__approach" href="#process">
+              <span class="advantages__approach-icon">
+                <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+              </span>
+              Our approach
+            </a>
+          </div>
+        </div>
+
+        <ul class="advantages__list">
+            <li class="advantages__item" style="--stack-offset: 0px">
+              <article data-reveal="0.92 0.55" class="advantage-card advantage-card--dark">
+                <span class="advantage-card__icon">
+                  <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="8.5"/><circle cx="12" cy="12" r="4.5"/><circle cx="12" cy="12" r="1.2" fill="currentColor" stroke="none"/><path d="m14 10 6.5-6.5M17.5 3.2l.4 2.9 2.9.4"/></svg>
+                </span>
+                <div class="advantage-card__body">
+                  <span class="advantage-card__num">01 /</span>
+                  <h3 class="advantage-card__title">Business-first approach</h3>
+                  <p class="advantage-card__text">We start with your goals and challenges, not just a beautiful design.</p>
+                </div>
+                <a class="advantage-card__arrow" href="#contacts" aria-label="Business-first approach — learn more">
+                  <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+                </a>
+              </article>
+            </li>
+            <li class="advantages__item" style="--stack-offset: 18px">
+              <article data-reveal="0.92 0.55" class="advantage-card">
+                <span class="advantage-card__icon">
+                  <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3.25 3.25 7.75 12 12.25l8.75-4.5L12 3.25Z"/><path d="m3.25 12 8.75 4.5 8.75-4.5"/><path d="m3.25 16.25 8.75 4.5 8.75-4.5"/></svg>
+                </span>
+                <div class="advantage-card__body">
+                  <span class="advantage-card__num">02 /</span>
+                  <h3 class="advantage-card__title">Design &amp; Technology</h3>
+                  <p class="advantage-card__text">We combine modern UX/UI and technical development in one seamless process.</p>
+                </div>
+                <a class="advantage-card__arrow" href="#contacts" aria-label="Design & Technology — learn more">
+                  <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+                </a>
+              </article>
+            </li>
+            <li class="advantages__item" style="--stack-offset: 36px">
+              <article data-reveal="0.92 0.55" class="advantage-card">
+                <span class="advantage-card__icon">
+                  <svg viewBox="0 0 24 24" aria-hidden="true"><path d="m11 17 2 2a1 1 0 1 0 3-3"/><path d="m14 14 2.5 2.5a1 1 0 1 0 3-3l-3.9-3.9a3 3 0 0 0-4.2 0l-.9.9a1 1 0 1 1-3-3l2.8-2.8a5.8 5.8 0 0 1 7-.9l.5.3a2 2 0 0 0 1.4.2L21 4"/><path d="m21 3 1 11h-2"/><path d="M3 3 2 14l6.5 6.5a1 1 0 1 0 3-3"/><path d="M3 4h8"/></svg>
+                </span>
+                <div class="advantage-card__body">
+                  <span class="advantage-card__num">03 /</span>
+                  <h3 class="advantage-card__title">Transparent collaboration</h3>
+                  <p class="advantage-card__text">Clear communication, defined stages and full transparency at every step.</p>
+                </div>
+                <a class="advantage-card__arrow" href="#contacts" aria-label="Transparent collaboration — learn more">
+                  <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+                </a>
+              </article>
+            </li>
+            <li class="advantages__item" style="--stack-offset: 54px">
+              <article data-reveal="0.92 0.55" class="advantage-card">
+                <span class="advantage-card__icon">
+                  <svg viewBox="0 0 24 24" aria-hidden="true"><path d="m21.5 7-7.6 7.6-4-4L2.5 18"/><path d="M15.5 7h6v6"/></svg>
+                </span>
+                <div class="advantage-card__body">
+                  <span class="advantage-card__num">04 /</span>
+                  <h3 class="advantage-card__title">Built to grow</h3>
+                  <p class="advantage-card__text">We create solutions that can evolve together with your business.</p>
+                </div>
+                <a class="advantage-card__arrow" href="#contacts" aria-label="Built to grow — learn more">
+                  <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+                </a>
+              </article>
+            </li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- ===== REVIEWS ===== -->
+    <section class="reviews" id="reviews">
+      <div class="container">
+        <div class="reviews__head" data-progress="0.8 0.2">
+          <div class="reviews__intro">
+            <p class="section-label">06 / Clients &amp; reviews</p>
+            <h2 class="section-title" data-split="words">Trusted by businesses around the world.</h2>
+            <p class="section-text reviews__text">We're proud to work with amazing clients and help them achieve their goals through digital solutions.</p>
+          </div>
+
+          <ul class="stats reviews__stats" data-reveal-stagger>
+            <li class="stats__item" data-reveal="0.88 0.5">
+              <span class="stats__value" data-count="0.88 0.42">50+</span>
+              <span class="stats__label">Happy clients</span>
+            </li>
+            <li class="stats__item" data-reveal="0.88 0.5">
+              <span class="stats__value" data-count="0.88 0.42">7+</span>
+              <span class="stats__label">Industries</span>
+            </li>
+            <li class="stats__item" data-reveal="0.88 0.5">
+              <span class="stats__value" data-count="0.88 0.42">4.9/5</span>
+              <span class="stats__label">Client rating</span>
+            </li>
+          </ul>
+        </div>
+
+        <div class="reviews__viewport" data-progress="0.92 0.45">
+          <ul class="reviews__track">
+            <li class="reviews__item">
+              <article class="review-card">
+                <div class="review-card__head">
+                  <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M19 12H5M11 6l-6 6 6 6"/></svg>
+                  <span class="review-card__tag">Web Development</span>
+                </div>
+                <blockquote class="review-card__quote">“IT Group delivered a modern, fast and reliable website that exceeded our expectations. The team was professional, responsive and truly cared about our success.”</blockquote>
+                <div class="review-card__footer">
+                  <img class="review-card__avatar" src="images/avatars/alex.svg" width="100" height="104" alt="" loading="lazy">
+                  <div class="review-card__person">
+                    <div class="review-card__name">Alex Carter</div>
+                    <div class="review-card__role">CEO, Nexora</div>
+                  </div>
+                  <span class="review-card__logo"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="10" fill="currentColor" opacity=".18"/><path d="M12 5.5 17 12l-5 6.5L7 12l5-6.5Z" fill="currentColor"/></svg>Nexora</span>
+                </div>
+              </article>
+            </li>
+            <li class="reviews__item">
+              <article class="review-card">
+                <div class="review-card__head">
+                  <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M19 12H5M11 6l-6 6 6 6"/></svg>
+                  <span class="review-card__tag">E-commerce</span>
+                </div>
+                <blockquote class="review-card__quote">“The IT Group team built our online store from scratch. The result is a beautiful, fast and easy-to-manage platform. Sales have grown by 40% since launch.”</blockquote>
+                <div class="review-card__footer">
+                  <img class="review-card__avatar" src="images/avatars/maria.svg" width="100" height="104" alt="" loading="lazy">
+                  <div class="review-card__person">
+                    <div class="review-card__name">Maria Lopez</div>
+                    <div class="review-card__role">Founder, Vélo</div>
+                  </div>
+                  <span class="review-card__logo"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="7" cy="16" r="4.4" fill="none" stroke="currentColor" stroke-width="1.6"/><circle cx="17" cy="16" r="4.4" fill="none" stroke="currentColor" stroke-width="1.6"/><path d="m7 16 4-8h4" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>Vélo</span>
+                </div>
+              </article>
+            </li>
+            <li class="reviews__item">
+              <article class="review-card">
+                <div class="review-card__head">
+                  <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M19 12H5M11 6l-6 6 6 6"/></svg>
+                  <span class="review-card__tag">UI/UX Design</span>
+                </div>
+                <blockquote class="review-card__quote">“Working with IT Group was a great experience. They understood our vision, brought fresh ideas and delivered a product that our users love.”</blockquote>
+                <div class="review-card__footer">
+                  <img class="review-card__avatar" src="images/avatars/daniel.svg" width="100" height="104" alt="" loading="lazy">
+                  <div class="review-card__person">
+                    <div class="review-card__name">Daniel Kim</div>
+                    <div class="review-card__role">Product Manager, Lumën</div>
+                  </div>
+                  <span class="review-card__logo"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="10" r="5.5" fill="currentColor" opacity=".2"/><path d="M12 3.5v2M12 18.5v2M4.5 11h2M17.5 11h2M6.7 5.7l1.4 1.4M15.9 14.9l1.4 1.4M17.3 5.7l-1.4 1.4M8.1 14.9l-1.4 1.4" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg>Lumën</span>
+                </div>
+              </article>
+            </li>
+            <li class="reviews__item">
+              <article class="review-card">
+                <div class="review-card__head">
+                  <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M19 12H5M11 6l-6 6 6 6"/></svg>
+                  <span class="review-card__tag">IT Solutions</span>
+                </div>
+                <blockquote class="review-card__quote">“Reliable, professional and easy to work with. They handled everything from setup to support and kept our systems running without a single stop.”</blockquote>
+                <div class="review-card__footer">
+                  <img class="review-card__avatar" src="images/avatars/sarah.svg" width="100" height="104" alt="" loading="lazy">
+                  <div class="review-card__person">
+                    <div class="review-card__name">Sarah Williams</div>
+                    <div class="review-card__role">CTO, TrackFlow</div>
+                  </div>
+                  <span class="review-card__logo"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3.5" y="3.5" width="17" height="17" rx="5" fill="currentColor" opacity=".18"/><path d="M7 14.5 10.5 11l2.5 2.5L17.5 9" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>TrackFlow</span>
+                </div>
+              </article>
+            </li>
+          </ul>
+        </div>
+
+        <div class="reviews__controls" data-reveal="0.92 0.55">
+          <button class="reviews__arrow reviews__arrow--prev" type="button" aria-label="Предыдущий отзыв">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M19 12H5M11 6l-6 6 6 6"/></svg>
+          </button>
+          <div class="reviews__dots"></div>
+          <button class="reviews__arrow reviews__arrow--next" type="button" aria-label="Следующий отзыв">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+          </button>
+        </div>
+
+        <div class="reviews__bottom">
+          <div>
+            <a class="btn btn--dark reviews__btn" data-reveal="0.92 0.55" href="#contacts">
+              View all testimonials
+              <svg class="btn__icon btn__icon--diagonal" viewBox="0 0 16 16" aria-hidden="true"><path d="M4.5 11.5 11.5 4.5M5.5 4.5h6v6"/></svg>
+            </a>
+          </div>
+
+          <div class="reviews__visual" data-reveal="0.92 0.5">
+            <img class="reviews__spiral" src="images/spiral3.webp" width="1306" height="904" alt="" loading="lazy">
+            <p class="reviews__caption">
+              <span class="reviews__caption-main">Real people.</span>
+              <span class="reviews__caption-sub">Real results.</span>
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== CTA ===== -->
+    <section class="cta" id="contacts">
+      <div class="container">
+        <div class="cta__box" data-progress="0.78 0.3">
+          <div class="cta__content">
+            <p class="section-label cta__label">Get started</p>
+            <h2 class="section-title cta__title" data-split="words">Let’s build something great together.</h2>
+            <p class="section-text cta__text">
+              Ready to turn your ideas into a digital product?<br>
+              Get in touch and let’s discuss your project.
+            </p>
+
+            <a class="btn btn--dark cta__btn" data-modal-open href="#contacts">
+              Get a consultation
+              <svg class="btn__icon" viewBox="0 0 16 16" aria-hidden="true"><path d="M2.5 8h11M9 3.5 13.5 8 9 12.5"/></svg>
+            </a>
+
+            <ul class="cta__benefits">
+              <li class="cta__benefit">
+                <span class="cta__benefit-title">Free consultation</span>
+                <span class="cta__benefit-text">Discuss your goals and ideas</span>
+              </li>
+              <li class="cta__benefit">
+                <span class="cta__benefit-title">Clear roadmap</span>
+                <span class="cta__benefit-text">See the next steps</span>
+              </li>
+              <li class="cta__benefit">
+                <span class="cta__benefit-title">No obligation</span>
+                <span class="cta__benefit-text">Just honest advice</span>
+              </li>
+            </ul>
+          </div>
+
+          <p class="cta__tagline">
+            Your vision.<br>
+            Our expertise.
+          </p>
+
+          <!-- спираль: свечение по контуру + блик, обрезанные по форме картинки -->
+          <div class="cta__spiral">
+            <span class="cta__spiral-glow" aria-hidden="true">
+              <span class="cta__glow" style="--turn: 0deg; --glow-delay: -0.0s"></span>
+              <span class="cta__glow" style="--turn: 60deg; --glow-delay: -1.5s"></span>
+              <span class="cta__glow" style="--turn: 120deg; --glow-delay: -3.0s"></span>
+              <span class="cta__glow" style="--turn: 180deg; --glow-delay: -4.5s"></span>
+              <span class="cta__glow" style="--turn: 240deg; --glow-delay: -6.0s"></span>
+              <span class="cta__glow" style="--turn: 300deg; --glow-delay: -7.5s"></span>
+            </span>
+            <img class="cta__spiral-img" src="images/spiral4.webp" width="1292" height="881" alt="" loading="lazy">
+            <span class="cta__spiral-sheen" aria-hidden="true">
+              <span class="cta__spiral-band"></span>
+            </span>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- ===== FOOTER ===== -->
+  <footer class="footer">
+    <div class="container footer__inner">
+      <a class="logo footer__logo" data-animate="fade-up" href="/" aria-label="IT Group — home">
+        <svg class="logo__icon" viewBox="0 0 25 29" aria-hidden="true">
+          <path class="logo__icon-bg" d="M12 0H25V19A10 10 0 0 1 15 29H0V12A12 12 0 0 1 12 0Z"/>
+          <path d="M14.5 0H22A3 3 0 0 1 25 3V6A8 8 0 0 1 17 14H12.5V2A2 2 0 0 1 14.5 0Z" fill="currentColor"/>
+          <rect x="0" y="15" width="11.5" height="14" rx="2" fill="currentColor"/>
+        </svg>
+        <span class="logo__text">IT GROUP</span>
+      </a>
+
+      <nav class="footer__nav" aria-label="Footer navigation">
+        <ul class="footer__nav-list">
+          <li data-animate="fade-up"><a class="footer__nav-link" href="#services">Services</a></li>
+          <li data-animate="fade-up"><a class="footer__nav-link" href="#cases">Work</a></li>
+          <li data-animate="fade-up"><a class="footer__nav-link" href="#about">About</a></li>
+          <li data-animate="fade-up"><a class="footer__nav-link" href="#process">Process</a></li>
+          <li data-animate="fade-up"><a class="footer__nav-link" href="#reviews">Reviews</a></li>
+          <li data-animate="fade-up"><a class="footer__nav-link" href="#advantages">Advantages</a></li>
+        </ul>
+      </nav>
+
+      <div class="footer__side">
+        <ul class="footer__socials">
+          <li data-animate="fade-up">
+            <a class="footer__social" href="https://www.facebook.com/" target="_blank" rel="noopener" aria-label="Facebook">
+              <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M14.5 21v-7.5h2.6l.4-3h-3V8.6c0-.87.25-1.46 1.5-1.46H17.6V4.46A21 21 0 0 0 15.3 4.3c-2.3 0-3.85 1.4-3.85 3.97V10.5H8.8v3h2.65V21Z"/></svg>
+            </a>
+          </li>
+          <li data-animate="fade-up">
+            <a class="footer__social" href="https://www.instagram.com/" target="_blank" rel="noopener" aria-label="Instagram">
+              <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M8.2 3h7.6A5.2 5.2 0 0 1 21 8.2v7.6a5.2 5.2 0 0 1-5.2 5.2H8.2A5.2 5.2 0 0 1 3 15.8V8.2A5.2 5.2 0 0 1 8.2 3Zm0 1.9A3.3 3.3 0 0 0 4.9 8.2v7.6a3.3 3.3 0 0 0 3.3 3.3h7.6a3.3 3.3 0 0 0 3.3-3.3V8.2a3.3 3.3 0 0 0-3.3-3.3Zm3.8 2.7a4.4 4.4 0 1 1 0 8.8 4.4 4.4 0 0 1 0-8.8Zm0 1.9a2.5 2.5 0 1 0 0 5 2.5 2.5 0 0 0 0-5Zm4.6-2.6a1.1 1.1 0 1 1 0 2.2 1.1 1.1 0 0 1 0-2.2Z"/></svg>
+            </a>
+          </li>
+          <li data-animate="fade-up">
+            <a class="footer__social" href="https://www.linkedin.com/" target="_blank" rel="noopener" aria-label="LinkedIn">
+              <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5.6 3.4a2.2 2.2 0 1 1 0 4.4 2.2 2.2 0 0 1 0-4.4ZM3.7 9.4h3.8V21H3.7Zm6.3 0h3.64v1.58h.05a4 4 0 0 1 3.6-1.9c3.84 0 4.55 2.42 4.55 5.56V21h-3.79v-5.6c0-1.34-.03-3.06-1.9-3.06-1.9 0-2.19 1.45-2.19 2.96V21H10Z"/></svg>
+            </a>
+          </li>
+        </ul>
+
+        <p class="footer__copy" data-animate="fade-up">
+          © 2025 IT Group.<br>
+          All rights reserved.
+        </p>
+      </div>
+    </div>
+  </footer>
+
+
+  <!-- ===== MODAL: заявка на консультацию ===== -->
+  <dialog class="modal" id="consult-modal" aria-labelledby="consult-modal-title">
+    <div class="modal__box" tabindex="-1">
+      <button class="modal__close" type="button" data-modal-close aria-label="Close form">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="m7 7 10 10M17 7 7 17"/></svg>
+      </button>
+
+      <aside class="modal__aside">
+        <p class="modal__pill">Get in touch</p>
+        <h2 class="modal__title" id="consult-modal-title">Get a free consultation</h2>
+        <p class="modal__text">Tell us about your project and we&rsquo;ll get back to you within 24 hours with the best solution.</p>
+
+        <ul class="modal__list">
+          <li class="modal__list-item">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="m8.5 12 2.5 2.5 4.5-5"/></svg>
+            Discuss your goals
+          </li>
+          <li class="modal__list-item">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="m8.5 12 2.5 2.5 4.5-5"/></svg>
+            Get expert advice
+          </li>
+          <li class="modal__list-item">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="m8.5 12 2.5 2.5 4.5-5"/></svg>
+            Find the right solution
+          </li>
+        </ul>
+
+        <img class="modal__spiral" src="images/spiral5.webp" width="972" height="876" alt="" loading="lazy">
+      </aside>
+
+      <form class="modal__form" id="consult-form" novalidate>
+        <div class="field">
+          <label class="field__label" for="consult-name">Name <span aria-hidden="true">*</span></label>
+          <input class="field__input" id="consult-name" name="name" type="text" placeholder="Your name" autocomplete="name" required>
+        </div>
+
+        <div class="field">
+          <label class="field__label" for="consult-email">Email <span aria-hidden="true">*</span></label>
+          <input class="field__input" id="consult-email" name="email" type="email" placeholder="you@company.com" autocomplete="email" required>
+        </div>
+
+        <div class="field">
+          <label class="field__label" for="consult-type">Project type</label>
+          <select class="field__input field__select" id="consult-type" name="type">
+            <option value="" selected>Select an option</option>
+            <option value="website">Website</option>
+            <option value="ecommerce">E-commerce</option>
+            <option value="design">UI/UX Design</option>
+            <option value="marketing">Digital marketing</option>
+            <option value="other">Something else</option>
+          </select>
+        </div>
+
+        <div class="field">
+          <label class="field__label" for="consult-message">Message <span aria-hidden="true">*</span></label>
+          <textarea class="field__input" id="consult-message" name="message" placeholder="Tell us about your project" required></textarea>
+        </div>
+
+        <label class="checkbox">
+          <input class="checkbox__input" type="checkbox" name="consent" required>
+          <span class="checkbox__mark">
+            <svg viewBox="0 0 16 16" aria-hidden="true"><path d="m3.5 8.5 3 3 6-7"/></svg>
+          </span>
+          <span class="checkbox__text">I agree to the processing of my personal data</span>
+        </label>
+
+        <button class="btn btn--dark modal__submit" type="submit">
+          Send request
+          <svg class="btn__icon" viewBox="0 0 16 16" aria-hidden="true"><path d="M2.5 8h11M9 3.5 13.5 8 9 12.5"/></svg>
+        </button>
+      </form>
+
+      <div class="modal__success" id="consult-success" hidden>
+        <span class="modal__success-icon">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="m5 12.5 4.5 4.5L19 7.5"/></svg>
+        </span>
+        <p class="modal__success-title">Thank you!</p>
+        <p class="modal__success-text">We&rsquo;ve received your request and will get back to you within 24 hours.</p>
+      </div>
+    </div>
+  </dialog>
+
+  <script src="js/main.js?v=1"></script>
+</body>
+</html>

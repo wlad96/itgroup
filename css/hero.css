@@ -1,0 +1,517 @@
+/* ===== Hero ===== */
+.hero {
+  padding-top: 16px;
+  padding-bottom: 48px;
+}
+
+.hero__inner {
+  display: grid;
+  grid-template-columns: 44% 1fr;
+  align-items: stretch;
+}
+
+/* --- Content --- */
+.hero__content {
+  position: relative;
+  z-index: 1;
+}
+
+.hero__label {
+  margin-bottom: 20px;
+  font-size: 15px;
+  font-weight: 500;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--color-text);
+}
+
+.hero__title {
+  max-width: 700px;
+  margin-bottom: 28px;
+  font-size: 76px;
+  font-weight: 500;
+  line-height: 1;
+  letter-spacing: -0.035em;
+  color: var(--color-text);
+}
+
+.hero__text {
+  max-width: 480px;
+  margin-bottom: 40px;
+  font-size: 18px;
+  line-height: 1.5;
+  color: var(--color-muted);
+}
+
+.hero__actions {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 20px 36px;
+}
+
+/* ===== Play ===== */
+.play {
+  display: inline-flex;
+  align-items: center;
+  gap: 18px;
+  text-align: left;
+}
+
+.play__icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  width: 62px;
+  height: 62px;
+  color: var(--color-dark);
+  background-color: var(--color-bg);
+  border: 5px solid var(--color-surface);
+  border-radius: 50%;
+  box-shadow: 0 6px 18px rgba(20, 28, 35, 0.06);
+  transition: transform var(--transition), background-color var(--transition);
+}
+
+.play__icon svg {
+  width: 20px;
+  height: 20px;
+  margin-left: 3px;
+  fill: currentColor;
+}
+
+.play:hover .play__icon {
+  transform: scale(1.06);
+  background-color: var(--color-surface);
+}
+
+.play__text {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  font-size: 14px;
+  line-height: 1.35;
+  color: var(--color-muted);
+}
+
+.play__title {
+  font-size: 16px;
+}
+
+/* --- Media --- */
+.hero__media {
+  position: relative;
+  margin-right: -52px;
+}
+
+/* Картинка растягивается на высоту левого блока.
+   Форма (скос + скругления) задаётся через clip-path, путь считает js/main.js.
+   --hero-radius — радиус углов, --hero-slant — скос левой стороны (доля высоты). */
+.hero__image {
+  --hero-radius: 32px;
+  --hero-slant: 0.3;
+  --hero-slant-right: 0.04;
+
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+  border-radius: var(--hero-radius);
+  clip-path: var(--hero-clip, none);
+}
+
+.hero__card {
+  position: absolute;
+  top: 36px;
+  right: 40px;
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  width: 290px;
+  padding: 14px 20px 14px 14px;
+  background-color: rgba(255, 255, 255, 0.88);
+  -webkit-backdrop-filter: blur(12px);
+  backdrop-filter: blur(12px);
+  border-radius: 20px;
+  transition: background-color var(--transition);
+}
+
+.hero__card:hover {
+  background-color: var(--color-surface);
+}
+
+.hero__card-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  width: 46px;
+  height: 46px;
+  color: var(--color-dark);
+  background-color: var(--color-bg);
+  border-radius: 50%;
+}
+
+.hero__card-icon svg {
+  width: 18px;
+  height: 18px;
+  fill: currentColor;
+}
+
+.hero__card-text {
+  font-size: 15px;
+  line-height: 1.4;
+  color: var(--color-text-secondary);
+}
+
+.hero__card-arrow {
+  flex-shrink: 0;
+  width: 18px;
+  height: 18px;
+  margin-left: auto;
+  fill: none;
+  stroke: var(--color-text-secondary);
+  stroke-width: 1.5;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  transition: transform var(--transition);
+}
+
+.hero__card:hover .hero__card-arrow {
+  transform: translateX(3px);
+}
+
+.hero__counter {
+  position: absolute;
+  left: 6%;
+  bottom: 36px;
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  font-size: 15px;
+  color: #687279;
+}
+
+.hero__counter-line {
+  width: 44px;
+  height: 1px;
+  background-color: currentColor;
+  opacity: 0.6;
+}
+
+/* ===== Adaptive ===== */
+@media (max-width: 1500px) {
+  .hero__inner {
+    grid-template-columns: 45% 1fr;
+  }
+
+  .hero__title {
+    max-width: 600px;
+    font-size: 64px;
+  }
+
+  .hero__text {
+    max-width: 440px;
+    margin-bottom: 36px;
+    font-size: 17px;
+  }
+
+  .hero__media {
+    margin-right: -32px;
+  }
+
+  .hero__image {
+    object-position: 32% center;
+  }
+
+  .hero__card {
+    top: 28px;
+    right: 32px;
+    width: 260px;
+    padding: 12px 18px 12px 12px;
+  }
+
+  .hero__card-icon {
+    width: 40px;
+    height: 40px;
+  }
+
+  .hero__card-text {
+    font-size: 14px;
+  }
+
+  .hero__counter {
+    bottom: 28px;
+    font-size: 14px;
+  }
+}
+
+@media (max-width: 1200px) {
+  .hero__inner {
+    grid-template-columns: 47% 1fr;
+  }
+
+  .hero__label {
+    margin-bottom: 16px;
+    font-size: 14px;
+  }
+
+  .hero__title {
+    max-width: 480px;
+    margin-bottom: 24px;
+    font-size: 52px;
+  }
+
+  .hero__text {
+    max-width: 400px;
+    margin-bottom: 32px;
+    font-size: 16px;
+  }
+
+  .hero__actions {
+    gap: 20px 28px;
+  }
+
+  .play__icon {
+    width: 54px;
+    height: 54px;
+    border-width: 4px;
+  }
+
+  .play__icon svg {
+    width: 18px;
+    height: 18px;
+  }
+
+  .play__title {
+    font-size: 15px;
+  }
+
+  .play__text {
+    font-size: 13px;
+  }
+
+  .hero__media {
+    margin-right: -20px;
+  }
+
+  .hero__image {
+    --hero-radius: 24px;
+  }
+
+  .hero__card {
+    top: 18px;
+    right: 20px;
+    width: 220px;
+    padding: 10px 14px 10px 10px;
+    gap: 10px;
+    border-radius: 16px;
+  }
+
+  .hero__card-icon {
+    width: 34px;
+    height: 34px;
+  }
+
+  .hero__card-icon svg {
+    width: 14px;
+    height: 14px;
+  }
+
+  .hero__card-text {
+    font-size: 12px;
+  }
+
+  .hero__card-arrow {
+    width: 16px;
+    height: 16px;
+  }
+
+  .hero__counter {
+    bottom: 18px;
+    gap: 10px;
+    font-size: 12px;
+  }
+
+  .hero__counter-line {
+    width: 32px;
+  }
+}
+
+@media (max-width: 1024px) {
+  .hero {
+    padding-top: 32px;
+  }
+
+  .hero__inner {
+    grid-template-columns: 1fr;
+    gap: 48px;
+  }
+
+  /* в одну колонку — картинка в своих пропорциях, форма уже в PNG */
+  .hero__image {
+    position: static;
+    height: auto;
+    object-fit: fill;
+    border-radius: 0;
+    clip-path: none;
+  }
+
+  .hero__title {
+    max-width: 720px;
+    font-size: 60px;
+  }
+
+  .hero__text {
+    max-width: 540px;
+    font-size: 18px;
+  }
+
+  .hero__media {
+    margin-right: 0;
+  }
+
+  .hero__card {
+    top: 28px;
+    right: 28px;
+    width: 270px;
+    padding: 12px 18px 12px 12px;
+    gap: 12px;
+    border-radius: 18px;
+  }
+
+  .hero__card-icon {
+    width: 42px;
+    height: 42px;
+  }
+
+  .hero__card-icon svg {
+    width: 16px;
+    height: 16px;
+  }
+
+  .hero__card-text {
+    font-size: 14px;
+  }
+
+  .hero__counter {
+    bottom: 28px;
+    font-size: 14px;
+  }
+
+  .hero__counter-line {
+    width: 40px;
+  }
+}
+
+@media (max-width: 768px) {
+  .hero {
+    padding-top: 24px;
+  }
+
+  .hero__inner {
+    gap: 40px;
+  }
+
+  .hero__label {
+    margin-bottom: 14px;
+    font-size: 13px;
+  }
+
+  .hero__title {
+    margin-bottom: 20px;
+    font-size: 48px;
+  }
+
+  .hero__text {
+    margin-bottom: 28px;
+    font-size: 17px;
+  }
+
+  .hero__card {
+    top: 14px;
+    right: 14px;
+    width: 220px;
+    padding: 9px 12px 9px 9px;
+    gap: 10px;
+    border-radius: 14px;
+  }
+
+  .hero__card-icon {
+    width: 34px;
+    height: 34px;
+  }
+
+  .hero__card-icon svg {
+    width: 14px;
+    height: 14px;
+  }
+
+  .hero__card-text {
+    font-size: 12px;
+  }
+
+  .hero__counter {
+    bottom: 16px;
+    font-size: 12px;
+  }
+
+  .hero__counter-line {
+    width: 28px;
+  }
+}
+
+@media (max-width: 576px) {
+  .hero {
+    padding-top: 16px;
+    padding-bottom: 32px;
+  }
+
+  .hero__inner {
+    gap: 32px;
+  }
+
+  .hero__label {
+    font-size: 12px;
+  }
+
+  .hero__title {
+    font-size: 38px;
+    line-height: 1.05;
+  }
+
+  .hero__text {
+    font-size: 16px;
+  }
+
+  .hero__actions {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .hero__btn {
+    width: 100%;
+    height: 54px;
+  }
+
+  .hero__play {
+    align-self: flex-start;
+  }
+
+  .hero__card {
+    display: none;
+  }
+
+  .hero__counter {
+    left: 8%;
+    bottom: 8px;
+    gap: 8px;
+    font-size: 11px;
+  }
+
+  .hero__counter-line {
+    width: 20px;
+  }
+}

@@ -1,0 +1,547 @@
+/* ===== Reviews ===== */
+.reviews {
+  padding-block: 60px 80px;
+  overflow: hidden;
+}
+
+.reviews__head {
+  display: grid;
+  grid-template-columns: 1fr 42%;
+  align-items: start;
+  gap: 48px;
+  margin-bottom: 48px;
+}
+
+.reviews__text {
+  max-width: 480px;
+  margin-bottom: 0;
+}
+
+.reviews__stats {
+  padding-top: 24px;
+}
+
+/* ===== Слайдер =====
+   Лента двигается трансформом: активная карточка всегда прижата к левому краю,
+   слева ничего не выглядывает, прокрутка бесконечная (js переставляет карточки). */
+.reviews__viewport {
+  --card-width: min(460px, 78vw);
+  --card-gap: 24px;
+
+  /* лента уходит за правый край экрана */
+  margin-right: calc(50% - 50vw);
+  /* запас слева, сверху и снизу, чтобы тень активной карточки не обрезалась */
+  padding: 44px 0 44px 44px;
+  margin-top: -44px;
+  margin-bottom: -44px;
+  margin-left: -44px;
+  overflow: hidden;
+}
+
+.reviews__track {
+  display: flex;
+  gap: var(--card-gap);
+  perspective: 1400px;
+  transform: translate3d(calc(var(--shift, 0px) * -1), 0, 0);
+}
+
+.reviews__track--animated {
+  transition: transform 0.6s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.reviews__item {
+  flex: 0 0 var(--card-width);
+  /* лесенка: чем правее карточка, тем бледнее. Классы позиций ставит js
+     в момент старта сдвига, поэтому подсветка идёт вместе с движением ленты. */
+  opacity: 0.24;
+  transform: scale(0.97);
+  transition: opacity 0.6s ease, transform 0.6s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.reviews__item--p0 {
+  opacity: 1;
+  transform: scale(1);
+}
+
+.reviews__item--p1 {
+  opacity: 0.85;
+}
+
+.reviews__item--p2 {
+  opacity: 0.55;
+}
+
+.reviews__item--p3 {
+  opacity: 0.36;
+}
+
+/* ===== Review card ===== */
+.review-card {
+  position: relative;
+  isolation: isolate;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  padding: 34px;
+  background-color: #fbfcfd;
+  border: 1px solid rgba(255, 255, 255, 0.95);
+  border-radius: 28px;
+  box-shadow: 0 1px 2px rgba(20, 28, 35, 0.03), 0 16px 40px rgba(30, 50, 70, 0.05);
+  transition: background-color 0.45s ease, color 0.45s ease, box-shadow 0.45s ease;
+}
+
+.review-card__head {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 28px;
+  color: var(--color-muted);
+}
+
+.review-card__head svg {
+  width: 18px;
+  height: 18px;
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 1.5;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+.review-card__tag {
+  padding: 7px 16px;
+  font-size: 14px;
+  font-weight: 500;
+  color: var(--color-text-secondary);
+  background-color: rgba(30, 50, 90, 0.06);
+  border-radius: var(--radius-pill);
+}
+
+.review-card__quote {
+  margin-bottom: 36px;
+  font-size: 21px;
+  line-height: 1.45;
+  letter-spacing: -0.01em;
+}
+
+.review-card__footer {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  margin-top: auto;
+}
+
+.review-card__avatar {
+  flex-shrink: 0;
+  width: 54px;
+  height: 54px;
+  object-fit: cover;
+  border-radius: 50%;
+  box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.6);
+}
+
+.review-card__person {
+  min-width: 0;
+}
+
+.review-card__name {
+  font-size: 17px;
+  font-weight: 500;
+}
+
+.review-card__role {
+  font-size: 14px;
+  color: var(--color-muted);
+}
+
+.review-card__logo {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  margin-left: auto;
+  font-size: 19px;
+  font-weight: 600;
+  letter-spacing: -0.02em;
+  white-space: nowrap;
+}
+
+.review-card__logo svg {
+  width: 22px;
+  height: 22px;
+}
+
+/* --- Активная карточка: тёмная, крупнее, с лучами и просветом --- */
+.reviews__item--active .review-card {
+  --card-glow: rgba(170, 200, 225, 0.3);
+
+  color: #fff;
+  background: linear-gradient(160deg, #283742 0%, #1b2731 55%, #141e26 100%);
+  border-color: rgba(255, 255, 255, 0.06);
+  box-shadow: 0 20px 30px rgba(20, 28, 35, 0.26);
+}
+
+.reviews__item--active .review-card__head,
+.reviews__item--active .review-card__role {
+  color: rgba(255, 255, 255, 0.6);
+}
+
+.reviews__item--active .review-card__tag {
+  color: #fff;
+  background-color: rgba(255, 255, 255, 0.14);
+}
+
+/* лучи, как на остальных тёмных карточках */
+.review-card::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  background: url("../images/card-dark-bg.svg") center / 100% 100% no-repeat;
+  opacity: 0;
+  transition: opacity 0.55s ease;
+  pointer-events: none;
+}
+
+.reviews__item--active .review-card::before {
+  opacity: 1;
+}
+
+/* просвет: широкая полоса света медленно проходит по карточке */
+.review-card::after {
+  content: "";
+  position: absolute;
+  top: -60%;
+  left: -40%;
+  z-index: -1;
+  width: 45%;
+  height: 220%;
+  background: linear-gradient(
+    100deg,
+    rgba(255, 255, 255, 0) 0%,
+    rgba(255, 255, 255, 0.09) 45%,
+    rgba(255, 255, 255, 0.16) 50%,
+    rgba(255, 255, 255, 0.09) 55%,
+    rgba(255, 255, 255, 0) 100%
+  );
+  opacity: 0;
+  transform: rotate(12deg);
+  pointer-events: none;
+}
+
+.reviews__item--active .review-card::after {
+  opacity: 1;
+  animation: review-sheen 12s ease-in-out infinite;
+}
+
+/* карточка «переворачивается», когда становится активной */
+.reviews__item--enter .review-card {
+  transform-origin: left center;
+  animation: review-flip 0.6s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+@keyframes review-flip {
+  0% {
+    transform: perspective(1400px) rotateY(-14deg);
+  }
+
+  100% {
+    transform: perspective(1400px) rotateY(0);
+  }
+}
+
+@keyframes review-sheen {
+  0% {
+    transform: translateX(0) rotate(12deg);
+  }
+
+  30%,
+  100% {
+    transform: translateX(340%) rotate(12deg);
+  }
+}
+
+/* ===== Управление ===== */
+.reviews__bottom {
+  display: grid;
+  grid-template-columns: 1fr min(420px, 34%);
+  align-items: end;
+  gap: 48px;
+  margin-top: -50px;
+}
+
+.reviews__controls {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 24px;
+  margin-top: 40px;
+}
+
+.reviews__arrow {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 54px;
+  height: 54px;
+  color: var(--color-dark);
+  background-color: var(--color-surface);
+  border-radius: 50%;
+  box-shadow: 0 8px 20px rgba(30, 50, 70, 0.08);
+  transition: color var(--transition), background-color var(--transition), opacity var(--transition);
+}
+
+.reviews__arrow svg {
+  width: 20px;
+  height: 20px;
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 1.5;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+.reviews__arrow:hover {
+  color: #fff;
+  background-color: var(--color-dark);
+}
+
+.reviews__arrow:disabled {
+  opacity: 0.4;
+  cursor: default;
+}
+
+.reviews__arrow:disabled:hover {
+  color: var(--color-dark);
+  background-color: var(--color-surface);
+}
+
+.reviews__dots {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.reviews__dot {
+  width: 8px;
+  height: 8px;
+  background-color: #c3cdd6;
+  border-radius: 50%;
+  transition: background-color var(--transition), transform var(--transition);
+}
+
+.reviews__dot--active {
+  background-color: var(--color-dark);
+  transform: scale(1.25);
+}
+
+/* ===== Панель со спиралью ===== */
+.reviews__visual {
+  position: relative;
+  display: flex;
+  align-items: flex-end;
+  width: 100%;
+  height: 200px;
+  padding: 28px;
+  overflow: hidden;
+  background: linear-gradient(150deg, rgba(255, 255, 255, 0.85) 0%, rgba(232, 238, 242, 0.65) 100%);
+  border: 1px solid rgba(255, 255, 255, 0.9);
+  border-radius: 28px;
+  box-shadow: 0 20px 50px rgba(30, 50, 70, 0.06);
+}
+
+.reviews__spiral {
+  position: absolute;
+  right: -4%;
+  bottom: -18%;
+  width: 66%;
+  filter:
+    drop-shadow(0 40px 45px rgba(40, 62, 84, 0.24))
+    drop-shadow(0 14px 18px rgba(40, 62, 84, 0.14))
+    drop-shadow(-10px 6px 12px rgba(40, 62, 84, 0.08));
+  animation: reviews-float 10s ease-in-out infinite alternate;
+}
+
+@keyframes reviews-float {
+  0% {
+    transform: translate3d(0, 0, 0) rotate(0deg);
+  }
+
+  100% {
+    transform: translate3d(-8px, -12px, 0) rotate(2deg);
+  }
+}
+
+.reviews__caption {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.reviews__caption-main {
+  font-size: 24px;
+  font-weight: 500;
+  letter-spacing: -0.02em;
+  color: var(--color-text);
+}
+
+.reviews__caption-sub {
+  font-size: 16px;
+  color: var(--color-muted);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .reviews__spiral,
+  .reviews__item--enter .review-card,
+  .reviews__item--active .review-card::after {
+    animation: none;
+  }
+}
+
+/* ===== Adaptive ===== */
+@media (max-width: 1500px) {
+  .reviews__viewport {
+    --card-width: min(420px, 78vw);
+  }
+
+  .review-card {
+    padding: 30px;
+  }
+
+  .review-card__quote {
+    margin-bottom: 30px;
+    font-size: 19px;
+  }
+
+  .reviews__visual {
+    height: 200px;
+  }
+
+  .reviews__bottom {
+    margin-top: -40px;
+  }
+}
+
+@media (max-width: 1200px) {
+  .reviews {
+    padding-block: 40px 60px;
+  }
+
+  .reviews__head {
+    grid-template-columns: 1fr;
+    gap: 28px;
+    margin-bottom: 32px;
+  }
+
+  .reviews__stats {
+    padding-top: 0;
+  }
+
+  .reviews__bottom {
+    grid-template-columns: 1fr;
+    gap: 28px;
+    margin-top: -20px;
+  }
+
+  .reviews__controls {
+    margin-top: 28px;
+  }
+
+  .reviews__visual {
+    width: 100%;
+  }
+
+  .reviews__viewport {
+    --card-width: min(380px, 82vw);
+  }
+
+  .review-card__quote {
+    font-size: 18px;
+  }
+
+  .reviews__visual {
+    height: 190px;
+  }
+
+  .reviews__spiral {
+    width: 46%;
+  }
+}
+
+@media (max-width: 768px) {
+  .reviews {
+    padding-block: 32px 48px;
+  }
+
+  .reviews__viewport {
+    --card-gap: 16px;
+  }
+
+  .review-card {
+    padding: 24px;
+    border-radius: 22px;
+  }
+
+  .review-card__head {
+    margin-bottom: 20px;
+  }
+
+  .review-card__quote {
+    margin-bottom: 24px;
+    font-size: 17px;
+  }
+
+  .review-card__avatar {
+    width: 46px;
+    height: 46px;
+  }
+
+  .review-card__logo {
+    font-size: 17px;
+  }
+
+  .reviews__arrow {
+    width: 46px;
+    height: 46px;
+  }
+
+  .reviews__visual {
+    height: 180px;
+    padding: 22px;
+    border-radius: 24px;
+  }
+
+  .reviews__spiral {
+    width: 56%;
+  }
+}
+
+@media (max-width: 576px) {
+  .reviews__viewport {
+    --card-width: 86vw;
+  }
+
+  .review-card {
+    transform: scale(1);
+  }
+
+  .reviews__btn {
+    width: 100%;
+    height: 54px;
+  }
+
+  .reviews__controls {
+    gap: 16px;
+    margin-top: 24px;
+  }
+
+  .reviews__bottom {
+    margin-top: 8px;
+  }
+
+  .reviews__caption {
+    font-size: 15px;
+  }
+}

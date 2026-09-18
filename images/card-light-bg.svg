@@ -1,0 +1,41 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1710 1130" fill="none" preserveAspectRatio="xMaxYMid slice">
+  <defs>
+    <linearGradient id="petal-back" x1="1260" y1="0" x2="1040" y2="1130" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#9fb1c1" stop-opacity=".16"/>
+      <stop offset="1" stop-color="#9fb1c1" stop-opacity="0"/>
+    </linearGradient>
+    <linearGradient id="petal-main" x1="1650" y1="20" x2="1120" y2="900" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#9fb1c1" stop-opacity=".38"/>
+      <stop offset=".45" stop-color="#b8c6d2" stop-opacity=".16"/>
+      <stop offset="1" stop-color="#b8c6d2" stop-opacity="0"/>
+    </linearGradient>
+    <linearGradient id="petal-low" x1="1710" y1="200" x2="1150" y2="920" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#9fb1c1" stop-opacity=".26"/>
+      <stop offset="1" stop-color="#b8c6d2" stop-opacity="0"/>
+    </linearGradient>
+    <linearGradient id="petal-under" x1="1710" y1="540" x2="1100" y2="1130" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#9fb1c1" stop-opacity=".12"/>
+      <stop offset="1" stop-color="#9fb1c1" stop-opacity="0"/>
+    </linearGradient>
+    <linearGradient id="edge" x1="1500" y1="0" x2="1090" y2="950" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#fff" stop-opacity="1"/>
+      <stop offset="1" stop-color="#fff" stop-opacity="0"/>
+    </linearGradient>
+    <linearGradient id="edge-shadow" x1="1500" y1="0" x2="1090" y2="950" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#7f93a5" stop-opacity=".45"/>
+      <stop offset="1" stop-color="#7f93a5" stop-opacity="0"/>
+    </linearGradient>
+  </defs>
+
+  <path d="M1000 1130C1040 700 1080 300 1170 0H1340C1240 250 1150 650 1080 960L1000 1130Z" fill="url(#petal-back)"/>
+  <path d="M1340 0H1710V160C1500 350 1300 650 1090 950L1080 960C1150 650 1240 250 1340 0Z" fill="url(#petal-main)"/>
+  <path d="M1710 160V540C1550 620 1350 750 1100 940L1090 950C1300 650 1500 350 1710 160Z" fill="url(#petal-low)"/>
+  <path d="M1710 540V1130H1000L1100 940C1350 750 1550 620 1710 540Z" fill="url(#petal-under)"/>
+
+  <!-- кромка = тонкая тень + белый блик рядом -->
+  <path d="M1340 0C1240 250 1150 650 1080 960" stroke="url(#edge-shadow)" stroke-width="2"/>
+  <path d="M1346 0C1246 250 1156 650 1086 960" stroke="url(#edge)" stroke-width="3"/>
+  <path d="M1710 160C1500 350 1300 650 1090 950" stroke="url(#edge-shadow)" stroke-width="2"/>
+  <path d="M1710 166C1500 356 1300 656 1090 956" stroke="url(#edge)" stroke-width="3"/>
+  <path d="M1710 540C1550 620 1350 750 1100 940" stroke="url(#edge-shadow)" stroke-width="1.5"/>
+</svg>

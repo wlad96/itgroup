@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Font preview — IT Group</title>
+  <!-- Временная страница для выбора шрифта. Удалить после выбора. -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500&family=Inter+Tight:wght@400;500&family=Roboto:wght@400;500&family=Onest:wght@400;500&family=Golos+Text:wght@400;500&family=Wix+Madefor+Display:wght@400;500&family=Geologica:wght@300;400&family=Manrope:wght@400;500&family=Montserrat:wght@400;500&display=swap">
+  <style>
+    * { box-sizing: border-box; }
+    body { margin: 0; padding: 48px 16px; background: #eff3f5; color: #1a232b; font-family: system-ui, sans-serif; }
+    .preview { max-width: 1280px; margin: 0 auto; display: grid; gap: 20px; }
+    .preview__head { margin-bottom: 12px; font-size: 15px; color: #7d8694; }
+    .font { display: grid; grid-template-columns: 240px 1fr; gap: 32px; padding: 36px; background: #fff; border-radius: 28px; }
+    .font__name { font: 600 20px/1.2 system-ui, sans-serif; }
+    .font__num { display: inline-block; margin-bottom: 8px; font: 500 13px system-ui; color: #7d8694; }
+    .font__note { margin-top: 10px; font: 14px/1.5 system-ui, sans-serif; color: #7d8694; }
+    .font__title { margin: 0 0 16px; font-size: 58px; font-weight: 500; line-height: 1.02; letter-spacing: -0.03em; }
+    .font__ru { margin: 0 0 18px; font-size: 30px; font-weight: 500; line-height: 1.1; letter-spacing: -0.02em; }
+    .font__text { max-width: 520px; margin: 0 0 24px; font-size: 18px; line-height: 1.5; color: #7d8694; }
+    .font__row { display: flex; align-items: center; gap: 28px; flex-wrap: wrap; font-size: 16px; }
+    .font__btn { display: inline-flex; align-items: center; gap: 14px; height: 54px; padding: 0 32px; color: #fff; background: #141c23; border-radius: 999px; font-weight: 500; }
+    .font__nav { display: flex; gap: 24px; font-weight: 500; }
+    @media (max-width: 768px) {
+      .font { grid-template-columns: 1fr; gap: 16px; padding: 24px; }
+      .font__title { font-size: 40px; }
+      .font__ru { font-size: 24px; }
+    }
+  </style>
+</head>
+<body>
+  <main class="preview">
+    <p class="preview__head">Сравнение шрифтов для IT Group — заголовок, русский текст, описание, кнопка и меню.</p>
+  </main>
+
+  <script>
+    const fonts = [
+      ['Inter', 'Самый популярный нейтральный гротеск. Чистый, современный, очень хорошо читается. Рекомендую.'],
+      ['Inter Tight', 'Тот же Inter, но плотнее — заголовки выглядят «дороже». Часто в паре: Inter Tight для заголовков + Inter для текста.'],
+      ['Roboto', 'Классика от Google. Знакомый, надёжный, но выглядит чуть более «шаблонно».'],
+      ['Onest', 'Современный гротеск с отличной кириллицей. Мягче Roboto, популярен у студий и продуктовых сайтов.'],
+      ['Golos Text', 'Спокойный и строгий, создавался под кириллицу. Хорош для текста.'],
+      ['Wix Madefor Display', 'Похож на Roboto, но с более характерными заголовками. Премиально смотрится крупно.'],
+      ['Geologica', 'Геометричнее и технологичнее, с лёгкой «IT»-подачей.'],
+      ['Montserrat', 'Очень популярный геометричный шрифт с кириллицей. Широкий и выразительный, крупные заголовки выглядят «жирнее» и заметнее; для длинного текста менее удобен, чем Inter.'],
+      ['Manrope', 'Текущий шрифт — для сравнения.'],
+    ];
+
+    const root = document.querySelector('.preview');
+    fonts.forEach(([name, note], i) => {
+      root.insertAdjacentHTML('beforeend', `
+        <section class="font">
+          <div>
+            <span class="font__num">${String(i + 1).padStart(2, '0')}</span>
+            <div class="font__name">${name}</div>
+            <p class="font__note">${note}</p>
+          </div>
+          <div style="font-family: '${name}', sans-serif">
+            <h2 class="font__title">We build digital experiences that bring real business results.</h2>
+            <p class="font__ru">Создаём сайты, которые приносят результат</p>
+            <p class="font__text">Websites, e-commerce and digital marketing for ambitious businesses. We turn your ideas into powerful online products.</p>
+            <div class="font__row">
+              <span class="font__btn">Get a consultation →</span>
+              <span class="font__nav"><span>About us</span><span>Services</span><span>Cases</span><span>Contacts</span></span>
+            </div>
+          </div>
+        </section>`);
+    });
+  </script>
+</body>
+</html>

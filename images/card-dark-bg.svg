@@ -1,0 +1,51 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1710 1130" fill="none" preserveAspectRatio="xMaxYMid slice">
+  <defs>
+    <!-- дальний лепесток (без кромки) -->
+    <linearGradient id="petal-back" x1="1260" y1="0" x2="1040" y2="1130" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#fff" stop-opacity=".09"/>
+      <stop offset=".6" stop-color="#fff" stop-opacity=".03"/>
+      <stop offset="1" stop-color="#fff" stop-opacity="0"/>
+    </linearGradient>
+    <!-- главный светлый лепесток -->
+    <linearGradient id="petal-main" x1="1650" y1="20" x2="1120" y2="900" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#fff" stop-opacity=".26"/>
+      <stop offset=".45" stop-color="#fff" stop-opacity=".12"/>
+      <stop offset="1" stop-color="#fff" stop-opacity=".01"/>
+    </linearGradient>
+    <!-- нижний лепесток -->
+    <linearGradient id="petal-low" x1="1710" y1="200" x2="1150" y2="920" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#fff" stop-opacity=".17"/>
+      <stop offset=".5" stop-color="#fff" stop-opacity=".06"/>
+      <stop offset="1" stop-color="#fff" stop-opacity="0"/>
+    </linearGradient>
+    <!-- тень у основания лепестков -->
+    <radialGradient id="shade" cx="0" cy="0" r="1" gradientUnits="userSpaceOnUse" gradientTransform="translate(1150 1000) rotate(-60) scale(520 260)">
+      <stop offset="0" stop-color="#000" stop-opacity=".22"/>
+      <stop offset="1" stop-color="#000" stop-opacity="0"/>
+    </radialGradient>
+    <!-- кромки -->
+    <linearGradient id="edge-b" x1="1340" y1="0" x2="1080" y2="960" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#fff" stop-opacity=".55"/>
+      <stop offset=".6" stop-color="#fff" stop-opacity=".18"/>
+      <stop offset="1" stop-color="#fff" stop-opacity="0"/>
+    </linearGradient>
+    <linearGradient id="edge-c" x1="1710" y1="160" x2="1090" y2="950" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#fff" stop-opacity=".5"/>
+      <stop offset=".55" stop-color="#fff" stop-opacity=".16"/>
+      <stop offset="1" stop-color="#fff" stop-opacity="0"/>
+    </linearGradient>
+    <linearGradient id="edge-d" x1="1710" y1="540" x2="1100" y2="940" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#fff" stop-opacity=".22"/>
+      <stop offset="1" stop-color="#fff" stop-opacity="0"/>
+    </linearGradient>
+  </defs>
+
+  <path d="M1000 1130C1040 700 1080 300 1170 0H1340C1240 250 1150 650 1080 960L1000 1130Z" fill="url(#petal-back)"/>
+  <path d="M1340 0H1710V160C1500 350 1300 650 1090 950L1080 960C1150 650 1240 250 1340 0Z" fill="url(#petal-main)"/>
+  <path d="M1710 160V540C1550 620 1350 750 1100 940L1090 950C1300 650 1500 350 1710 160Z" fill="url(#petal-low)"/>
+  <path d="M1710 540V1130H1000L1100 940C1350 750 1550 620 1710 540Z" fill="url(#shade)"/>
+
+  <path d="M1340 0C1240 250 1150 650 1080 960" stroke="url(#edge-b)" stroke-width="2.5"/>
+  <path d="M1710 160C1500 350 1300 650 1090 950" stroke="url(#edge-c)" stroke-width="2.5"/>
+  <path d="M1710 540C1550 620 1350 750 1100 940" stroke="url(#edge-d)" stroke-width="2"/>
+</svg>

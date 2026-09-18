@@ -1,0 +1,473 @@
+/* ===== Process ===== */
+.process {
+  padding-block: 60px 80px;
+}
+
+.process__head {
+  display: grid;
+  grid-template-columns: 1fr 46%;
+  align-items: start;
+  gap: 48px;
+  margin-bottom: 48px;
+}
+
+.process__text {
+  max-width: 480px;
+}
+
+/* --- Подпись над панелью --- */
+.process__note {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  margin-bottom: 24px;
+  padding-left: 12px;
+}
+
+.process__note-icon {
+  flex-shrink: 0;
+  width: 44px;
+  height: 44px;
+  background: linear-gradient(145deg, #e8eef2, #d9e2e8);
+  border-radius: 50%;
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.9);
+}
+
+.process__note-text {
+  font-size: 17px;
+  line-height: 1.45;
+  color: var(--color-muted);
+}
+
+/* --- Панель со спиралью --- */
+.process__visual {
+  position: relative;
+  height: 340px;
+  overflow: hidden;
+  background: linear-gradient(150deg, rgba(255, 255, 255, 0.85) 0%, rgba(233, 239, 243, 0.6) 100%);
+  border: 1px solid rgba(255, 255, 255, 0.9);
+  border-radius: 28px;
+  box-shadow: 0 20px 50px rgba(30, 50, 70, 0.06);
+}
+
+.process__spiral {
+  position: absolute;
+  right: -8%;
+  bottom: -42%;
+  width: 96%;
+  filter:
+    drop-shadow(0 40px 45px rgba(40, 62, 84, 0.22))
+    drop-shadow(0 14px 18px rgba(40, 62, 84, 0.12))
+    drop-shadow(-10px 6px 12px rgba(40, 62, 84, 0.07));
+  animation: process-float 11s ease-in-out infinite alternate;
+}
+
+@keyframes process-float {
+  0% {
+    transform: translate3d(0, 0, 0) rotate(0deg);
+  }
+
+  100% {
+    transform: translate3d(-10px, -14px, 0) rotate(-2deg);
+  }
+}
+
+/* ===== Steps ===== */
+.process__list {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 56px;
+}
+
+.process__item {
+  position: relative;
+  display: flex;
+}
+
+/* стрелка между карточками */
+.process__item:not(:last-child)::after {
+  content: "";
+  position: absolute;
+  top: 50%;
+  right: -40px;
+  width: 24px;
+  height: 24px;
+  background-color: #9aa8b4;
+  -webkit-mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23000' stroke-width='1.5' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M4 12h15M13 6l6 6-6 6'/%3E%3C/svg%3E") center / contain no-repeat;
+  mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23000' stroke-width='1.5' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M4 12h15M13 6l6 6-6 6'/%3E%3C/svg%3E") center / contain no-repeat;
+  transform: translateY(-50%);
+}
+
+/* ===== Step card ===== */
+.step-card {
+  position: relative;
+  isolation: isolate;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  padding: 32px;
+  background-color: rgba(255, 255, 255, 0.5);
+  border: 1px solid rgba(255, 255, 255, 0.95);
+  border-radius: 28px;
+  box-shadow: 0 1px 2px rgba(20, 28, 35, 0.03), 0 12px 32px rgba(30, 50, 70, 0.04);
+  transition: transform var(--transition), background-color var(--transition), box-shadow var(--transition);
+}
+
+/* лучи: у светлых карточек появляются при наведении */
+.step-card::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  background: url("../images/card-light-bg.svg") center / 100% 100% no-repeat;
+  opacity: 0;
+  transform: translate3d(40px, -40px, 0) scale(1.08);
+  transition: opacity 0.5s ease, transform 0.9s cubic-bezier(0.22, 1, 0.36, 1);
+  pointer-events: none;
+}
+
+/* пятно света под курсором (--mx/--my задаёт js) */
+.step-card::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  background: radial-gradient(
+    380px circle at var(--mx, 70%) var(--my, 20%),
+    var(--card-glow, rgba(182, 204, 224, 0.28)),
+    transparent 70%
+  );
+  opacity: 0;
+  transition: opacity 0.5s ease;
+  pointer-events: none;
+}
+
+.step-card__icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 60px;
+  height: 60px;
+  margin-bottom: 36px;
+  color: var(--color-dark);
+  background: linear-gradient(145deg, #eef3f6, #e2e9ee);
+  border-radius: 50%;
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.9);
+  transition: background var(--transition), box-shadow var(--transition);
+}
+
+.step-card__icon svg {
+  width: 26px;
+  height: 26px;
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 1.5;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  transition: transform 0.5s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+.step-card__num {
+  margin-bottom: 12px;
+  font-size: 44px;
+  font-weight: 400;
+  line-height: 1;
+  letter-spacing: -0.03em;
+  color: #a9b4bf;
+}
+
+.step-card__title {
+  margin-bottom: 16px;
+  font-size: 26px;
+  font-weight: 500;
+  line-height: 1.2;
+  letter-spacing: -0.02em;
+}
+
+.step-card__text {
+  margin-bottom: 32px;
+  font-size: 16px;
+  line-height: 1.5;
+  color: var(--color-muted);
+}
+
+.step-card__more {
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+  margin-top: auto;
+  font-size: 15px;
+  font-weight: 500;
+}
+
+.step-card__more svg {
+  width: 16px;
+  height: 16px;
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 1.5;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  transition: transform var(--transition);
+}
+
+/* ссылка растянута на всю карточку */
+.step-card__more::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+}
+
+/* --- Тёмная карточка --- */
+.step-card--dark {
+  --card-glow: rgba(170, 200, 225, 0.3);
+
+  color: #fff;
+  background: linear-gradient(160deg, #283742 0%, #1b2731 55%, #141e26 100%);
+  border-color: rgba(255, 255, 255, 0.06);
+  box-shadow: 0 24px 48px rgba(20, 28, 35, 0.18);
+}
+
+/* у тёмной лучи видны всегда и сдвигаются за курсором */
+.step-card--dark::before {
+  background-image: url("../images/card-dark-bg.svg");
+  opacity: 1;
+  transform: translate3d(var(--px, 0px), var(--py, 0px), 0) scale(1.08);
+  transition: transform 0.6s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.step-card--dark .step-card__icon {
+  color: #fff;
+  background: rgba(255, 255, 255, 0.1);
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.12);
+}
+
+.step-card--dark .step-card__num {
+  color: rgba(255, 255, 255, 0.5);
+}
+
+.step-card--dark .step-card__text {
+  color: rgba(255, 255, 255, 0.78);
+}
+
+/* ===== Hover ===== */
+@media (hover: hover) {
+  .step-card:hover {
+    transform: translateY(-6px);
+    background-color: rgba(255, 255, 255, 0.95);
+    box-shadow: 0 1px 2px rgba(20, 28, 35, 0.03), 0 28px 56px rgba(30, 50, 70, 0.12);
+  }
+
+  .step-card:hover::before {
+    opacity: 1;
+    transform: translate3d(0, 0, 0) scale(1);
+  }
+
+  .step-card:hover::after {
+    opacity: 1;
+  }
+
+  .step-card:hover .step-card__icon {
+    background: var(--color-surface);
+    box-shadow: 0 8px 20px rgba(30, 50, 70, 0.1);
+  }
+
+  .step-card:hover .step-card__icon svg {
+    transform: scale(1.12) rotate(-6deg);
+  }
+
+  .step-card:hover .step-card__more svg {
+    transform: translate(2px, -2px);
+  }
+
+  .step-card--dark:hover {
+    background: linear-gradient(160deg, #283742 0%, #1b2731 55%, #141e26 100%);
+    box-shadow: 0 32px 64px rgba(20, 28, 35, 0.3);
+  }
+
+  .step-card--dark:hover::before {
+    transform: translate3d(var(--px, 0px), var(--py, 0px), 0) scale(1.08);
+  }
+
+  .step-card--dark:hover .step-card__icon {
+    color: var(--color-dark);
+    background: #fff;
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.25);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .process__spiral {
+    animation: none;
+  }
+
+  .step-card:hover {
+    transform: none;
+  }
+}
+
+/* ===== Adaptive ===== */
+@media (max-width: 1500px) {
+  .process__visual {
+    height: 300px;
+  }
+
+  .process__list {
+    gap: 44px;
+  }
+
+  .process__item:not(:last-child)::after {
+    right: -34px;
+    width: 20px;
+    height: 20px;
+  }
+
+  .step-card {
+    padding: 28px;
+    border-radius: 24px;
+  }
+
+  .step-card__icon {
+    width: 54px;
+    height: 54px;
+    margin-bottom: 28px;
+  }
+
+  .step-card__num {
+    font-size: 38px;
+  }
+
+  .step-card__title {
+    font-size: 23px;
+  }
+
+  .step-card__text {
+    font-size: 15px;
+  }
+}
+
+@media (max-width: 1200px) {
+  .process {
+    padding-block: 40px 60px;
+  }
+
+  .process__head {
+    grid-template-columns: 1fr;
+    gap: 32px;
+    margin-bottom: 32px;
+  }
+
+  .process__text {
+    max-width: 640px;
+  }
+
+  .process__visual {
+    height: 280px;
+  }
+
+  .process__list {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 16px;
+  }
+
+  /* на двух колонках стрелки между карточками не нужны */
+  .process__item:not(:last-child)::after {
+    display: none;
+  }
+
+  .step-card__icon {
+    margin-bottom: 24px;
+  }
+
+  .step-card__num {
+    font-size: 34px;
+  }
+
+  .step-card__title {
+    font-size: 21px;
+  }
+
+  .step-card__text {
+    margin-bottom: 24px;
+  }
+}
+
+@media (max-width: 768px) {
+  .process {
+    padding-block: 32px 48px;
+  }
+
+  .process__note {
+    gap: 12px;
+    margin-bottom: 20px;
+    padding-left: 0;
+  }
+
+  .process__note-icon {
+    width: 38px;
+    height: 38px;
+  }
+
+  .process__note-text {
+    font-size: 15px;
+  }
+
+  .process__visual {
+    height: 240px;
+    border-radius: 24px;
+  }
+
+  .process__spiral {
+    width: 86%;
+  }
+
+  .step-card {
+    padding: 24px;
+  }
+
+  .step-card__icon {
+    width: 50px;
+    height: 50px;
+    margin-bottom: 20px;
+  }
+
+  .step-card__icon svg {
+    width: 22px;
+    height: 22px;
+  }
+}
+
+@media (max-width: 576px) {
+  .process__btn {
+    width: 100%;
+    height: 54px;
+  }
+
+  .process__visual {
+    height: 200px;
+  }
+
+  .process__list {
+    grid-template-columns: 1fr;
+    gap: 12px;
+  }
+
+  .step-card {
+    padding: 22px;
+    border-radius: 20px;
+  }
+
+  .step-card__num {
+    margin-bottom: 8px;
+    font-size: 30px;
+  }
+
+  .step-card__title {
+    font-size: 20px;
+  }
+
+  .step-card__text {
+    margin-bottom: 20px;
+  }
+}

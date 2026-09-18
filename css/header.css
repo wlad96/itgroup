@@ -1,0 +1,361 @@
+/* ===== Header =====
+   Липкая шапка: вверху страницы — прозрачная на всю ширину,
+   при скролле (.header--compact) сжимается в «таблетку» по центру.
+   Ширины --header-full-width / --header-compact-width считает js/main.js,
+   чтобы max-width можно было плавно анимировать. */
+.header {
+  --header-ease: cubic-bezier(0.22, 1, 0.36, 1);
+
+  position: sticky;
+  top: 0;
+  z-index: 50;
+  padding-block: 26px;
+  pointer-events: none;
+}
+
+.header__inner {
+  display: flex;
+  align-items: center;
+  gap: 24px;
+  max-width: var(--header-full-width, var(--container-width));
+  border: 1px solid transparent;
+  border-radius: var(--radius-pill);
+  background-color: rgba(255, 255, 255, 0);
+  -webkit-backdrop-filter: blur(0);
+  backdrop-filter: blur(0);
+  pointer-events: auto;
+  transition:
+    max-width 0.6s var(--header-ease),
+    padding 0.6s var(--header-ease),
+    gap 0.6s var(--header-ease),
+    translate 0.6s var(--header-ease),
+    background-color 0.4s ease,
+    -webkit-backdrop-filter 0.4s ease,
+    backdrop-filter 0.4s ease,
+    border-color 0.4s ease,
+    box-shadow 0.4s ease;
+}
+
+/* боковые колонки одинаковой ширины — меню остаётся по центру */
+.header__brand,
+.header__actions {
+  flex: 1 1 0;
+}
+
+/* --- Nav --- */
+.header__nav {
+  padding: 8px;
+  background-color: rgba(255, 255, 255, 0.6);
+  border-radius: var(--radius-pill);
+  transition: padding 0.6s var(--header-ease), background-color 0.4s ease;
+}
+
+.header__nav-list {
+  display: flex;
+  align-items: center;
+}
+
+.header__nav-link {
+  display: flex;
+  align-items: center;
+  height: 42px;
+  padding-inline: 26px;
+  font-size: 16px;
+  font-weight: 500;
+  color: var(--color-text);
+  border-radius: var(--radius-pill);
+  transition: background-color var(--transition), color 0.4s ease, padding 0.6s var(--header-ease);
+}
+
+.header__nav-link:hover,
+.header__nav-link--active {
+  background-color: var(--color-bg);
+}
+
+.header__nav-btn {
+  display: none;
+}
+
+/* --- Actions --- */
+.header__actions {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 40px;
+  transition: gap 0.6s var(--header-ease);
+}
+
+/* ===== Compact (при скролле) — тёмное стекло ===== */
+.header--compact .header__inner {
+  gap: 16px;
+  max-width: var(--header-compact-width, var(--container-width));
+  padding: 7px 7px 7px 24px;
+  background-color: rgba(20, 28, 35, 0.82);
+  -webkit-backdrop-filter: blur(16px) saturate(1.4);
+  backdrop-filter: blur(16px) saturate(1.4);
+  border-color: rgba(255, 255, 255, 0.08);
+  box-shadow: 0 16px 40px rgba(20, 28, 35, 0.22), 0 2px 6px rgba(20, 28, 35, 0.08);
+  translate: 0 -12px;
+}
+
+.header--compact .header__nav {
+  padding: 0;
+  background-color: transparent;
+}
+
+.header--compact .logo,
+.header--compact .lang__btn {
+  color: #fff;
+}
+
+.header--compact .logo__icon-bg {
+  fill: rgba(255, 255, 255, 0.35);
+}
+
+.header--compact .header__nav-link {
+  padding-inline: 18px;
+  color: rgba(255, 255, 255, 0.78);
+}
+
+.header--compact .header__nav-link:hover,
+.header--compact .header__nav-link--active {
+  color: #fff;
+  background-color: rgba(255, 255, 255, 0.1);
+}
+
+.header--compact .header__btn {
+  color: var(--color-dark);
+  background-color: #fff;
+}
+
+.header--compact .header__btn:hover {
+  background-color: #e3e9ed;
+}
+
+.header--compact .burger {
+  background-color: rgba(255, 255, 255, 0.12);
+}
+
+.header--compact .burger__line {
+  background-color: #fff;
+}
+
+.header--compact .header__actions {
+  gap: 24px;
+}
+
+/* служебное состояние для замера ширин — без анимаций */
+.header--measuring .header__inner,
+.header--measuring .header__inner * {
+  transition: none !important;
+}
+
+.header--measuring .header__inner {
+  max-width: var(--container-width);
+}
+
+.header--measuring.header--compact .header__inner {
+  width: max-content;
+  max-width: none;
+}
+
+/* ===== Lang ===== */
+.lang {
+  position: relative;
+}
+
+.lang__btn {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  white-space: nowrap;
+  transition: color 0.4s ease;
+  height: 42px;
+  font-size: 16px;
+  font-weight: 500;
+}
+
+.lang__arrow {
+  flex-shrink: 0;
+  width: 14px;
+  height: 14px;
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 1.3;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  opacity: 0.6;
+  transition: transform var(--transition);
+}
+
+.lang--open .lang__arrow {
+  transform: rotate(180deg);
+}
+
+.lang__list {
+  position: absolute;
+  top: calc(100% + 6px);
+  left: 50%;
+  min-width: 64px;
+  padding: 6px;
+  background-color: var(--color-surface);
+  border-radius: 14px;
+  box-shadow: 0 12px 32px rgba(20, 28, 35, 0.08);
+  opacity: 0;
+  visibility: hidden;
+  transform: translate(-50%, -6px);
+  transition: opacity var(--transition), transform var(--transition), visibility var(--transition);
+}
+
+.lang--open .lang__list {
+  opacity: 1;
+  visibility: visible;
+  transform: translate(-50%, 0);
+}
+
+.lang__link {
+  display: block;
+  padding: 8px 14px;
+  font-size: 15px;
+  font-weight: 500;
+  text-align: center;
+  border-radius: 8px;
+  transition: background-color var(--transition);
+}
+
+.lang__link:hover,
+.lang__link--active {
+  background-color: var(--color-bg);
+}
+
+/* ===== Burger ===== */
+.burger {
+  display: none;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 5px;
+  width: 46px;
+  height: 46px;
+  background-color: var(--color-surface);
+  border-radius: 50%;
+  transition: background-color 0.4s ease;
+}
+
+.burger__line {
+  display: block;
+  width: 18px;
+  height: 1.5px;
+  background-color: var(--color-dark);
+  border-radius: 2px;
+  transition: transform var(--transition), background-color 0.4s ease;
+}
+
+.header--menu-open .burger__line:first-child {
+  transform: translateY(3.25px) rotate(45deg);
+}
+
+.header--menu-open .burger__line:last-child {
+  transform: translateY(-3.25px) rotate(-45deg);
+}
+
+/* ===== Adaptive ===== */
+@media (max-width: 1500px) {
+  .header__nav-link {
+    padding-inline: 20px;
+  }
+}
+
+@media (max-width: 1200px) {
+  .header__nav-link {
+    height: 38px;
+    padding-inline: 14px;
+    font-size: 15px;
+  }
+
+  .header__actions {
+    gap: 24px;
+  }
+
+  .header--compact .header__nav-link {
+    padding-inline: 12px;
+  }
+
+  .header--compact .header__actions {
+    gap: 16px;
+  }
+}
+
+@media (max-width: 1024px) {
+  .header {
+    padding-block: 16px;
+  }
+
+  .header--compact .header__inner {
+    max-width: calc(100% - 24px);
+    padding: 6px 6px 6px 18px;
+    translate: 0 -8px;
+  }
+
+  .header--compact .header__nav {
+    padding: 12px;
+    background-color: var(--color-surface);
+  }
+
+  .header--compact .header__nav-link {
+    padding-inline: 18px;
+    color: var(--color-text);
+  }
+
+  .header--compact .header__nav-link:hover,
+  .header--compact .header__nav-link--active {
+    color: var(--color-text);
+    background-color: var(--color-bg);
+  }
+
+  .header__actions {
+    gap: 20px;
+  }
+
+  .header__burger {
+    display: flex;
+  }
+
+  /* на узких экранах вместо выпадающей панели — полноэкранное меню */
+  .header__nav {
+    display: none;
+  }
+
+  .header__nav-list {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .header__nav-link {
+    height: 52px;
+    padding-inline: 18px;
+    font-size: 17px;
+    border-radius: 14px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .header__inner,
+  .header__nav,
+  .header__nav-link,
+  .header__actions {
+    transition-duration: 0.01s;
+  }
+}
+
+@media (max-width: 768px) {
+  .header__btn {
+    display: none;
+  }
+
+  .header__nav-btn {
+    display: flex;
+    width: 100%;
+    margin-top: 8px;
+  }
+}
