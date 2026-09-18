@@ -117,7 +117,8 @@
   width: 100%;
   height: 100%;
   object-fit: cover;
-  object-position: center;
+  /* кадр сдвинут к левому краю снимка: так телефон целиком выходит из-под скоса */
+  object-position: 10% center;
   border-radius: var(--hero-radius);
   clip-path: var(--hero-clip, none);
 }
@@ -220,10 +221,6 @@
 
   .hero__media {
     margin-right: -32px;
-  }
-
-  .hero__image {
-    object-position: 32% center;
   }
 
   .hero__card {
@@ -345,17 +342,24 @@
     padding-top: 32px;
   }
 
+  /* в одну колонку и картинка идёт первой */
   .hero__inner {
     grid-template-columns: 1fr;
-    gap: 48px;
+    gap: 40px;
   }
 
-  /* в одну колонку — картинка в своих пропорциях, форма уже в PNG */
+  .hero__media {
+    order: -1;
+  }
+
+  /* скос оставляем десктопу, здесь — ровные скругления */
   .hero__image {
     position: static;
     height: auto;
-    object-fit: fill;
-    border-radius: 0;
+    aspect-ratio: 16 / 10;
+    object-fit: cover;
+    object-position: 30% center;
+    border-radius: 18px;
     clip-path: none;
   }
 
