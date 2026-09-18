@@ -334,6 +334,11 @@
     max-width: 16ch;
   }
 
+  /* на узком экране текст больше не держим в половину ширины */
+  .cta__text {
+    max-width: 46ch;
+  }
+
   /* спираль уходит вниз, под текст */
   .cta__spiral {
     position: relative;
@@ -375,8 +380,8 @@
   }
 
   .cta__spiral {
-    width: 86%;
-    margin-right: -14%;
+    width: 68%;
+    margin-right: -10%;
   }
 
   .cta__benefits {
@@ -408,8 +413,8 @@
   }
 
   .cta__spiral {
-    width: 108%;
-    margin-right: -22%;
+    width: 80%;
+    margin-right: -12%;
   }
 
   /* на узком экране преимущества столбиком */

@@ -534,11 +534,11 @@
 
   .reviews__controls {
     gap: 16px;
-    margin-top: 24px;
+    margin-top: 28px;
   }
 
   .reviews__bottom {
-    margin-top: 8px;
+    margin-top: 32px;
   }
 
   .reviews__caption {

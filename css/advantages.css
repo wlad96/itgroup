@@ -458,6 +458,11 @@
     position: static;
     transform: none !important;
   }
+
+  /* запас прокрутки нужен только липкой колоде, иначе это пустая дыра */
+  .advantages__list {
+    padding-bottom: 0;
+  }
 }
 
 @media (max-width: 768px) {
