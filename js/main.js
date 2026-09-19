@@ -2,9 +2,37 @@ document.addEventListener('DOMContentLoaded', () => {
   /* ===== Burger menu ===== */
   const header = document.querySelector('.header');
   const burger = document.querySelector('.header__burger');
+  /* ===== Блокировка прокрутки =====
+     overflow: hidden у html на телефоне не держит страницу — она продолжает
+     ехать под фиксированным слоем. Поэтому фиксируем body и возвращаем позицию.
+     Счётчик нужен, чтобы меню и попап не сняли блокировку друг у друга. */
+  let scrollLocks = 0;
+  let lockedScrollY = 0;
+
+  const lockScroll = () => {
+    scrollLocks += 1;
+    if (scrollLocks > 1) return;
+
+    lockedScrollY = window.scrollY;
+    document.body.style.cssText += `position:fixed;top:${-lockedScrollY}px;left:0;right:0;width:100%;`;
+  };
+
+  const unlockScroll = () => {
+    scrollLocks = Math.max(0, scrollLocks - 1);
+    if (scrollLocks) return;
+
+    ['position', 'top', 'left', 'right', 'width'].forEach((prop) => {
+      document.body.style.removeProperty(prop);
+    });
+
+    document.body.offsetHeight; // страница возвращает высоту до прокрутки
+    window.scrollTo({ top: lockedScrollY, behavior: 'instant' });
+  };
+
   const navmenu = document.querySelector('.navmenu');
   let menuOpen = false;
   let mountTimer;
+  let openFrame;
 
   const setSub = (open) => {
     navmenu.classList.toggle('navmenu--sub', open);
@@ -19,14 +47,19 @@ document.addEventListener('DOMContentLoaded', () => {
     burger.setAttribute('aria-expanded', String(open));
     burger.setAttribute('aria-label', open ? 'Close menu' : 'Open menu');
     navmenu.setAttribute('aria-hidden', String(!open));
-    document.documentElement.style.overflow = open ? 'hidden' : '';
+
+    if (open) lockScroll();
+    else unlockScroll();
 
     clearTimeout(mountTimer);
+    cancelAnimationFrame(openFrame);
 
     if (open) {
       // сначала показываем панель, потом запускаем анимацию — иначе перехода не будет
       navmenu.classList.add('navmenu--mounted');
-      requestAnimationFrame(() => navmenu.classList.add('navmenu--open'));
+      openFrame = requestAnimationFrame(() => {
+        if (menuOpen) navmenu.classList.add('navmenu--open');
+      });
       return;
     }
 
@@ -69,6 +102,9 @@ document.addEventListener('DOMContentLoaded', () => {
   // Замеряем ширину шапки в обычном и компактном виде,
   // чтобы CSS мог плавно анимировать max-width между ними
   const measureHeader = () => {
+    // при открытом меню body зафиксирован — замер в этот момент даёт мусор
+    if (scrollLocks > 0) return;
+
     const isCompact = header.classList.contains('header--compact');
     header.classList.add('header--measuring');
 
@@ -79,9 +115,13 @@ document.addEventListener('DOMContentLoaded', () => {
     const compactWidth = headerInner.getBoundingClientRect().width;
 
     header.classList.toggle('header--compact', isCompact);
-    header.style.setProperty('--header-full-width', `${fullWidth}px`);
-    // +2px запаса на субпиксельное округление, чтобы ничего не сжималось
-    header.style.setProperty('--header-compact-width', `${Math.ceil(compactWidth) + 2}px`);
+
+    // защита от «схлопнувшейся» шапки: нулевые замеры не записываем
+    if (fullWidth > 160 && compactWidth > 120) {
+      header.style.setProperty('--header-full-width', `${fullWidth}px`);
+      // +2px запаса на субпиксельное округление, чтобы ничего не сжималось
+      header.style.setProperty('--header-compact-width', `${Math.ceil(compactWidth) + 2}px`);
+    }
 
     headerInner.getBoundingClientRect(); // применяем стили до включения анимаций
     header.classList.remove('header--measuring');
@@ -367,7 +407,7 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 
   /* ===== Hero image shape ===== */
-  const heroImage = document.querySelector('.hero__image');
+  const heroFrame = document.querySelector('.hero__frame');
 
   // Путь многоугольника со скруглёнными углами для clip-path: path()
   const roundedPolygon = (points, radius) => {
@@ -394,10 +434,10 @@ document.addEventListener('DOMContentLoaded', () => {
   };
 
   const updateHeroShape = () => {
-    const { width: w, height: h } = heroImage.getBoundingClientRect();
+    const { width: w, height: h } = heroFrame.getBoundingClientRect();
     if (!w || !h) return;
 
-    const styles = getComputedStyle(heroImage);
+    const styles = getComputedStyle(heroFrame);
     const radius = parseFloat(styles.getPropertyValue('--hero-radius')) || 0;
     const slant = parseFloat(styles.getPropertyValue('--hero-slant')) || 0;
     const slantRight = parseFloat(styles.getPropertyValue('--hero-slant-right')) || 0;
@@ -409,11 +449,11 @@ document.addEventListener('DOMContentLoaded', () => {
       [0, h],
     ], radius);
 
-    heroImage.style.setProperty('--hero-clip', `path('${path}')`);
+    heroFrame.style.setProperty('--hero-clip', `path('${path}')`);
   };
 
-  if (heroImage) {
-    new ResizeObserver(updateHeroShape).observe(heroImage);
+  if (heroFrame) {
+    new ResizeObserver(updateHeroShape).observe(heroFrame);
   }
 
   /* ===== Service card: свет за курсором (+ параллакс лучей у тёмной) ===== */
@@ -718,6 +758,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const modalSuccess = modal.querySelector('.modal__success');
     const CLOSE_TIME = 260;
     let closing = false;
+    let modalOpen = false;
 
     const openModal = () => {
       if (modal.open) return;
@@ -729,7 +770,8 @@ document.addEventListener('DOMContentLoaded', () => {
       modalForm.reset();
 
       modal.showModal();
-      document.documentElement.style.overflow = 'hidden';
+      lockScroll();
+      modalOpen = true;
 
       // фокус — на самом окне, а не на крестике: иначе при открытии
       // сразу видно кольцо фокуса. С Tab дальше всё работает как надо
@@ -742,13 +784,14 @@ document.addEventListener('DOMContentLoaded', () => {
       if (!modal.open || closing) return;
       closing = true;
 
+      modalOpen = false;
       modal.classList.remove('modal--open');
       modal.classList.add('modal--closing');
 
       setTimeout(() => {
         modal.close();
         modal.classList.remove('modal--closing');
-        document.documentElement.style.overflow = '';
+        unlockScroll();
         closing = false;
       }, CLOSE_TIME);
     };

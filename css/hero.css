@@ -104,23 +104,31 @@
   margin-right: -52px;
 }
 
-/* Картинка растягивается на высоту левого блока.
-   Форма (скос + скругления) задаётся через clip-path, путь считает js/main.js.
-   --hero-radius — радиус углов, --hero-slant — скос левой стороны (доля высоты). */
-.hero__image {
+/* Рамка держит форму (скос + скругления), путь считает js/main.js.
+   --hero-radius — радиус углов, --hero-slant — скос левой стороны (доля высоты).
+   Картинка внутри рамки отдельно отъезжает при прокрутке. */
+.hero__frame {
   --hero-radius: 32px;
   --hero-slant: 0.3;
   --hero-slant-right: 0.04;
 
   position: absolute;
   inset: 0;
+  overflow: hidden;
+  background-color: #f2f5f7;
+  border-radius: var(--hero-radius);
+  clip-path: var(--hero-clip, none);
+}
+
+.hero__image {
   width: 100%;
   height: 100%;
   object-fit: cover;
   /* кадр сдвинут к левому краю снимка: так телефон целиком выходит из-под скоса */
   object-position: 10% center;
-  border-radius: var(--hero-radius);
-  clip-path: var(--hero-clip, none);
+  /* чем ниже прокрутка, тем дальше «отъезжает» снимок внутри формы */
+  transform: scale(calc(1 - var(--p, 0) * 0.26));
+  transform-origin: 40% 50%;
 }
 
 .hero__card {
@@ -274,7 +282,7 @@
     margin-right: -20px;
   }
 
-  .hero__image {
+  .hero__frame {
     --hero-radius: 24px;
   }
 
@@ -325,14 +333,16 @@
   }
 
   /* скос оставляем десктопу, здесь — ровные скругления */
-  .hero__image {
+  .hero__frame {
     position: static;
-    height: auto;
     aspect-ratio: 16 / 10;
-    object-fit: cover;
-    object-position: 30% center;
     border-radius: 18px;
     clip-path: none;
+  }
+
+  .hero__image {
+    object-position: 30% center;
+    transform: scale(calc(1 - var(--p, 0) * 0.18));
   }
 
   .hero__title {
