@@ -1,13 +1,8 @@
-/* ===== Полноэкранное меню =====
-   Открывается из «таблетки» шапки: подложка затемняется с размытием,
-   тёмная панель разворачивается от кнопки, пункты выходят по очереди.
-   У «Services» — второй уровень, который выезжает справа. */
 .navmenu {
   position: fixed;
   inset: 0;
   z-index: 60;
-  /* динамическая высота: иначе на телефоне панель «едет» вместе
-     со сворачиванием адресной строки */
+
   height: 100dvh;
   display: none;
   padding: 14px;
@@ -35,7 +30,7 @@
   height: 100%;
   padding: 22px 22px 20px;
   color: #fff;
-  /* стекло: сквозь панель слегка видно страницу, свет по верхней кромке */
+
   background: linear-gradient(165deg, rgba(30, 41, 51, 0.62) 0%, rgba(13, 19, 25, 0.78) 100%);
   -webkit-backdrop-filter: blur(30px) saturate(1.6);
   backdrop-filter: blur(30px) saturate(1.6);
@@ -58,7 +53,6 @@
   transform: none;
 }
 
-/* блик проходит по стеклу один раз при открытии */
 .navmenu__pane::before {
   content: "";
   position: absolute;
@@ -101,7 +95,6 @@
   }
 }
 
-/* ===== Шапка меню ===== */
 .navmenu__head {
   display: flex;
   align-items: center;
@@ -144,7 +137,6 @@
   transform: rotate(90deg);
 }
 
-/* ===== Уровни ===== */
 .navmenu__levels {
   position: relative;
   flex: 1;
@@ -174,7 +166,6 @@
   transform: translate3d(14%, 0, 0);
 }
 
-/* второй уровень выехал — первый уходит влево */
 .navmenu--sub .navmenu__level--main {
   opacity: 0;
   visibility: hidden;
@@ -187,7 +178,6 @@
   transform: none;
 }
 
-/* ===== Первый уровень ===== */
 .navmenu__list {
   display: flex;
   flex-direction: column;
@@ -267,7 +257,6 @@
   transform: translateX(4px);
 }
 
-/* ===== Второй уровень ===== */
 .navmenu__back {
   display: inline-flex;
   align-items: center;
@@ -311,7 +300,6 @@
   gap: 8px;
 }
 
-/* пункты второго уровня подхватываются один за другим */
 .navmenu__sub-item {
   opacity: 0;
   transform: translate3d(0, 14px, 0);
@@ -338,8 +326,7 @@
   gap: 14px;
   padding: 12px 14px;
   color: #fff;
-  /* без своего backdrop-filter: панель и так размыта,
-     а на телефоне он подхватывался с задержкой и цвет «догонял» */
+
   background-color: rgba(255, 255, 255, 0.07);
   border: 1px solid rgba(255, 255, 255, 0.1);
   border-radius: 18px;
@@ -437,7 +424,6 @@
   transform: translateX(4px);
 }
 
-/* ===== Низ меню ===== */
 .navmenu__foot {
   display: flex;
   align-items: center;
@@ -504,7 +490,6 @@
   }
 }
 
-/* ===== Adaptive ===== */
 @media (max-width: 576px) {
   .navmenu {
     padding: 10px;
@@ -530,7 +515,6 @@
   }
 }
 
-/* на больших экранах меню не нужно — там обычная навигация */
 @media (min-width: 1025px) {
   .navmenu {
     display: none !important;

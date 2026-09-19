@@ -1,9 +1,3 @@
-/* ===== Анимации появления =====
-   Классы включаются только когда работает js (html.has-anim),
-   чтобы без js весь контент оставался видимым.
-   data-animate — тип появления, data-split — разбивка текста на слова/буквы.
-   Появление задаётся анимацией (а не transition), чтобы не ломать
-   собственные transition элементов (hover и т.д.). */
 :root {
   --anim-ease: cubic-bezier(0.22, 1, 0.36, 1);
 }
@@ -34,7 +28,6 @@
   animation-name: anim-fade-down;
 }
 
-/* картинка выезжает справа */
 .has-anim [data-animate="slide-left"].is-inview {
   animation-name: anim-slide-left;
   animation-duration: 1.4s;
@@ -87,8 +80,6 @@
   }
 }
 
-/* ===== Текст по словам и буквам =====
-   Каждая часть — «окошко» с overflow: hidden, внутри неё едет строка. */
 .split__part {
   display: inline-block;
   overflow: hidden;
@@ -126,22 +117,13 @@
   }
 }
 
-/* ===== Пауза за экраном =====
-   Класс ставит js, когда блок ушёл из видимой области:
-   бесконечные декоративные анимации замирают и не тратят процессор. */
 .is-still,
 .is-still *,
 .is-still *::before,
 .is-still *::after {
-  /* important здесь по делу: правило должно перебивать любую запись
-     animation внутри блока, в том числе более «весомые» селекторы */
   animation-play-state: paused !important;
 }
 
-/* ===== Появление по скролу (работает в обе стороны) =====
-   --p (0…1) js пересчитывает на каждый кадр: 0 — элемент ещё не показан,
-   1 — показан полностью. Значение наследуется, поэтому дети блока
-   могут брать свой отрезок этого прогресса через --a (старт) и --d (длина). */
 .has-anim [data-reveal] {
   --q: clamp(0, calc((var(--p, 1) - var(--a, 0)) / var(--d, 1)), 1);
 
@@ -149,8 +131,6 @@
   transform: translate3d(0, calc((1 - var(--q)) * var(--reveal-shift, 44px)), 0);
 }
 
-/* ===== Services ===== */
-/* сама панель проявляется первой, чтобы её край не выглядывал снизу экрана */
 .has-anim .services__box {
   --qp: clamp(0, calc(var(--p, 1) / 0.3), 1);
 
@@ -158,7 +138,6 @@
   transform: translate3d(0, calc((1 - var(--qp)) * 60px), 0);
 }
 
-/* левая колонка отрисовывается по частям */
 .has-anim .services__intro-content > * {
   --d: 0.22;
   --q: clamp(0, calc((var(--p, 1) - var(--a, 0)) / var(--d)), 1);
@@ -171,7 +150,6 @@
   --a: 0;
 }
 
-/* заголовок появляется по словам, поэтому сам блок не прячем */
 .has-anim .services__intro-content .section-title {
   opacity: 1;
   transform: none;
@@ -188,14 +166,12 @@
   --a: 0.4;
 }
 
-/* кнопка ещё и чуть подрастает */
 .has-anim .services__intro-content .services__btn {
   --a: 0.56;
 
   transform: translate3d(0, calc((1 - var(--q)) * 34px), 0) scale(calc(0.94 + var(--q) * 0.06));
 }
 
-/* карточки: --a ставит js, чтобы в ряду они выходили по очереди */
 .has-anim .services__item {
   --d: 0.7;
   --reveal-shift: 52px;
@@ -205,7 +181,6 @@
   --reveal-shift: 70px;
 }
 
-/* ===== Cases ===== */
 .has-anim .cases__intro > *,
 .has-anim .cases__note {
   --d: 0.22;
@@ -245,7 +220,6 @@
   --a: 0.3;
 }
 
-/* цифры: --a ставит js (очередь в ряду), значение накручивается вместе с прогрессом */
 .has-anim .stats__item {
   --d: 0.7;
   --reveal-shift: 26px;
@@ -260,7 +234,6 @@
   --reveal-shift: 56px;
 }
 
-/* ===== Process ===== */
 .has-anim .process__intro > *,
 .has-anim .process__note,
 .has-anim .process__visual {
@@ -308,7 +281,6 @@
   transform: translate3d(0, calc((1 - var(--q)) * 44px), 0);
 }
 
-/* --- Шаги: цепочка собирается по одному, между ними подтягиваются стрелки --- */
 .has-anim .process__item {
   --d: 0.34;
   --q: clamp(0, calc((var(--p, 1) - var(--a, 0)) / var(--d)), 1);
@@ -337,7 +309,6 @@
   --a: 0.48;
 }
 
-/* стрелка тянется к следующему шагу сразу после того, как карточка встала */
 .has-anim .process__item:not(:last-child)::after {
   --aq: clamp(0, calc((var(--p, 1) - var(--a, 0) - 0.14) / 0.14), 1);
 
@@ -345,7 +316,6 @@
   transform: translateY(-50%) translate3d(calc((var(--aq) - 1) * 14px), 0, 0);
 }
 
-/* иконка внутри карточки «встаёт на место» чуть позже самой карточки */
 .has-anim .process__item .step-card__icon {
   --iq: clamp(0, calc((var(--p, 1) - var(--a, 0) - 0.12) / 0.22), 1);
 
@@ -353,7 +323,6 @@
   transform: scale(calc(0.62 + var(--iq) * 0.38)) rotate(calc((1 - var(--iq)) * -28deg));
 }
 
-/* ===== Advantages ===== */
 .has-anim .advantages__intro > * {
   --d: 0.22;
   --q: clamp(0, calc((var(--p, 1) - var(--a, 0)) / var(--d)), 1);
@@ -382,7 +351,6 @@
   --a: 0.3;
 }
 
-/* фото команды чуть подрастает, а не просто проявляется */
 .has-anim .advantages__media {
   --a: 0.42;
   --d: 0.3;
@@ -390,12 +358,10 @@
   transform: translate3d(0, calc((1 - var(--q)) * 36px), 0) scale(calc(0.96 + var(--q) * 0.04));
 }
 
-/* карточки колоды: transform занят скриптом стопки, поэтому двигаем саму карточку */
 .has-anim .advantage-card {
   --reveal-shift: 50px;
 }
 
-/* ===== Reviews ===== */
 .has-anim .reviews__intro > * {
   --d: 0.22;
   --q: clamp(0, calc((var(--p, 1) - var(--a, 0)) / var(--d)), 1);
@@ -424,8 +390,6 @@
   --a: 0.32;
 }
 
-/* Карточки отзывов: прозрачностью управляет слайдер (лесенка p0…p3),
-   поэтому при появлении двигаем только саму карточку, по очереди слева направо. */
 .has-anim .reviews__viewport .review-card {
   --rq: clamp(0, calc((var(--p, 1) - var(--i, 0) * 0.1) / 0.4), 1);
 
@@ -444,7 +408,6 @@
   --i: 3;
 }
 
-/* пока карточка переворачивается при переключении, появление не мешаем */
 .has-anim .reviews__item--enter .review-card {
   transform: none;
 }
@@ -453,8 +416,6 @@
   --reveal-shift: 40px;
 }
 
-/* ===== CTA ===== */
-/* панель проявляется первой, как и в блоке услуг */
 .has-anim .cta__box {
   --qp: clamp(0, calc(var(--p, 1) / 0.28), 1);
 
@@ -502,7 +463,6 @@
   transform: translate3d(0, calc((1 - var(--q)) * 28px), 0) scale(calc(0.94 + var(--q) * 0.06));
 }
 
-/* преимущества внизу выходят по очереди */
 .has-anim .cta__benefits {
   opacity: 1;
   transform: none;
@@ -520,7 +480,6 @@
   --a: 0.7;
 }
 
-/* спираль: transform занят покачиванием, поэтому только проявление */
 .has-anim .cta__spiral {
   --a: 0.2;
   --d: 0.35;
@@ -528,9 +487,6 @@
   opacity: clamp(0, calc((var(--p, 1) - var(--a)) / var(--d)), 1);
 }
 
-/* ===== Footer =====
-   Здесь прокрутки почти не остаётся — страница заканчивается,
-   поэтому футер появляется по времени, когда попадает в экран. */
 .footer__logo { --anim-delay: 0s; }
 .footer__nav-list li:nth-child(1) { --anim-delay: 0.08s; }
 .footer__nav-list li:nth-child(2) { --anim-delay: 0.14s; }
@@ -543,7 +499,6 @@
 .footer__socials li:nth-child(3) { --anim-delay: 0.52s; }
 .footer__copy { --anim-delay: 0.56s; }
 
-/* ===== Hero: тайминги ===== */
 .hero__label {
   --anim-delay: 0.05s;
 }

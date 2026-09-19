@@ -1,4 +1,3 @@
-/* ===== Process ===== */
 .process {
   padding-block: 60px 80px;
 }
@@ -15,7 +14,6 @@
   max-width: 480px;
 }
 
-/* --- Подпись над панелью --- */
 .process__note {
   display: flex;
   align-items: center;
@@ -39,7 +37,6 @@
   color: var(--color-muted);
 }
 
-/* --- Панель со спиралью --- */
 .process__visual {
   position: relative;
   height: 340px;
@@ -72,7 +69,6 @@
   }
 }
 
-/* ===== Steps ===== */
 .process__list {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
@@ -84,7 +80,6 @@
   display: flex;
 }
 
-/* стрелка между карточками */
 .process__item:not(:last-child)::after {
   content: "";
   position: absolute;
@@ -98,7 +93,6 @@
   transform: translateY(-50%);
 }
 
-/* ===== Step card ===== */
 .step-card {
   position: relative;
   isolation: isolate;
@@ -114,7 +108,6 @@
   transition: transform var(--transition), background-color var(--transition), box-shadow var(--transition);
 }
 
-/* лучи: у светлых карточек появляются при наведении */
 .step-card::before {
   content: "";
   position: absolute;
@@ -127,7 +120,6 @@
   pointer-events: none;
 }
 
-/* пятно света под курсором (--mx/--my задаёт js) */
 .step-card::after {
   content: "";
   position: absolute;
@@ -212,14 +204,12 @@
   transition: transform var(--transition);
 }
 
-/* ссылка растянута на всю карточку */
 .step-card__more::after {
   content: "";
   position: absolute;
   inset: 0;
 }
 
-/* --- Тёмная карточка --- */
 .step-card--dark {
   --card-glow: rgba(170, 200, 225, 0.3);
 
@@ -229,7 +219,6 @@
   box-shadow: 0 24px 48px rgba(20, 28, 35, 0.18);
 }
 
-/* у тёмной лучи видны всегда и сдвигаются за курсором */
 .step-card--dark::before {
   background-image: url("../images/card-dark-bg.svg");
   opacity: 1;
@@ -251,7 +240,6 @@
   color: rgba(255, 255, 255, 0.78);
 }
 
-/* ===== Hover ===== */
 @media (hover: hover) {
   .step-card:hover {
     transform: translateY(-6px);
@@ -307,7 +295,6 @@
   }
 }
 
-/* ===== Adaptive ===== */
 @media (max-width: 1500px) {
   .process__visual {
     height: 300px;
@@ -371,7 +358,6 @@
     gap: 16px;
   }
 
-  /* на двух колонках стрелки между карточками не нужны */
   .process__item:not(:last-child)::after {
     display: none;
   }

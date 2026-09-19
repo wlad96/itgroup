@@ -1,11 +1,7 @@
 document.addEventListener('DOMContentLoaded', () => {
-  /* ===== Burger menu ===== */
   const header = document.querySelector('.header');
   const burger = document.querySelector('.header__burger');
-  /* ===== Блокировка прокрутки =====
-     overflow: hidden у html на телефоне не держит страницу — она продолжает
-     ехать под фиксированным слоем. Поэтому фиксируем body и возвращаем позицию.
-     Счётчик нужен, чтобы меню и попап не сняли блокировку друг у друга. */
+
   let scrollLocks = 0;
   let lockedScrollY = 0;
 
@@ -25,7 +21,7 @@ document.addEventListener('DOMContentLoaded', () => {
       document.body.style.removeProperty(prop);
     });
 
-    document.body.offsetHeight; // страница возвращает высоту до прокрутки
+    document.body.offsetHeight;
     window.scrollTo({ top: lockedScrollY, behavior: 'instant' });
   };
 
@@ -55,7 +51,6 @@ document.addEventListener('DOMContentLoaded', () => {
     cancelAnimationFrame(openFrame);
 
     if (open) {
-      // сначала показываем панель, потом запускаем анимацию — иначе перехода не будет
       navmenu.classList.add('navmenu--mounted');
       openFrame = requestAnimationFrame(() => {
         if (menuOpen) navmenu.classList.add('navmenu--open');
@@ -88,7 +83,6 @@ document.addEventListener('DOMContentLoaded', () => {
       return;
     }
 
-    // клик мимо панели или по обычной ссылке — закрываем
     if (!event.target.closest('.navmenu__pane') || event.target.closest('a')) setMenu(false);
   });
 
@@ -96,13 +90,9 @@ document.addEventListener('DOMContentLoaded', () => {
     if (event.matches) setMenu(false);
   });
 
-  /* ===== Sticky header ===== */
   const headerInner = header.querySelector('.header__inner');
 
-  // Замеряем ширину шапки в обычном и компактном виде,
-  // чтобы CSS мог плавно анимировать max-width между ними
   const measureHeader = () => {
-    // при открытом меню body зафиксирован — замер в этот момент даёт мусор
     if (scrollLocks > 0) return;
 
     const isCompact = header.classList.contains('header--compact');
@@ -116,14 +106,13 @@ document.addEventListener('DOMContentLoaded', () => {
 
     header.classList.toggle('header--compact', isCompact);
 
-    // защита от «схлопнувшейся» шапки: нулевые замеры не записываем
     if (fullWidth > 160 && compactWidth > 120) {
       header.style.setProperty('--header-full-width', `${fullWidth}px`);
-      // +2px запаса на субпиксельное округление, чтобы ничего не сжималось
+
       header.style.setProperty('--header-compact-width', `${Math.ceil(compactWidth) + 2}px`);
     }
 
-    headerInner.getBoundingClientRect(); // применяем стили до включения анимаций
+    headerInner.getBoundingClientRect();
     header.classList.remove('header--measuring');
   };
 
@@ -142,7 +131,6 @@ document.addEventListener('DOMContentLoaded', () => {
   updateHeader();
   document.fonts?.ready.then(measureHeader);
 
-  /* ===== Language dropdown ===== */
   const lang = document.querySelector('.lang');
   const langBtn = document.querySelector('.lang__btn');
 
@@ -155,9 +143,6 @@ document.addEventListener('DOMContentLoaded', () => {
     setLang(!lang.classList.contains('lang--open'));
   });
 
-  /* ===== Появление контента =====
-     data-split разбивает текст на слова или буквы (каждая часть едет из-под маски),
-     data-animate задаёт тип появления. Запускается, когда элемент попал в экран. */
   const splitText = (el) => {
     const byChars = el.dataset.split === 'chars';
     const source = [...el.childNodes];
@@ -172,7 +157,6 @@ document.addEventListener('DOMContentLoaded', () => {
     el.setAttribute('aria-label', label);
 
     source.forEach((node) => {
-      // переносы строк из вёрстки сохраняем
       if (node.nodeName === 'BR') {
         el.append(document.createElement('br'));
         return;
@@ -203,7 +187,6 @@ document.addEventListener('DOMContentLoaded', () => {
         box.append(inner);
         el.append(box);
 
-        // между словами нужен обычный пробел, чтобы строка переносилась
         if (!byChars && partIndex < parts.length - 1) el.append(' ');
       });
     });
@@ -227,18 +210,11 @@ document.addEventListener('DOMContentLoaded', () => {
     animated.forEach((el) => animObserver.observe(el));
   }
 
-  /* ===== Появление по скролу =====
-     Элементу считается прогресс --p (0…1): 0 — он только входит снизу экрана,
-     1 — полностью показан. Значение наследуется вниз по дереву, поэтому
-     дети могут брать свой отрезок прогресса. Крутим вверх — прогресс падает,
-     и элементы так же плавно уходят.
-     data-reveal — элемент появляется сам, data-progress — только считает прогресс. */
   const progressed = [...document.querySelectorAll('[data-reveal], [data-progress], [data-count]')];
 
   if (progressed.length) {
     const DEFAULT_RANGE = [0.95, 0.6];
 
-    // «0.95 0.55» — от какой доли высоты экрана начинать и на какой закончить
     const ranges = new Map(progressed.map((el) => {
       const parts = (el.dataset.reveal || el.dataset.progress || el.dataset.count || '')
         .split(' ')
@@ -248,7 +224,6 @@ document.addEventListener('DOMContentLoaded', () => {
       return [el, parts.length === 2 ? parts : DEFAULT_RANGE];
     }));
 
-    // счётчики: запоминаем итоговое число и то, что написано вокруг него («50+», «100%»)
     const counters = new Map();
 
     document.querySelectorAll('[data-count]').forEach((el) => {
@@ -263,7 +238,7 @@ document.addEventListener('DOMContentLoaded', () => {
         prefix,
         suffix,
         separator,
-        // дробные значения («4.9/5») докручиваем с тем же числом знаков
+
         decimals: fraction.length,
         point: digits.includes(',') ? ',' : '.',
         target: Number(digits.replace(/[\s,]/g, (char) => (char === ',' ? '.' : ''))),
@@ -272,7 +247,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     const showCount = (el, progress) => {
       const { prefix, suffix, separator, decimals, point, target } = counters.get(el);
-      // к концу замедляемся, чтобы последние цифры «докручивались»
+
       const eased = 1 - (1 - progress) ** 3;
       const value = target * eased;
 
@@ -288,11 +263,9 @@ document.addEventListener('DOMContentLoaded', () => {
 
       const text = prefix + shownValue + suffix;
 
-      // цифра меняется реже, чем идёт прокрутка — лишний раз текст не трогаем
       if (el.textContent !== text) el.textContent = text;
     };
 
-    // в ряду сетки карточки выходят по очереди: каждой свой сдвиг старта
     const staggerLists = [...document.querySelectorAll('[data-reveal-stagger]')];
 
     const setStagger = (list) => {
@@ -300,8 +273,6 @@ document.addEventListener('DOMContentLoaded', () => {
       let index = 0;
 
       [...list.children].forEach((item) => {
-        // offsetTop, а не getBoundingClientRect: карточки уже сдвинуты
-        // собственным появлением, и ряды бы определялись неверно
         const top = item.offsetTop;
 
         if (rowTop === null || Math.abs(top - rowTop) > 8) {
@@ -317,7 +288,6 @@ document.addEventListener('DOMContentLoaded', () => {
 
     const setAllStaggers = () => staggerLists.forEach(setStagger);
 
-    // последнее записанное значение, чтобы не трогать стили зря
     const shown = new Map();
 
     const updateProgress = () => {
@@ -325,8 +295,6 @@ document.addEventListener('DOMContentLoaded', () => {
       const scrolled = window.scrollY;
       const maxScroll = Math.max(0, document.documentElement.scrollHeight - vh);
 
-      // сначала только читаем геометрию, потом только пишем стили:
-      // вперемешку браузер пересчитывал бы layout на каждом элементе
       const tops = progressed.map((el) => el.getBoundingClientRect().top);
 
       progressed.forEach((el, index) => {
@@ -334,12 +302,8 @@ document.addEventListener('DOMContentLoaded', () => {
         const top = tops[index];
         const docTop = top + scrolled;
 
-        // у нижних блоков страница может закончиться раньше, чем они дойдут
-        // до своей отметки — тогда финишем считаем то место, куда они реально доедут
         const end = Math.max(vh * to, docTop - maxScroll);
 
-        // если при открытии страницы блок уже виден (высокий экран),
-        // начинаем отсчёт с его исходного места — иначе он покажется наполовину
         const start = Math.max(Math.min(vh * from, docTop), end + 1);
         const progress = Math.min(1, Math.max(0, (start - top) / (start - end)));
 
@@ -370,8 +334,6 @@ document.addEventListener('DOMContentLoaded', () => {
       window.addEventListener('scroll', onProgressScroll, { passive: true });
       window.addEventListener('resize', onProgressScroll);
 
-      // сетка перестраивается не только при resize (шрифты, картинки) —
-      // следим за самим списком
       if (window.ResizeObserver) {
         const staggerObserver = new ResizeObserver(() => {
           setAllStaggers();
@@ -386,9 +348,6 @@ document.addEventListener('DOMContentLoaded', () => {
     }
   }
 
-  /* ===== Фоновые анимации останавливаются за экраном =====
-     Спирали, свечение и блики крутятся бесконечно. Пока их не видно,
-     это чистый расход процессора, поэтому ставим их на паузу. */
   const idleTargets = [...document.querySelectorAll(
     '.services__visual, .process__visual, .reviews__visual, .cta__spiral, .reviews__viewport',
   )];
@@ -406,10 +365,8 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   }
 
-  /* ===== Hero image shape ===== */
   const heroFrame = document.querySelector('.hero__frame');
 
-  // Путь многоугольника со скруглёнными углами для clip-path: path()
   const roundedPolygon = (points, radius) => {
     const corners = points.map((point, i) => {
       const prev = points[(i - 1 + points.length) % points.length];
@@ -456,7 +413,6 @@ document.addEventListener('DOMContentLoaded', () => {
     new ResizeObserver(updateHeroShape).observe(heroFrame);
   }
 
-  /* ===== Service card: свет за курсором (+ параллакс лучей у тёмной) ===== */
   if (window.matchMedia('(hover: hover)').matches) {
     document.querySelectorAll('.service-card, .case-card, .step-card, .advantage-card').forEach((card) => {
       card.addEventListener('pointermove', (event) => {
@@ -477,27 +433,24 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   }
 
-  /* ===== Blur bar: плавно появляется и растворяется вместе с секцией ===== */
   const blurBar = document.querySelector('.blur-bar');
   const blurSection = blurBar?.closest('section');
 
   if (blurBar && blurSection) {
-    const FADE = 220; // на какой дистанции (px) полоса успевает раствориться
+    const FADE = 220;
     const clamp = (value) => Math.min(Math.max(value, 0), 1);
     let barFrame;
 
     const updateBlurBar = () => {
       const rect = blurSection.getBoundingClientRect();
 
-      // появление — пока секция въезжает снизу, исчезновение — когда её низ доходит до низа экрана
       const appear = clamp((window.innerHeight - rect.top) / FADE);
       const disappear = clamp((rect.bottom - window.innerHeight) / FADE);
 
       const value = Math.min(appear, disappear);
 
       blurBar.style.opacity = value.toFixed(3);
-      // полностью убираем слои размытия, пока полоса не нужна:
-      // прозрачный backdrop-filter всё равно считался бы на каждом кадре
+
       blurBar.style.visibility = value < 0.01 ? 'hidden' : '';
     };
 
@@ -511,12 +464,11 @@ document.addEventListener('DOMContentLoaded', () => {
     updateBlurBar();
   }
 
-  /* ===== Колода карточек: пока следующая наезжает, предыдущая уменьшается ===== */
   const stackItems = [...document.querySelectorAll('.advantages__item')];
   const stackQuery = window.matchMedia('(min-width: 1025px)');
 
   if (stackItems.length > 1) {
-    const SCALE_STEP = 0.05; // насколько уменьшается карточка под каждой следующей
+    const SCALE_STEP = 0.05;
     const clampUnit = (value) => Math.min(Math.max(value, 0), 1);
     let stackFrame;
 
@@ -528,7 +480,6 @@ document.addEventListener('DOMContentLoaded', () => {
         return;
       }
 
-      // насколько каждая карточка «доехала» до своего места в колоде
       const arrival = stackItems.map((item) => {
         const travel = item.offsetHeight || 1;
         const stuckTop = parseFloat(getComputedStyle(item).top) || 0;
@@ -554,10 +505,6 @@ document.addEventListener('DOMContentLoaded', () => {
     updateStack();
   }
 
-  /* ===== Слайдер отзывов =====
-     Лента сдвигается трансформом и продублирована, поэтому справа всегда есть
-     следующая карточка, а перестановка происходит вне экрана. Классы позиций
-     ставятся в момент старта сдвига — подсветка идёт вместе с движением. */
   const track = document.querySelector('.reviews__track');
 
   if (track) {
@@ -574,7 +521,6 @@ document.addEventListener('DOMContentLoaded', () => {
     originals.forEach((item, i) => {
       item.dataset.index = String(i);
 
-      // копия ленты: справа всегда видна следующая карточка
       const clone = item.cloneNode(true);
       clone.setAttribute('aria-hidden', 'true');
       track.append(clone);
@@ -595,7 +541,6 @@ document.addEventListener('DOMContentLoaded', () => {
       return dot;
     });
 
-    // раскрашиваем ленту по будущему порядку — до того, как она поедет
     const applyState = (order, animateEnter) => {
       order.forEach((item, i) => {
         item.classList.toggle('reviews__item--active', i === 0);
@@ -612,7 +557,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
       if (animateEnter) {
         first.classList.remove('reviews__item--enter');
-        void first.offsetWidth; // перезапуск анимации разворота
+        void first.offsetWidth;
         first.classList.add('reviews__item--enter');
       }
     };
@@ -642,13 +587,11 @@ document.addEventListener('DOMContentLoaded', () => {
         busy = false;
       };
 
-      // ловим только собственный переход ленты: переходы карточек всплывают сюда же
       const onEnd = (event) => {
         if (event.target === track && event.propertyName === 'transform') finish();
       };
 
       if (direction === 'prev') {
-        // карточки приезжают слева: сначала переставляем, потом «отпускаем» ленту
         for (let i = 0; i < count; i += 1) track.prepend(track.lastElementChild);
         track.classList.remove('reviews__track--animated');
         track.style.setProperty('--shift', `${-step() * count}px`);
@@ -682,7 +625,6 @@ document.addEventListener('DOMContentLoaded', () => {
     nextBtn.addEventListener('click', () => shiftBy(1, 'next'));
     prevBtn.addEventListener('click', () => shiftBy(1, 'prev'));
 
-    // свайп пальцем / мышью
     let startX = null;
     viewport.addEventListener('pointerdown', (event) => {
       startX = event.clientX;
@@ -700,9 +642,6 @@ document.addEventListener('DOMContentLoaded', () => {
     applyState([...track.children], false);
   }
 
-  /* ===== Выпадающее меню услуг =====
-     На десктопе открывается наведением (с небольшой задержкой на уход мыши),
-     на узких экранах — обычным раскрытием внутри мобильного меню. */
   const megaItem = document.querySelector('.header__nav-item--mega');
 
   if (megaItem) {
@@ -731,7 +670,6 @@ document.addEventListener('DOMContentLoaded', () => {
       hoverTimer = setTimeout(() => setMega(false), 180);
     });
 
-    // переход по ссылке внутри меню закрывает его
     megaItem.querySelectorAll('a').forEach((link) => {
       link.addEventListener('click', () => setMega(false));
     });
@@ -747,9 +685,6 @@ document.addEventListener('DOMContentLoaded', () => {
     hoverQuery.addEventListener('change', () => setMega(false));
   }
 
-  /* ===== Модальное окно с заявкой =====
-     Нативный <dialog>: фокус, Esc и блокировка страницы — его забота.
-     Нам остаётся проиграть анимацию до реального закрытия. */
   const modal = document.querySelector('.modal');
 
   if (modal && typeof modal.showModal === 'function') {
@@ -763,7 +698,6 @@ document.addEventListener('DOMContentLoaded', () => {
     const openModal = () => {
       if (modal.open) return;
 
-      // при повторном открытии возвращаем форму
       modalForm.hidden = false;
       modalSuccess.hidden = true;
       modalForm.classList.remove('modal__form--checked');
@@ -773,8 +707,6 @@ document.addEventListener('DOMContentLoaded', () => {
       lockScroll();
       modalOpen = true;
 
-      // фокус — на самом окне, а не на крестике: иначе при открытии
-      // сразу видно кольцо фокуса. С Tab дальше всё работает как надо
       modalBox.focus({ preventScroll: true });
 
       requestAnimationFrame(() => modal.classList.add('modal--open'));
@@ -808,12 +740,10 @@ document.addEventListener('DOMContentLoaded', () => {
       button.addEventListener('click', closeModal);
     });
 
-    // клик по затемнению — за пределами белой карточки
     modal.addEventListener('click', (event) => {
       if (!event.target.closest('.modal__box')) closeModal();
     });
 
-    // Esc: закрываем сами, чтобы окно успело уехать
     modal.addEventListener('cancel', (event) => {
       event.preventDefault();
       closeModal();
@@ -828,16 +758,14 @@ document.addEventListener('DOMContentLoaded', () => {
         return;
       }
 
-      // здесь позже будет отправка на сервер
       modalForm.hidden = true;
       modalSuccess.hidden = false;
     });
   }
 
-  /* ===== Close on outside click / Escape ===== */
   document.addEventListener('click', (event) => {
     if (!lang.contains(event.target)) setLang(false);
-    // клики внутри полноэкранного меню обрабатывает оно само
+
     if (!header.contains(event.target) && !navmenu.contains(event.target)) setMenu(false);
   });
 

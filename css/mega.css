@@ -1,6 +1,3 @@
-/* ===== Mega menu =====
-   Панель раскрывается под шапкой: сама панель всплывает,
-   а колонки и пункты подхватываются друг за другом. */
 .header__nav-item--mega {
   position: static;
 }
@@ -33,7 +30,6 @@
   background-color: rgba(255, 255, 255, 0.14);
 }
 
-/* ===== Панель ===== */
 .mega {
   position: absolute;
   top: calc(100% + 14px);
@@ -41,8 +37,7 @@
   z-index: 5;
   width: min(1320px, calc(100vw - 2 * var(--container-padding)));
   padding: 28px;
-  /* фон непрозрачный: размытие подложки тут ничего не добавляет,
-     зато стоит кадров на слабых машинах */
+
   background: linear-gradient(165deg, #ffffff 0%, #f2f6f9 100%);
   border: 1px solid rgba(255, 255, 255, 0.9);
   border-radius: 28px;
@@ -69,7 +64,6 @@
   gap: 0 28px;
 }
 
-/* колонки и пункты выезжают следом за панелью */
 .mega__intro,
 .mega__aside,
 .mega__item {
@@ -95,7 +89,6 @@
 .mega__item:nth-child(5) { --i: 5; }
 .mega__aside { --i: 3; }
 
-/* ===== Левая колонка ===== */
 .mega__intro {
   position: relative;
   overflow: hidden;
@@ -165,7 +158,6 @@
   border-color: var(--color-dark);
 }
 
-/* спираль внизу колонки, подрезается панелью */
 .mega__spiral--intro {
   width: 116%;
   margin-top: auto;
@@ -174,7 +166,6 @@
   padding-top: 20px;
 }
 
-/* ===== Список услуг ===== */
 .mega__list {
   display: flex;
   flex-direction: column;
@@ -266,7 +257,6 @@
   transform: translateX(4px);
 }
 
-/* ===== Правая колонка ===== */
 .mega__aside {
   position: relative;
   overflow: hidden;
@@ -321,7 +311,6 @@
   }
 }
 
-/* ===== Adaptive ===== */
 @media (max-width: 1500px) {
   .mega {
     padding: 24px;
@@ -356,7 +345,6 @@
     grid-template-columns: 30% 1fr;
   }
 
-  /* правая колонка на узком экране только мешает */
   .mega__aside {
     display: none;
   }
@@ -376,7 +364,6 @@
   }
 }
 
-/* ===== В мобильном меню — раскрывающийся список ===== */
 @media (max-width: 1024px) {
   .header__nav-toggle {
     justify-content: space-between;

@@ -1,4 +1,3 @@
-/* ===== Footer ===== */
 .footer {
   padding-block: 40px 56px;
 }
@@ -35,7 +34,6 @@
   color: var(--color-dark);
 }
 
-/* --- Соцсети и копирайт --- */
 .footer__side {
   display: flex;
   align-items: center;
@@ -83,7 +81,6 @@
   border-left: 1px solid #ccd6de;
 }
 
-/* ===== Adaptive ===== */
 @media (max-width: 1500px) {
   .footer__inner {
     gap: 36px;
@@ -129,7 +126,6 @@
     padding-block: 24px 40px;
   }
 
-  /* порядок на узком экране: логотип, соцсети, меню, копирайт */
   .footer__inner {
     flex-direction: column;
     align-items: center;
@@ -141,7 +137,6 @@
     order: 1;
   }
 
-  /* контейнер распускаем, чтобы соцсети и копирайт встали в общий порядок */
   .footer__side {
     display: contents;
   }
@@ -157,7 +152,6 @@
     height: 44px;
   }
 
-  /* меню — двумя колонками с тонкими линиями, как отдельный блок */
   .footer__nav {
     order: 3;
     width: 100%;
@@ -169,7 +163,7 @@
 
   .footer__nav-list {
     display: grid;
-    /* на планшете колонки шире — помещается три */
+
     grid-template-columns: repeat(3, 1fr);
     gap: 16px 12px;
     width: 100%;

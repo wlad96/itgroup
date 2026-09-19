@@ -1,6 +1,3 @@
-/* ===== Advantages =====
-   Правая колонка — «колода»: карточки липкие, каждая со своим отступом сверху,
-   и пока следующая наезжает, предыдущая уменьшается (масштаб считает js/main.js). */
 .advantages {
   padding-block: 60px 80px;
 }
@@ -12,8 +9,6 @@
   gap: 56px;
 }
 
-/* --- Левая колонка --- */
-/* левая колонка закреплена и целиком помещается в экран */
 .advantages__intro {
   position: sticky;
   top: 120px;
@@ -29,7 +24,7 @@
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  /* высота подстраивается под экран, чтобы блок не вылезал */
+
   height: clamp(220px, 34vh, 420px);
   padding: 28px;
   overflow: hidden;
@@ -47,7 +42,6 @@
   height: 100%;
   object-fit: cover;
 }
-
 
 .advantages__badge,
 .advantages__approach {
@@ -130,12 +124,11 @@
   transform: translateX(3px);
 }
 
-/* --- Колода --- */
 .advantages__list {
   display: flex;
   flex-direction: column;
   gap: 24px;
-  /* запас прокрутки: колода успевает сложиться, пока левая колонка закреплена */
+
   padding-bottom: clamp(220px, 46vh, 520px);
 }
 
@@ -146,7 +139,6 @@
   will-change: transform;
 }
 
-/* ===== Advantage card ===== */
 .advantage-card {
   position: relative;
   isolation: isolate;
@@ -155,7 +147,7 @@
   align-items: flex-start;
   gap: 28px;
   padding: 36px;
-  /* карточки непрозрачные — в колоде верхние полностью перекрывают нижние */
+
   background-color: #fbfcfd;
   border: 1px solid rgba(255, 255, 255, 0.95);
   border-radius: 28px;
@@ -163,7 +155,6 @@
   transition: background-color var(--transition), box-shadow var(--transition);
 }
 
-/* лучи: у светлых карточек появляются при наведении */
 .advantage-card::before {
   content: "";
   position: absolute;
@@ -176,7 +167,6 @@
   pointer-events: none;
 }
 
-/* пятно света под курсором (--mx/--my задаёт js) */
 .advantage-card::after {
   content: "";
   position: absolute;
@@ -277,7 +267,6 @@
   transition: transform var(--transition);
 }
 
-/* --- Тёмная карточка --- */
 .advantage-card--dark {
   --card-glow: rgba(170, 200, 225, 0.3);
 
@@ -314,7 +303,6 @@
   box-shadow: none;
 }
 
-/* ===== Hover ===== */
 @media (hover: hover) {
   .advantage-card:hover {
     background-color: #fff;
@@ -374,7 +362,6 @@
   }
 }
 
-/* ===== Adaptive ===== */
 @media (max-width: 1500px) {
   .advantages__inner {
     gap: 40px;
@@ -453,13 +440,11 @@
 }
 
 @media (max-width: 1024px) {
-  /* на узких экранах колода не нужна — обычный список */
   .advantages__item {
     position: static;
     transform: none !important;
   }
 
-  /* запас прокрутки нужен только липкой колоде, иначе это пустая дыра */
   .advantages__list {
     padding-bottom: 0;
   }

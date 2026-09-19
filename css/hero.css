@@ -1,4 +1,3 @@
-/* ===== Hero ===== */
 .hero {
   padding-top: 16px;
   padding-bottom: 48px;
@@ -10,7 +9,6 @@
   align-items: stretch;
 }
 
-/* --- Content --- */
 .hero__content {
   position: relative;
   z-index: 1;
@@ -50,7 +48,6 @@
   gap: 20px 36px;
 }
 
-/* ===== Play ===== */
 .play {
   display: inline-flex;
   align-items: center;
@@ -98,15 +95,11 @@
   font-size: 16px;
 }
 
-/* --- Media --- */
 .hero__media {
   position: relative;
   margin-right: -52px;
 }
 
-/* Рамка держит форму (скос + скругления), путь считает js/main.js.
-   --hero-radius — радиус углов, --hero-slant — скос левой стороны (доля высоты).
-   Картинка внутри рамки отдельно отъезжает при прокрутке. */
 .hero__frame {
   --hero-radius: 32px;
   --hero-slant: 0.3;
@@ -124,11 +117,9 @@
   width: 100%;
   height: 100%;
   object-fit: cover;
-  /* кадр сдвинут к левому краю снимка: так телефон целиком выходит из-под скоса */
+
   object-position: 10% center;
-  /* Снимок отъезжает при прокрутке: 1.3 → 1. Меньше единицы не уходит,
-     иначе он перестаёт закрывать форму и скос начинает резать сам кадр —
-     углы и края формы всегда остаются нетронутыми. */
+
   transform: scale(calc(1.3 - var(--p, 0) * 0.3));
   transform-origin: 50% 50%;
 }
@@ -194,9 +185,6 @@
   transform: translateX(3px);
 }
 
-
-
-/* ===== Adaptive ===== */
 @media (max-width: 1500px) {
   .hero__inner {
     grid-template-columns: 45% 1fr;
@@ -232,7 +220,6 @@
   .hero__card-text {
     font-size: 14px;
   }
-
 }
 
 @media (max-width: 1200px) {
@@ -315,8 +302,6 @@
     width: 16px;
     height: 16px;
   }
-
-
 }
 
 @media (max-width: 1024px) {
@@ -324,7 +309,6 @@
     padding-top: 32px;
   }
 
-  /* в одну колонку и картинка идёт первой */
   .hero__inner {
     grid-template-columns: 1fr;
     gap: 40px;
@@ -334,7 +318,6 @@
     order: -1;
   }
 
-  /* скос оставляем десктопу, здесь — ровные скругления */
   .hero__frame {
     position: static;
     aspect-ratio: 16 / 10;
@@ -383,8 +366,6 @@
   .hero__card-text {
     font-size: 14px;
   }
-
-
 }
 
 @media (max-width: 768px) {
@@ -433,8 +414,6 @@
   .hero__card-text {
     font-size: 12px;
   }
-
-
 }
 
 @media (max-width: 576px) {
@@ -477,6 +456,4 @@
   .hero__card {
     display: none;
   }
-
-
 }

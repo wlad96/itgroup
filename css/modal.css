@@ -1,6 +1,3 @@
-/* ===== Modal =====
-   Нативный <dialog>: сам ловит фокус, закрывается по Esc и не даёт кликать по странице.
-   Открытие/закрытие анимируем классами, чтобы успела проиграть анимация до close(). */
 .modal {
   width: min(880px, calc(100vw - 32px));
   max-width: none;
@@ -28,7 +25,6 @@
   opacity: 0;
 }
 
-/* окно получает фокус при открытии — обводка тут не нужна */
 .modal__box:focus {
   outline: none;
 }
@@ -60,7 +56,6 @@
   transition-duration: 0.25s;
 }
 
-/* ===== Левая часть ===== */
 .modal__aside {
   position: relative;
   isolation: isolate;
@@ -126,11 +121,6 @@
   stroke-linejoin: round;
 }
 
-/* спираль уходит за левый и нижний край и подрезается панелью.
-   Отступы в процентах — считаются от ширины панели, поэтому картинка
-   одинаково подрезана на любой ширине окна.
-   margin-top: auto прижимает её к низу, а зазор от текста держит
-   нижний отступ списка — так она не наедет на него на низком экране. */
 .modal__spiral {
   flex-shrink: 0;
   width: 116%;
@@ -142,15 +132,12 @@
     drop-shadow(0 8px 12px rgba(40, 62, 84, 0.1));
 }
 
-/* ===== Форма ===== */
-/* форма и экран благодарности занимают одну и ту же ячейку */
 .modal__form,
 .modal__success {
   grid-column: 2;
   grid-row: 1;
 }
 
-/* hidden у элемента с display: flex сам по себе не сработает */
 .modal__form[hidden] {
   display: none;
 }
@@ -183,7 +170,7 @@
   width: 100%;
   padding: 14px 18px;
   font: inherit;
-  font-size: 15px;
+  font-size: 16px;
   color: var(--color-text);
   background-color: #f7f9fb;
   border: 1px solid #e3e9ee;
@@ -206,7 +193,6 @@
   box-shadow: 0 0 0 4px rgba(20, 28, 35, 0.07);
 }
 
-/* подсвечиваем ошибку только после попытки отправки */
 .modal__form--checked .field__input:invalid {
   border-color: #d98a8a;
   background-color: #fdf7f7;
@@ -217,7 +203,6 @@ textarea.field__input {
   resize: vertical;
 }
 
-/* свой значок у выпадающего списка */
 .field__select {
   appearance: none;
   padding-right: 46px;
@@ -232,7 +217,6 @@ textarea.field__input {
   color: #9aa6b2;
 }
 
-/* ===== Согласие ===== */
 .checkbox {
   display: flex;
   align-items: center;
@@ -304,7 +288,6 @@ textarea.field__input {
   margin-top: 6px;
 }
 
-/* ===== Кнопка закрытия ===== */
 .modal__close {
   position: absolute;
   top: 20px;
@@ -337,7 +320,6 @@ textarea.field__input {
   transform: rotate(90deg);
 }
 
-/* ===== Успешная отправка ===== */
 .modal__success[hidden] {
   display: none;
 }
@@ -400,7 +382,6 @@ textarea.field__input {
   }
 }
 
-/* ===== Содержимое выходит следом за окном ===== */
 .modal__aside > *,
 .modal__form > * {
   opacity: 0;
@@ -458,7 +439,6 @@ textarea.field__input {
   }
 }
 
-/* ===== Adaptive ===== */
 @media (max-width: 900px) {
   .modal {
     width: min(560px, calc(100vw - 24px));
@@ -474,8 +454,6 @@ textarea.field__input {
     grid-row: 2;
   }
 
-  /* на узком экране декоративная часть становится компактной шапкой */
-  /* нижний отступ — место для спирали в углу */
   .modal__aside {
     padding: 32px 28px 76px;
   }
@@ -493,14 +471,12 @@ textarea.field__input {
     display: none;
   }
 
-  /* на планшете декоративная шапка: спираль в углу, текст поверх неё */
   .modal__aside > *:not(.modal__spiral) {
     position: relative;
     z-index: 1;
     max-width: 68%;
   }
 
-  /* спираль уходит в правый нижний угол, ниже крестика и правее текста */
   .modal__spiral {
     position: absolute;
     right: -18px;
@@ -515,7 +491,6 @@ textarea.field__input {
 }
 
 @media (max-width: 576px) {
-  /* на телефоне — шторка снизу на всю ширину */
   .modal {
     width: 100vw;
     max-height: 92vh;
@@ -579,7 +554,6 @@ textarea.field__input {
   }
 }
 
-/* низкий экран: форма прокручивается внутри окна */
 @media (max-height: 700px) and (min-width: 901px) {
   .modal__aside {
     padding-top: 32px;
