@@ -184,23 +184,7 @@
   transform: translateX(3px);
 }
 
-.hero__counter {
-  position: absolute;
-  left: 6%;
-  bottom: 36px;
-  display: flex;
-  align-items: center;
-  gap: 14px;
-  font-size: 15px;
-  color: #687279;
-}
 
-.hero__counter-line {
-  width: 44px;
-  height: 1px;
-  background-color: currentColor;
-  opacity: 0.6;
-}
 
 /* ===== Adaptive ===== */
 @media (max-width: 1500px) {
@@ -239,10 +223,6 @@
     font-size: 14px;
   }
 
-  .hero__counter {
-    bottom: 28px;
-    font-size: 14px;
-  }
 }
 
 @media (max-width: 1200px) {
@@ -326,15 +306,7 @@
     height: 16px;
   }
 
-  .hero__counter {
-    bottom: 18px;
-    gap: 10px;
-    font-size: 12px;
-  }
 
-  .hero__counter-line {
-    width: 32px;
-  }
 }
 
 @media (max-width: 1024px) {
@@ -400,14 +372,7 @@
     font-size: 14px;
   }
 
-  .hero__counter {
-    bottom: 28px;
-    font-size: 14px;
-  }
 
-  .hero__counter-line {
-    width: 40px;
-  }
 }
 
 @media (max-width: 768px) {
@@ -457,14 +422,7 @@
     font-size: 12px;
   }
 
-  .hero__counter {
-    bottom: 16px;
-    font-size: 12px;
-  }
 
-  .hero__counter-line {
-    width: 28px;
-  }
 }
 
 @media (max-width: 576px) {
@@ -508,14 +466,5 @@
     display: none;
   }
 
-  .hero__counter {
-    left: 8%;
-    bottom: 8px;
-    gap: 8px;
-    font-size: 11px;
-  }
 
-  .hero__counter-line {
-    width: 20px;
-  }
 }

@@ -335,9 +335,9 @@
   gap: 14px;
   padding: 12px 14px;
   color: #fff;
+  /* без своего backdrop-filter: панель и так размыта,
+     а на телефоне он подхватывался с задержкой и цвет «догонял» */
   background-color: rgba(255, 255, 255, 0.07);
-  -webkit-backdrop-filter: blur(6px);
-  backdrop-filter: blur(6px);
   border: 1px solid rgba(255, 255, 255, 0.1);
   border-radius: 18px;
   transition: background-color var(--transition), border-color var(--transition);

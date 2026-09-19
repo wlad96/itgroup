@@ -568,10 +568,6 @@
   --anim-delay: 1s;
 }
 
-.hero__counter {
-  --anim-delay: 1.15s;
-}
-
 @media (prefers-reduced-motion: reduce) {
   .has-anim [data-animate].is-inview,
   .has-anim [data-animate="split"].is-inview .split__inner {
