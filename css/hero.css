@@ -126,9 +126,11 @@
   object-fit: cover;
   /* кадр сдвинут к левому краю снимка: так телефон целиком выходит из-под скоса */
   object-position: 10% center;
-  /* чем ниже прокрутка, тем дальше «отъезжает» снимок внутри формы */
-  transform: scale(calc(1 - var(--p, 0) * 0.26));
-  transform-origin: 40% 50%;
+  /* Снимок отъезжает при прокрутке: 1.3 → 1. Меньше единицы не уходит,
+     иначе он перестаёт закрывать форму и скос начинает резать сам кадр —
+     углы и края формы всегда остаются нетронутыми. */
+  transform: scale(calc(1.3 - var(--p, 0) * 0.3));
+  transform-origin: 50% 50%;
 }
 
 .hero__card {
@@ -342,7 +344,7 @@
 
   .hero__image {
     object-position: 30% center;
-    transform: scale(calc(1 - var(--p, 0) * 0.18));
+    transform: scale(calc(1.22 - var(--p, 0) * 0.22));
   }
 
   .hero__title {
