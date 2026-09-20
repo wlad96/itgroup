@@ -626,7 +626,6 @@
   }
 }
 
-/* совсем низкие экраны: описания у услуг убираем, чтобы всё влезло */
 @media (max-height: 680px) {
   .navmenu__sub-desc {
     display: none;
