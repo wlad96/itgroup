@@ -160,7 +160,7 @@
   overflow-y: auto;
   display: flex;
   flex-direction: column;
-  justify-content: center;
+  justify-content: safe center;
   opacity: 0;
   visibility: hidden;
   transform: translate3d(14%, 0, 0);
@@ -518,5 +518,134 @@
 @media (min-width: 1025px) {
   .navmenu {
     display: none !important;
+  }
+}
+
+@media (max-width: 420px), (max-height: 780px) {
+  .navmenu {
+    padding: 8px;
+  }
+
+  .navmenu__pane {
+    padding: 16px 16px 14px;
+    border-radius: 24px;
+  }
+
+  .navmenu__close {
+    width: 38px;
+    height: 38px;
+  }
+
+  .navmenu__close svg {
+    width: 16px;
+    height: 16px;
+  }
+
+  .navmenu__levels {
+    margin-block: 12px;
+  }
+
+  .navmenu__level--sub {
+    justify-content: flex-start;
+  }
+
+  .navmenu__list {
+    gap: 0;
+  }
+
+  .navmenu__link {
+    gap: 12px;
+    padding: 7px 0;
+  }
+
+  .navmenu__label {
+    font-size: clamp(22px, 6.8vw, 30px);
+  }
+
+  .navmenu__num {
+    font-size: 11px;
+  }
+
+  .navmenu__chevron {
+    width: 19px;
+    height: 19px;
+  }
+
+  .navmenu__back {
+    margin-bottom: 14px;
+    padding: 8px 14px 8px 10px;
+    font-size: 12px;
+  }
+
+  .navmenu__sub-list {
+    gap: 6px;
+  }
+
+  .navmenu__sub-link {
+    gap: 12px;
+    padding: 9px 12px;
+    border-radius: 15px;
+  }
+
+  .navmenu__sub-icon {
+    width: 36px;
+    height: 36px;
+  }
+
+  .navmenu__sub-icon svg {
+    width: 17px;
+    height: 17px;
+  }
+
+  .navmenu__sub-name {
+    font-size: 15px;
+  }
+
+  .navmenu__sub-desc {
+    font-size: 12px;
+  }
+
+  .navmenu__all {
+    margin-top: 14px;
+    font-size: 14px;
+  }
+
+  .navmenu__foot {
+    gap: 10px;
+    padding-top: 12px;
+  }
+
+  .navmenu__lang {
+    padding: 6px 12px;
+    font-size: 13px;
+  }
+
+  .navmenu__btn {
+    height: 46px;
+    font-size: 14px;
+  }
+}
+
+/* совсем низкие экраны: описания у услуг убираем, чтобы всё влезло */
+@media (max-height: 680px) {
+  .navmenu__sub-desc {
+    display: none;
+  }
+
+  .navmenu__label {
+    font-size: clamp(20px, 6vw, 26px);
+  }
+
+  .navmenu__link {
+    padding: 5px 0;
+  }
+
+  .navmenu__sub-link {
+    padding: 8px 12px;
+  }
+
+  .navmenu__sub-icon {
+    width: 32px;
+    height: 32px;
   }
 }

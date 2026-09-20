@@ -290,6 +290,11 @@ document.addEventListener('DOMContentLoaded', () => {
 
     const shown = new Map();
 
+    const onceQuery = window.matchMedia('(max-width: 1024px)');
+    const peak = new Map();
+
+    onceQuery.addEventListener('change', () => peak.clear());
+
     const updateProgress = () => {
       const vh = window.innerHeight;
       const scrolled = window.scrollY;
@@ -305,7 +310,15 @@ document.addEventListener('DOMContentLoaded', () => {
         const end = Math.max(vh * to, docTop - maxScroll);
 
         const start = Math.max(Math.min(vh * from, docTop), end + 1);
-        const progress = Math.min(1, Math.max(0, (start - top) / (start - end)));
+        let progress = Math.min(1, Math.max(0, (start - top) / (start - end)));
+
+        if (onceQuery.matches && !el.hasAttribute('data-progress-live')) {
+          if (peak.has(el)) progress = 1;
+          else if (progress > 0.9) {
+            peak.set(el, 1);
+            progress = 1;
+          }
+        }
 
         if (shown.get(el) === progress.toFixed(3)) return;
         shown.set(el, progress.toFixed(3));
