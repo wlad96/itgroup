@@ -326,28 +326,45 @@ document.addEventListener('DOMContentLoaded', () => {
         if (time === 1) {
           tweening.delete(el);
           finished.add(el);
-          el.style.willChange = '';
         }
       });
 
       if (tweening.size) tweenFrame = requestAnimationFrame(stepTweens);
     };
 
-    const tweenObserver = new IntersectionObserver((entries) => {
-      entries.forEach((entry) => {
-        if (!entry.isIntersecting) return;
+    const REVEAL_MS = 1700;
+    const revealing = new Set();
 
-        const el = entry.target;
+    const settled = (el) => finished.has(el) || revealing.has(el) || tweening.has(el);
 
-        tweenObserver.unobserve(el);
+    const startReveal = (el) => {
+      if (settled(el)) return;
 
-        if (finished.has(el) || tweening.has(el)) return;
+      tweenObserver.unobserve(el);
 
-        el.style.willChange = 'opacity, transform';
+      if (counters.has(el)) {
         starts.set(el, performance.now());
         tweening.add(el);
 
         if (!tweenFrame) tweenFrame = requestAnimationFrame(stepTweens);
+        return;
+      }
+
+      revealing.add(el);
+      el.classList.add('is-revealing');
+
+      requestAnimationFrame(() => setProgress(el, 1));
+
+      window.setTimeout(() => {
+        el.classList.remove('is-revealing');
+        revealing.delete(el);
+        finished.add(el);
+      }, REVEAL_MS);
+    };
+
+    const tweenObserver = new IntersectionObserver((entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) startReveal(entry.target);
       });
     }, { rootMargin: '0px 0px -5% 0px' });
 
@@ -356,10 +373,14 @@ document.addEventListener('DOMContentLoaded', () => {
       const scrolled = window.scrollY;
       const maxScroll = Math.max(0, document.documentElement.scrollHeight - vh);
 
-      const tops = progressed.map((el) => el.getBoundingClientRect().top);
+      const live = progressed.filter((el) => !tweenManaged(el) || !settled(el));
+      const tops = live.map((el) => el.getBoundingClientRect().top);
 
-      progressed.forEach((el, index) => {
-        if (tweenManaged(el)) return;
+      live.forEach((el, index) => {
+        if (tweenManaged(el)) {
+          if (tops[index] < vh * 0.95) startReveal(el);
+          return;
+        }
 
         const [from, to] = ranges.get(el);
         const top = tops[index];
@@ -390,7 +411,7 @@ document.addEventListener('DOMContentLoaded', () => {
             return;
           }
 
-          if (!tweening.has(el)) setProgress(el, 0);
+          if (!settled(el)) setProgress(el, 0);
 
           tweenObserver.observe(el);
         });

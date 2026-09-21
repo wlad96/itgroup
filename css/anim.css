@@ -572,3 +572,18 @@ html.no-anim .cta__spiral-band,
 html.no-anim .navmenu--open .navmenu__pane::before {
   animation: none !important;
 }
+
+@media (max-width: 1024px) {
+  html.has-anim .is-revealing,
+  html.has-anim .is-revealing *,
+  html.has-anim .is-revealing *::after {
+    transition-property: opacity, transform;
+    transition-duration: 0.85s, 0.7s;
+    transition-timing-function: cubic-bezier(0.32, 0.72, 0.35, 1);
+    transition-delay: calc(var(--a, 0) * 0.8s);
+  }
+
+  html.has-anim .is-revealing .split__inner {
+    transition-delay: calc(var(--i, 0) * 0.045s);
+  }
+}
