@@ -569,6 +569,7 @@ html.no-anim .reviews__spiral,
 html.no-anim .reviews__item--active .review-card::after,
 html.no-anim .cta__glow,
 html.no-anim .cta__spiral-band,
+html.no-anim .page-hero__glow,
 html.no-anim .navmenu--open .navmenu__pane::before {
   animation: none !important;
 }

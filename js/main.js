@@ -455,7 +455,7 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 
   const idleTargets = [...document.querySelectorAll(
-    '.services__visual, .process__visual, .reviews__visual, .cta__spiral, .reviews__viewport',
+    '.services__visual, .process__visual, .reviews__visual, .cta__spiral, .reviews__viewport, .page-hero__glow',
   )];
 
   if (idleTargets.length) {
