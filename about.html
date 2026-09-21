@@ -1,0 +1,614 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>About us — IT Group</title>
+  <meta name="description" content="A focused team turning ambitious ideas into thoughtful, high-performing digital experiences.">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap">
+
+  <link rel="stylesheet" href="css/base.css?v=1">
+  <link rel="stylesheet" href="css/header.css?v=1">
+  <link rel="stylesheet" href="css/hero.css?v=1">
+  <link rel="stylesheet" href="css/services.css?v=1">
+  <link rel="stylesheet" href="css/cases.css?v=1">
+  <link rel="stylesheet" href="css/process.css?v=1">
+  <link rel="stylesheet" href="css/advantages.css?v=1">
+  <link rel="stylesheet" href="css/reviews.css?v=1">
+  <link rel="stylesheet" href="css/cta.css?v=1">
+  <link rel="stylesheet" href="css/footer.css?v=1">
+  <link rel="stylesheet" href="css/blur-bar.css?v=1">
+  <link rel="stylesheet" href="css/mega.css?v=1">
+  <link rel="stylesheet" href="css/navmenu.css?v=1">
+  <link rel="stylesheet" href="css/modal.css?v=1">
+  <link rel="stylesheet" href="css/about.css?v=1">
+  <link rel="stylesheet" href="css/anim.css?v=1">
+
+  <script>
+    (function () {
+      var nav = navigator;
+      var mm = window.matchMedia;
+      var weak =
+        !window.IntersectionObserver ||
+        !window.requestAnimationFrame ||
+        !mm ||
+        !(window.CSS && CSS.supports && CSS.supports("aspect-ratio", "1 / 1")) ||
+        mm("(prefers-reduced-motion: reduce)").matches ||
+        (nav.deviceMemory > 0 && nav.deviceMemory <= 2) ||
+        (nav.hardwareConcurrency > 0 && nav.hardwareConcurrency <= 2) ||
+        !!(nav.connection && nav.connection.saveData);
+
+      document.documentElement.classList.add(weak ? "no-anim" : "has-anim");
+    })();
+  </script>
+</head>
+<body>
+
+  <header class="header">
+    <div class="container header__inner">
+      <div class="header__brand">
+        <a class="logo header__logo" href="/" aria-label="IT Group — home">
+          <svg class="logo__icon" viewBox="0 0 25 29" aria-hidden="true">
+            <path class="logo__icon-bg" d="M12 0H25V19A10 10 0 0 1 15 29H0V12A12 12 0 0 1 12 0Z"/>
+            <path d="M14.5 0H22A3 3 0 0 1 25 3V6A8 8 0 0 1 17 14H12.5V2A2 2 0 0 1 14.5 0Z" fill="currentColor"/>
+            <rect x="0" y="15" width="11.5" height="14" rx="2" fill="currentColor"/>
+          </svg>
+          <span class="logo__text">IT GROUP</span>
+        </a>
+      </div>
+
+      <nav class="header__nav" id="header-nav" aria-label="Main navigation">
+        <ul class="header__nav-list">
+          <li class="header__nav-item"><a class="header__nav-link header__nav-link--active" href="about.html">About us</a></li>
+          <li class="header__nav-item header__nav-item--mega">
+            <button class="header__nav-link header__nav-toggle" type="button" aria-expanded="false" aria-controls="services-mega">
+              Services
+              <svg class="header__nav-chevron" viewBox="0 0 12 12" aria-hidden="true"><path d="m3 4.5 3 3 3-3"/></svg>
+            </button>
+
+            <div class="mega" id="services-mega">
+              <div class="mega__inner">
+                <div class="mega__intro">
+                  <p class="mega__label">Services</p>
+                  <p class="mega__title">Digital solutions for a smarter tomorrow.</p>
+                  <p class="mega__text">We deliver end-to-end digital products and services that help businesses grow, scale and stay ahead.</p>
+                  <a class="mega__more" href="index.html#services">
+                    <span class="mega__more-icon">
+                      <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+                    </span>
+                    All services
+                  </a>
+                  <img class="mega__spiral mega__spiral--intro" src="images/spiral6.webp" width="1061" height="858" alt="" loading="lazy">
+                </div>
+
+                <ul class="mega__list">
+              <li class="mega__item">
+                <a class="mega__link" href="index.html#services">
+                  <span class="mega__icon">
+                    <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M9.5 8.5 6 12l3.5 3.5M14.5 8.5 18 12l-3.5 3.5"/></svg>
+                  </span>
+                  <span class="mega__body">
+                    <span class="mega__name">Custom Software Development</span>
+                    <span class="mega__desc">Scalable web and mobile solutions built for your business.</span>
+                  </span>
+                  <svg class="mega__arrow" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+                </a>
+              </li>
+              <li class="mega__item">
+                <a class="mega__link" href="index.html#services">
+                  <span class="mega__icon">
+                    <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7.5 18.5h9a3.75 3.75 0 0 0 .4-7.48 5.25 5.25 0 0 0-10.1-1.2A3.9 3.9 0 0 0 7.5 18.5Z"/></svg>
+                  </span>
+                  <span class="mega__body">
+                    <span class="mega__name">Cloud Solutions</span>
+                    <span class="mega__desc">Secure, flexible and cost-effective infrastructure and migration.</span>
+                  </span>
+                  <svg class="mega__arrow" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+                </a>
+              </li>
+              <li class="mega__item">
+                <a class="mega__link" href="index.html#services">
+                  <span class="mega__icon">
+                    <svg viewBox="0 0 24 24" aria-hidden="true"><rect x="7" y="3.25" width="10" height="17.5" rx="2.5"/><path d="M10.75 17.5h2.5"/></svg>
+                  </span>
+                  <span class="mega__body">
+                    <span class="mega__name">Mobile Apps</span>
+                    <span class="mega__desc">Native and cross-platform apps for iOS and Android.</span>
+                  </span>
+                  <svg class="mega__arrow" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+                </a>
+              </li>
+              <li class="mega__item">
+                <a class="mega__link" href="index.html#services">
+                  <span class="mega__icon">
+                    <svg viewBox="0 0 24 24" aria-hidden="true"><ellipse cx="12" cy="6.5" rx="6" ry="2.75"/><path d="M6 6.5v11c0 1.52 2.69 2.75 6 2.75s6-1.23 6-2.75v-11"/><path d="M6 12c0 1.52 2.69 2.75 6 2.75s6-1.23 6-2.75"/></svg>
+                  </span>
+                  <span class="mega__body">
+                    <span class="mega__name">IT Consulting</span>
+                    <span class="mega__desc">Expert guidance for your technology strategy and growth.</span>
+                  </span>
+                  <svg class="mega__arrow" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+                </a>
+              </li>
+              <li class="mega__item">
+                <a class="mega__link" href="index.html#services">
+                  <span class="mega__icon">
+                    <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3.25 5.75 6v5.5c0 3.9 2.6 7.4 6.25 8.6 3.65-1.2 6.25-4.7 6.25-8.6V6L12 3.25Z"/><path d="m9.5 12 1.9 1.9 3.6-3.9"/></svg>
+                  </span>
+                  <span class="mega__body">
+                    <span class="mega__name">Support &amp; Maintenance</span>
+                    <span class="mega__desc">Keep your systems reliable, secure and up to date.</span>
+                  </span>
+                  <svg class="mega__arrow" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+                </a>
+              </li>
+                </ul>
+
+                <div class="mega__aside">
+                  <img class="mega__spiral mega__spiral--aside" src="images/spiral7.webp" width="1223" height="922" alt="" loading="lazy">
+                  <p class="mega__label">Our expertise</p>
+                  <p class="mega__title mega__title--aside">From idea to impact.</p>
+                  <p class="mega__text">We turn complex challenges into simple, scalable solutions.</p>
+                  <a class="mega__learn" href="index.html#process">
+                    Learn more
+                    <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+                  </a>
+                </div>
+              </div>
+            </div>
+          </li>
+          <li class="header__nav-item"><a class="header__nav-link" href="index.html#cases">Cases</a></li>
+          <li class="header__nav-item"><a class="header__nav-link" href="index.html#blog">Blog</a></li>
+          <li class="header__nav-item"><a class="header__nav-link" href="index.html#contacts">Contacts</a></li>
+        </ul>
+        <a class="btn btn--dark header__nav-btn" data-modal-open href="index.html#contacts">
+          Get a consultation
+          <svg class="btn__icon" viewBox="0 0 16 16" aria-hidden="true"><path d="M2.5 8h11M9 3.5 13.5 8 9 12.5"/></svg>
+        </a>
+      </nav>
+
+      <div class="header__actions">
+        <div class="lang header__lang">
+          <button class="lang__btn" type="button" aria-expanded="false" aria-controls="lang-list" aria-label="Change language">
+            EN
+            <svg class="lang__arrow" viewBox="0 0 12 12" aria-hidden="true"><path d="m3 4.5 3 3 3-3"/></svg>
+          </button>
+          <ul class="lang__list" id="lang-list">
+            <li><a class="lang__link lang__link--active" href="#" hreflang="en">EN</a></li>
+            <li><a class="lang__link" href="#" hreflang="ru">RU</a></li>
+            <li><a class="lang__link" href="#" hreflang="lv">LV</a></li>
+          </ul>
+        </div>
+
+        <a class="btn btn--dark btn--sm header__btn" data-modal-open href="index.html#contacts">
+          Get a consultation
+          <svg class="btn__icon" viewBox="0 0 16 16" aria-hidden="true"><path d="M2.5 8h11M9 3.5 13.5 8 9 12.5"/></svg>
+        </a>
+
+        <button class="burger header__burger" type="button" aria-expanded="false" aria-controls="header-nav" aria-label="Open menu">
+          <span class="burger__line"></span>
+          <span class="burger__line"></span>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <div class="navmenu" id="navmenu" aria-hidden="true">
+    <div class="navmenu__pane">
+      <div class="navmenu__head">
+        <a class="logo navmenu__logo" href="/" aria-label="IT Group — home">
+          <svg class="logo__icon" viewBox="0 0 25 29" aria-hidden="true">
+            <path class="logo__icon-bg" d="M12 0H25V19A10 10 0 0 1 15 29H0V12A12 12 0 0 1 12 0Z"/>
+            <path d="M14.5 0H22A3 3 0 0 1 25 3V6A8 8 0 0 1 17 14H12.5V2A2 2 0 0 1 14.5 0Z" fill="currentColor"/>
+            <rect x="0" y="15" width="11.5" height="14" rx="2" fill="currentColor"/>
+          </svg>
+          <span class="logo__text">IT GROUP</span>
+        </a>
+
+        <button class="navmenu__close" type="button" data-nav-close aria-label="Close menu">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="m7 7 10 10M17 7 7 17"/></svg>
+        </button>
+      </div>
+
+      <div class="navmenu__levels">
+        <nav class="navmenu__level navmenu__level--main" aria-label="Mobile navigation">
+          <ul class="navmenu__list">
+            <li class="navmenu__item">
+              <a class="navmenu__link" href="about.html">
+                <span class="navmenu__num">01</span>
+                <span class="navmenu__label">About us</span>
+              </a>
+            </li>
+            <li class="navmenu__item">
+              <button class="navmenu__link navmenu__link--toggle" type="button" data-nav-sub aria-expanded="false" aria-controls="navmenu-services">
+                <span class="navmenu__num">02</span>
+                <span class="navmenu__label">Services</span>
+                <svg class="navmenu__chevron" viewBox="0 0 24 24" aria-hidden="true"><path d="m9 5 7 7-7 7"/></svg>
+              </button>
+            </li>
+            <li class="navmenu__item">
+              <a class="navmenu__link" href="index.html#cases">
+                <span class="navmenu__num">03</span>
+                <span class="navmenu__label">Cases</span>
+              </a>
+            </li>
+            <li class="navmenu__item">
+              <a class="navmenu__link" href="index.html#blog">
+                <span class="navmenu__num">04</span>
+                <span class="navmenu__label">Blog</span>
+              </a>
+            </li>
+            <li class="navmenu__item">
+              <a class="navmenu__link" href="index.html#contacts">
+                <span class="navmenu__num">05</span>
+                <span class="navmenu__label">Contacts</span>
+              </a>
+            </li>
+          </ul>
+        </nav>
+
+        <div class="navmenu__level navmenu__level--sub" id="navmenu-services">
+          <button class="navmenu__back" type="button" data-nav-back>
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M19 12H5M11 6l-6 6 6 6"/></svg>
+            Services
+          </button>
+
+          <ul class="navmenu__sub-list">
+            <li class="navmenu__sub-item">
+              <a class="navmenu__sub-link" href="index.html#services">
+                <span class="navmenu__sub-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M9.5 8.5 6 12l3.5 3.5M14.5 8.5 18 12l-3.5 3.5"/></svg></span>
+                <span class="navmenu__sub-body">
+                  <span class="navmenu__sub-name">Custom Software Development</span>
+                  <span class="navmenu__sub-desc">Web and mobile solutions</span>
+                </span>
+                <svg class="navmenu__sub-arrow" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+              </a>
+            </li>
+            <li class="navmenu__sub-item">
+              <a class="navmenu__sub-link" href="index.html#services">
+                <span class="navmenu__sub-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7.5 18.5h9a3.75 3.75 0 0 0 .4-7.48 5.25 5.25 0 0 0-10.1-1.2A3.9 3.9 0 0 0 7.5 18.5Z"/></svg></span>
+                <span class="navmenu__sub-body">
+                  <span class="navmenu__sub-name">Cloud Solutions</span>
+                  <span class="navmenu__sub-desc">Infrastructure and migration</span>
+                </span>
+                <svg class="navmenu__sub-arrow" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+              </a>
+            </li>
+            <li class="navmenu__sub-item">
+              <a class="navmenu__sub-link" href="index.html#services">
+                <span class="navmenu__sub-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="7" y="3.25" width="10" height="17.5" rx="2.5"/><path d="M10.75 17.5h2.5"/></svg></span>
+                <span class="navmenu__sub-body">
+                  <span class="navmenu__sub-name">Mobile Apps</span>
+                  <span class="navmenu__sub-desc">iOS and Android</span>
+                </span>
+                <svg class="navmenu__sub-arrow" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+              </a>
+            </li>
+            <li class="navmenu__sub-item">
+              <a class="navmenu__sub-link" href="index.html#services">
+                <span class="navmenu__sub-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><ellipse cx="12" cy="6.5" rx="6" ry="2.75"/><path d="M6 6.5v11c0 1.52 2.69 2.75 6 2.75s6-1.23 6-2.75v-11"/><path d="M6 12c0 1.52 2.69 2.75 6 2.75s6-1.23 6-2.75"/></svg></span>
+                <span class="navmenu__sub-body">
+                  <span class="navmenu__sub-name">IT Consulting</span>
+                  <span class="navmenu__sub-desc">Strategy and growth</span>
+                </span>
+                <svg class="navmenu__sub-arrow" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+              </a>
+            </li>
+            <li class="navmenu__sub-item">
+              <a class="navmenu__sub-link" href="index.html#services">
+                <span class="navmenu__sub-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3.25 5.75 6v5.5c0 3.9 2.6 7.4 6.25 8.6 3.65-1.2 6.25-4.7 6.25-8.6V6L12 3.25Z"/><path d="m9.5 12 1.9 1.9 3.6-3.9"/></svg></span>
+                <span class="navmenu__sub-body">
+                  <span class="navmenu__sub-name">Support &amp; Maintenance</span>
+                  <span class="navmenu__sub-desc">Reliable and secure</span>
+                </span>
+                <svg class="navmenu__sub-arrow" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+              </a>
+            </li>
+          </ul>
+
+          <a class="navmenu__all" href="index.html#services">
+            All services
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+          </a>
+        </div>
+      </div>
+
+      <div class="navmenu__foot">
+        <div class="navmenu__langs">
+          <a class="navmenu__lang navmenu__lang--active" href="#" hreflang="en">EN</a>
+          <a class="navmenu__lang" href="#" hreflang="ru">RU</a>
+          <a class="navmenu__lang" href="#" hreflang="lv">LV</a>
+        </div>
+
+        <button class="btn btn--dark navmenu__btn" type="button" data-modal-open>
+          Get a consultation
+          <svg class="btn__icon" viewBox="0 0 16 16" aria-hidden="true"><path d="M2.5 8h11M9 3.5 13.5 8 9 12.5"/></svg>
+        </button>
+      </div>
+    </div>
+  </div>
+  <main>
+
+    <section class="page-hero" id="about-top">
+      <div class="container page-hero__inner">
+
+        <nav class="crumbs" aria-label="Breadcrumb" data-animate="fade-up">
+          <ol class="crumbs__list">
+            <li class="crumbs__item"><a class="crumbs__link" href="index.html">Home</a></li>
+            <li class="crumbs__item crumbs__item--current" aria-current="page">About us</li>
+          </ol>
+        </nav>
+
+        <div class="page-hero__content">
+          <div class="page-hero__tags" data-animate="fade-up">
+            <span class="tag tag--solid">About us</span>
+            <span class="tag">01 / 08</span>
+          </div>
+
+          <h1 class="page-hero__title" data-animate="split" data-split="words">Digital expertise.<br>Real business impact.</h1>
+
+          <p class="page-hero__text" data-animate="fade-up">We are a digital agency helping businesses turn ambitious ideas into thoughtful, high-performing digital experiences.</p>
+
+          <div class="page-hero__actions" data-animate="fade-up">
+            <a class="btn btn--dark" href="#about-team">
+              Get to know us
+              <svg class="btn__icon" viewBox="0 0 16 16" aria-hidden="true"><path d="M2.5 8h11M9 3.5 13.5 8 9 12.5"/></svg>
+            </a>
+
+            <a class="link-arrow" href="#about-process">
+              Our approach
+              <svg class="link-arrow__icon" viewBox="0 0 16 16" aria-hidden="true"><path d="M2.5 8h11M9 3.5 13.5 8 9 12.5"/></svg>
+            </a>
+          </div>
+        </div>
+
+        <div class="page-hero__media" data-animate="slide-left">
+          <img class="page-hero__image" src="images/about/signature-ribbon.webp" width="893" height="943"
+               alt="" fetchpriority="high">
+        </div>
+
+        <div class="page-hero__foot" data-animate="fade-up">
+          <span class="page-hero__note">Est. digital agency</span>
+
+          <a class="page-hero__scroll" href="#about-team">
+            Scroll
+            <svg viewBox="0 0 16 16" aria-hidden="true"><path d="M8 2.5v11M3.5 9 8 13.5 12.5 9"/></svg>
+          </a>
+
+          <span class="page-hero__where">Latvia / Europe / Remote</span>
+        </div>
+
+      </div>
+    </section>
+
+    <section class="about-team" id="about-team">
+      <div class="container">
+
+        <p class="about-eyebrow" data-reveal="0.94 0.62">
+          <span class="about-eyebrow__num">02</span>
+          <span class="about-eyebrow__name">A focused team</span>
+          <span class="about-eyebrow__side">About us</span>
+        </p>
+
+        <div class="about-team__top" data-reveal="0.86 0.34">
+          <div class="about-team__content">
+            <h2 class="section-title about-team__title" data-animate="split" data-split="words">A focused team.<br>A thoughtful approach.</h2>
+
+            <p class="section-text about-team__text">IT Group is a small, experienced team of 4–7 people, working remotely for 3+ years. We combine technical expertise with a human approach, building long-term partnerships with our clients.</p>
+
+            <p class="section-text about-team__text about-team__text--soft">We value clear communication, deep involvement and a focus on real business goals. Every project for us is a collaboration, not just a task.</p>
+
+            <a class="btn btn--dark about-team__btn" href="#about-story">
+              Our story
+              <svg class="btn__icon" viewBox="0 0 16 16" aria-hidden="true"><path d="M2.5 8h11M9 3.5 13.5 8 9 12.5"/></svg>
+            </a>
+          </div>
+
+          <div class="about-team__media">
+            <img class="about-team__image" src="images/about/evolving-form.webp" width="1039" height="963"
+                 alt="" loading="lazy" decoding="async">
+
+            <article class="dark-card about-team__card">
+              <span class="dark-card__icon">
+                <svg viewBox="0 0 24 24" aria-hidden="true">
+                  <circle cx="9" cy="8" r="3.2"/>
+                  <path d="M3.5 19a5.5 5.5 0 0 1 11 0"/>
+                  <path d="M16 5.6a3.2 3.2 0 0 1 0 6.1M17.5 14.4A5.5 5.5 0 0 1 20.5 19"/>
+                </svg>
+              </span>
+
+              <p class="dark-card__label">Our team</p>
+              <p class="dark-card__value">4–7 people</p>
+              <p class="dark-card__text">A focused team of designers, developers and strategists. We keep things small to stay fast, flexible and close to our clients.</p>
+
+              <svg class="dark-card__arrow" viewBox="0 0 16 16" aria-hidden="true"><path d="M2.5 8h11M9 3.5 13.5 8 9 12.5"/></svg>
+            </article>
+          </div>
+        </div>
+
+        <ul class="about-facts" data-reveal-stagger>
+          <li class="about-facts__item" data-reveal="0.9 0.46">
+            <span class="about-facts__icon">
+              <svg viewBox="0 0 24 24" aria-hidden="true">
+                <rect x="3.5" y="5" width="17" height="15.5" rx="3"/>
+                <path d="M3.5 10h17M8 2.8v3.6M16 2.8v3.6"/>
+              </svg>
+            </span>
+            <h3 class="about-facts__title">3+ years</h3>
+            <p class="about-facts__text">We’ve been building digital solutions since 2021.</p>
+          </li>
+
+          <li class="about-facts__item" data-reveal="0.9 0.46">
+            <span class="about-facts__icon">
+              <svg viewBox="0 0 24 24" aria-hidden="true">
+                <rect x="3.5" y="4.5" width="17" height="12" rx="2.4"/>
+                <path d="M1.5 19.5h21"/>
+              </svg>
+            </span>
+            <h3 class="about-facts__title">Remote</h3>
+            <p class="about-facts__text">Fully distributed team, working across time zones.</p>
+          </li>
+
+          <li class="about-facts__item" data-reveal="0.9 0.46">
+            <span class="about-facts__icon">
+              <svg viewBox="0 0 24 24" aria-hidden="true">
+                <path d="m2.5 11 3.6-3.6a2 2 0 0 1 2.8 0L12 10.5l-2 2a1.6 1.6 0 0 1-2.3-2.2"/>
+                <path d="m12 10.5 3.1-3.1a2 2 0 0 1 2.8 0l3.6 3.6-4.2 4.2a1.7 1.7 0 0 1-2.4 0l-.6-.6"/>
+                <path d="m11.4 16.8-1.2 1.2a1.7 1.7 0 0 1-2.4-2.4l1.2-1.2"/>
+              </svg>
+            </span>
+            <h3 class="about-facts__title">Long-term mindset</h3>
+            <p class="about-facts__text">We focus on lasting partnerships, not one-off projects.</p>
+          </li>
+
+          <li class="about-facts__item" data-reveal="0.9 0.46">
+            <span class="about-facts__icon">
+              <svg viewBox="0 0 24 24" aria-hidden="true">
+                <circle cx="12" cy="12" r="8.5"/><circle cx="12" cy="12" r="4.4"/><circle cx="12" cy="12" r="1"/>
+              </svg>
+            </span>
+            <h3 class="about-facts__title">Client-centered</h3>
+            <p class="about-facts__text">Your goals, our priority. Always.</p>
+          </li>
+        </ul>
+
+      </div>
+    </section>
+
+
+  <footer class="footer">
+    <div class="container footer__inner">
+      <a class="logo footer__logo" data-animate="fade-up" href="/" aria-label="IT Group — home">
+        <svg class="logo__icon" viewBox="0 0 25 29" aria-hidden="true">
+          <path class="logo__icon-bg" d="M12 0H25V19A10 10 0 0 1 15 29H0V12A12 12 0 0 1 12 0Z"/>
+          <path d="M14.5 0H22A3 3 0 0 1 25 3V6A8 8 0 0 1 17 14H12.5V2A2 2 0 0 1 14.5 0Z" fill="currentColor"/>
+          <rect x="0" y="15" width="11.5" height="14" rx="2" fill="currentColor"/>
+        </svg>
+        <span class="logo__text">IT GROUP</span>
+      </a>
+
+      <nav class="footer__nav" aria-label="Footer navigation">
+        <ul class="footer__nav-list">
+          <li data-animate="fade-up"><a class="footer__nav-link" href="index.html#services">Services</a></li>
+          <li data-animate="fade-up"><a class="footer__nav-link" href="index.html#cases">Work</a></li>
+          <li data-animate="fade-up"><a class="footer__nav-link" href="about.html">About</a></li>
+          <li data-animate="fade-up"><a class="footer__nav-link" href="index.html#process">Process</a></li>
+          <li data-animate="fade-up"><a class="footer__nav-link" href="index.html#reviews">Reviews</a></li>
+          <li data-animate="fade-up"><a class="footer__nav-link" href="index.html#advantages">Advantages</a></li>
+        </ul>
+      </nav>
+
+      <div class="footer__side">
+        <ul class="footer__socials">
+          <li data-animate="fade-up">
+            <a class="footer__social" href="https://www.facebook.com/" target="_blank" rel="noopener" aria-label="Facebook">
+              <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M14.5 21v-7.5h2.6l.4-3h-3V8.6c0-.87.25-1.46 1.5-1.46H17.6V4.46A21 21 0 0 0 15.3 4.3c-2.3 0-3.85 1.4-3.85 3.97V10.5H8.8v3h2.65V21Z"/></svg>
+            </a>
+          </li>
+          <li data-animate="fade-up">
+            <a class="footer__social" href="https://www.instagram.com/" target="_blank" rel="noopener" aria-label="Instagram">
+              <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M8.2 3h7.6A5.2 5.2 0 0 1 21 8.2v7.6a5.2 5.2 0 0 1-5.2 5.2H8.2A5.2 5.2 0 0 1 3 15.8V8.2A5.2 5.2 0 0 1 8.2 3Zm0 1.9A3.3 3.3 0 0 0 4.9 8.2v7.6a3.3 3.3 0 0 0 3.3 3.3h7.6a3.3 3.3 0 0 0 3.3-3.3V8.2a3.3 3.3 0 0 0-3.3-3.3Zm3.8 2.7a4.4 4.4 0 1 1 0 8.8 4.4 4.4 0 0 1 0-8.8Zm0 1.9a2.5 2.5 0 1 0 0 5 2.5 2.5 0 0 0 0-5Zm4.6-2.6a1.1 1.1 0 1 1 0 2.2 1.1 1.1 0 0 1 0-2.2Z"/></svg>
+            </a>
+          </li>
+          <li data-animate="fade-up">
+            <a class="footer__social" href="https://www.linkedin.com/" target="_blank" rel="noopener" aria-label="LinkedIn">
+              <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5.6 3.4a2.2 2.2 0 1 1 0 4.4 2.2 2.2 0 0 1 0-4.4ZM3.7 9.4h3.8V21H3.7Zm6.3 0h3.64v1.58h.05a4 4 0 0 1 3.6-1.9c3.84 0 4.55 2.42 4.55 5.56V21h-3.79v-5.6c0-1.34-.03-3.06-1.9-3.06-1.9 0-2.19 1.45-2.19 2.96V21H10Z"/></svg>
+            </a>
+          </li>
+        </ul>
+
+        <p class="footer__copy" data-animate="fade-up">
+          © 2025 IT Group.<br>
+          All rights reserved.
+        </p>
+      </div>
+    </div>
+  </footer>
+
+  <dialog class="modal" id="consult-modal" aria-labelledby="consult-modal-title">
+    <div class="modal__box" tabindex="-1">
+      <button class="modal__close" type="button" data-modal-close aria-label="Close form">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="m7 7 10 10M17 7 7 17"/></svg>
+      </button>
+
+      <aside class="modal__aside">
+        <p class="modal__pill">Get in touch</p>
+        <h2 class="modal__title" id="consult-modal-title">Get a free consultation</h2>
+        <p class="modal__text">Tell us about your project and we&rsquo;ll get back to you within 24 hours with the best solution.</p>
+
+        <ul class="modal__list">
+          <li class="modal__list-item">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="m8.5 12 2.5 2.5 4.5-5"/></svg>
+            Discuss your goals
+          </li>
+          <li class="modal__list-item">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="m8.5 12 2.5 2.5 4.5-5"/></svg>
+            Get expert advice
+          </li>
+          <li class="modal__list-item">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="m8.5 12 2.5 2.5 4.5-5"/></svg>
+            Find the right solution
+          </li>
+        </ul>
+
+        <img class="modal__spiral" src="images/spiral5.webp" width="972" height="876" alt="" loading="lazy">
+      </aside>
+
+      <form class="modal__form" id="consult-form" novalidate>
+        <div class="field">
+          <label class="field__label" for="consult-name">Name <span aria-hidden="true">*</span></label>
+          <input class="field__input" id="consult-name" name="name" type="text" placeholder="Your name" autocomplete="name" required>
+        </div>
+
+        <div class="field">
+          <label class="field__label" for="consult-email">Email <span aria-hidden="true">*</span></label>
+          <input class="field__input" id="consult-email" name="email" type="email" placeholder="you@company.com" autocomplete="email" required>
+        </div>
+
+        <div class="field">
+          <label class="field__label" for="consult-type">Project type</label>
+          <select class="field__input field__select" id="consult-type" name="type">
+            <option value="" selected>Select an option</option>
+            <option value="website">Website</option>
+            <option value="ecommerce">E-commerce</option>
+            <option value="design">UI/UX Design</option>
+            <option value="marketing">Digital marketing</option>
+            <option value="other">Something else</option>
+          </select>
+        </div>
+
+        <div class="field">
+          <label class="field__label" for="consult-message">Message <span aria-hidden="true">*</span></label>
+          <textarea class="field__input" id="consult-message" name="message" placeholder="Tell us about your project" required></textarea>
+        </div>
+
+        <label class="checkbox">
+          <input class="checkbox__input" type="checkbox" name="consent" required>
+          <span class="checkbox__mark">
+            <svg viewBox="0 0 16 16" aria-hidden="true"><path d="m3.5 8.5 3 3 6-7"/></svg>
+          </span>
+          <span class="checkbox__text">I agree to the processing of my personal data</span>
+        </label>
+
+        <button class="btn btn--dark modal__submit" type="submit">
+          Send request
+          <svg class="btn__icon" viewBox="0 0 16 16" aria-hidden="true"><path d="M2.5 8h11M9 3.5 13.5 8 9 12.5"/></svg>
+        </button>
+      </form>
+
+      <div class="modal__success" id="consult-success" hidden>
+        <span class="modal__success-icon">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="m5 12.5 4.5 4.5L19 7.5"/></svg>
+        </span>
+        <p class="modal__success-title">Thank you!</p>
+        <p class="modal__success-text">We&rsquo;ve received your request and will get back to you within 24 hours.</p>
+      </div>
+    </div>
+  </dialog>
+
+  <script src="js/main.js?v=1"></script>
+</body>
+</html>
