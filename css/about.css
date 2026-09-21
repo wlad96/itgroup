@@ -2310,3 +2310,282 @@
     gap: 26px;
   }
 }
+
+/* =================================================================
+   mobile refinements — rhythm, decor scale and card-shaped steps
+   (appended last on purpose: overrides the per-section blocks above)
+   ================================================================= */
+
+@media (max-width: 768px) {
+
+  /* ---------- vertical rhythm, matched to the home page ---------- */
+
+  .page-hero {
+    padding-block: 24px 48px;
+  }
+
+  .about-team {
+    padding-block: 24px 40px;
+  }
+
+  .about-story,
+  .about-mindset,
+  .about-process,
+  .about-collab,
+  .about-values {
+    padding-block: 32px 48px;
+  }
+
+  .steps {
+    margin-bottom: 36px;
+  }
+
+  .about-mindset__foot,
+  .about-process__foot,
+  .about-collab__foot,
+  .about-values__foot {
+    margin-top: 32px;
+  }
+
+  .about-collab__bottom {
+    padding-top: 32px;
+  }
+
+  /* ---------- hero: text first, ribbon after and much smaller ---------- */
+
+  .page-hero__inner {
+    grid-template-areas:
+      "crumbs"
+      "content"
+      "media"
+      "foot";
+    row-gap: 22px;
+  }
+
+  .page-hero__glow {
+    width: 38%;
+  }
+
+  /* ---------- every ribbon gets the same ceiling ---------- */
+
+  /* width stays 100% so lazy images still reserve space from their
+     width/height attributes; the caps do the shrinking */
+  .page-hero__image,
+  .about-team__image,
+  .about-story__image,
+  .about-mindset__image,
+  .about-collab__image,
+  .about-values__image {
+    display: block;
+    width: 100%;
+    max-width: 250px;
+    max-height: 210px;
+    height: auto;
+    margin-inline: auto;
+  }
+
+  /* ---------- dark cards: into the flow, full width ---------- */
+
+  .about-team__media,
+  .about-collab__media {
+    display: block;
+    min-height: 0;
+    padding-bottom: 0;
+  }
+
+  .about-team__card,
+  .about-collab__card {
+    position: static;
+    width: 100%;
+    margin-top: 18px;
+  }
+
+  /* ---------- steps 01-04: row cards on a timeline ---------- */
+
+  .steps {
+    grid-template-columns: minmax(0, 1fr);
+    gap: 0;
+  }
+
+  .steps__item {
+    flex-direction: row;
+    align-items: center;
+    gap: 16px;
+    padding: 16px 18px;
+    background-color: rgba(255, 255, 255, 0.55);
+    border: 1px solid rgba(255, 255, 255, 0.9);
+    border-radius: 20px;
+    box-shadow: 0 10px 30px rgba(30, 50, 70, 0.05);
+  }
+
+  .steps__item + .steps__item {
+    margin-top: 14px;
+  }
+
+  /* connector between the rows */
+  .steps__item:not(:last-child)::after {
+    content: "";
+    position: absolute;
+    top: 100%;
+    left: 59px;
+    width: 1px;
+    height: 14px;
+    background-color: #cdd7e0;
+  }
+
+  /* fixed slot: the row keeps its height even before the icon loads */
+  .steps__figure {
+    flex-shrink: 0;
+    width: 84px;
+    height: 84px;
+    margin-bottom: 0;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .steps__figure img {
+    width: 100%;
+    height: 100%;
+    max-width: 100%;
+    max-height: none;
+    object-fit: contain;
+  }
+
+  .steps__item:not(:last-child) .steps__figure::after {
+    display: none;
+  }
+
+  .steps__num {
+    width: auto;
+    height: auto;
+    margin-bottom: 6px;
+    justify-content: flex-start;
+    font-size: 12px;
+    font-weight: 400;
+    color: var(--color-muted);
+    background-color: transparent;
+    border-radius: 0;
+  }
+
+  .steps__title {
+    margin-bottom: 8px;
+    font-size: 18px;
+  }
+
+  .steps__text {
+    font-size: 13px;
+    line-height: 1.55;
+  }
+
+  .steps__arrow {
+    display: none;
+  }
+
+  /* the dark step: the whole row goes dark, not just its text half */
+  .steps__item--dark {
+    color: #fff;
+    background: linear-gradient(160deg, #283742 0%, #1b2731 55%, #141e26 100%);
+    border-color: rgba(255, 255, 255, 0.06);
+    box-shadow: 0 24px 48px rgba(20, 28, 35, 0.18);
+  }
+
+  .steps__item--dark .steps__figure {
+    justify-content: center;
+    padding-right: 0;
+  }
+
+  .steps__item--dark .steps__body {
+    margin-top: 0;
+    padding: 0;
+    background: none;
+    border-radius: 0;
+    box-shadow: none;
+  }
+
+  .steps__item--dark .steps__num {
+    color: rgba(255, 255, 255, 0.6);
+    background-color: transparent;
+  }
+
+  .steps__item--dark .steps__text {
+    color: rgba(255, 255, 255, 0.75);
+  }
+
+  /* ---------- flow 01-04: the same rows ---------- */
+
+  .flow {
+    grid-template-columns: minmax(0, 1fr);
+    gap: 0;
+  }
+
+  .flow__item {
+    display: grid;
+    grid-template-columns: 46px minmax(0, 1fr);
+    column-gap: 14px;
+    align-items: start;
+    padding: 16px 18px;
+    background-color: rgba(255, 255, 255, 0.55);
+    border: 1px solid rgba(255, 255, 255, 0.9);
+    border-radius: 18px;
+    box-shadow: 0 10px 30px rgba(30, 50, 70, 0.05);
+  }
+
+  .flow__item + .flow__item {
+    margin-top: 12px;
+  }
+
+  .flow__icon {
+    grid-row: 1 / span 3;
+    margin-bottom: 0;
+  }
+
+  .flow__num,
+  .flow__title,
+  .flow__text {
+    grid-column: 2;
+  }
+
+  .flow__item:not(:last-child)::after {
+    content: "";
+    display: block;
+    position: absolute;
+    top: 100%;
+    left: 41px;
+    width: 1px;
+    height: 12px;
+    background-color: #cdd7e0;
+  }
+
+  /* ---------- traits: separators instead of loose spacing ---------- */
+
+  .traits {
+    gap: 0;
+  }
+
+  .traits__item {
+    padding: 14px 0;
+  }
+
+  .traits__item + .traits__item {
+    border-top: 1px solid #d5dee6;
+  }
+}
+
+@media (max-width: 576px) {
+  .page-hero {
+    padding-block: 16px 32px;
+  }
+
+  .steps {
+    gap: 0;
+  }
+
+  .steps__figure {
+    height: 84px;
+    justify-content: center;
+  }
+
+  .flow {
+    gap: 0;
+  }
+}
