@@ -382,35 +382,69 @@
 }
 
 .about-facts__item {
+  position: relative;
+  isolation: isolate;
+  overflow: hidden;
   display: flex;
   flex-direction: column;
-  padding: 26px 26px 30px;
-  background-color: rgba(255, 255, 255, 0.55);
-  border: 1px solid rgba(255, 255, 255, 0.9);
-  border-radius: 22px;
-  box-shadow: 0 10px 30px rgba(30, 50, 70, 0.05);
+  padding: 30px 28px 32px;
+  background-color: rgba(255, 255, 255, 0.5);
+  border: 1px solid rgba(255, 255, 255, 0.95);
+  border-radius: 28px;
+  box-shadow: 0 1px 2px rgba(20, 28, 35, 0.03), 0 12px 32px rgba(30, 50, 70, 0.04);
+  transition: transform var(--transition), background-color var(--transition), box-shadow var(--transition);
+}
+
+.about-facts__item::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  background: url("../images/card-light-bg.svg") center / 100% 100% no-repeat;
+  opacity: 0;
+  transform: translate3d(40px, -40px, 0) scale(1.08);
+  transition: opacity 0.5s ease, transform 0.9s cubic-bezier(0.22, 1, 0.36, 1);
+  pointer-events: none;
+}
+
+.about-facts__item::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  background: radial-gradient(
+    380px circle at var(--mx, 70%) var(--my, 20%),
+    var(--card-glow, rgba(182, 204, 224, 0.28)),
+    transparent 70%
+  );
+  opacity: 0;
+  transition: opacity 0.5s ease;
+  pointer-events: none;
 }
 
 .about-facts__icon {
   display: flex;
   align-items: center;
   justify-content: center;
-  width: 44px;
-  height: 44px;
-  margin-bottom: 44px;
+  width: 56px;
+  height: 56px;
+  margin-bottom: 40px;
   color: var(--color-dark);
-  background-color: #e6ecf1;
+  background: linear-gradient(145deg, #eef3f6, #e2e9ee);
   border-radius: 50%;
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.9);
+  transition: background var(--transition), box-shadow var(--transition);
 }
 
 .about-facts__icon svg {
-  width: 21px;
-  height: 21px;
+  width: 24px;
+  height: 24px;
   fill: none;
   stroke: currentColor;
   stroke-width: 1.5;
   stroke-linecap: round;
   stroke-linejoin: round;
+  transition: transform 0.5s cubic-bezier(0.34, 1.56, 0.64, 1);
 }
 
 .about-facts__title {
@@ -427,14 +461,60 @@
   color: var(--color-text-secondary);
 }
 
-.about-facts__item::after {
-  content: "";
+.about-facts__line {
   width: 28px;
   height: 1px;
   margin-top: auto;
   padding-top: 22px;
   background-color: #d5dee6;
   background-clip: content-box;
+  transition: width var(--transition), background-color var(--transition);
+}
+
+@media (hover: hover) {
+  .about-facts__item:hover {
+    transform: translateY(-6px);
+    background-color: rgba(255, 255, 255, 0.95);
+    box-shadow: 0 1px 2px rgba(20, 28, 35, 0.03), 0 28px 56px rgba(30, 50, 70, 0.12);
+  }
+
+  .about-facts__item:hover::before {
+    opacity: 1;
+    transform: translate3d(0, 0, 0) scale(1);
+  }
+
+  .about-facts__item:hover::after {
+    opacity: 1;
+  }
+
+  .about-facts__item:hover .about-facts__icon {
+    background: var(--color-surface);
+    box-shadow: 0 8px 20px rgba(30, 50, 70, 0.1);
+  }
+
+  .about-facts__item:hover .about-facts__icon svg {
+    transform: scale(1.12) rotate(-6deg);
+  }
+
+  .about-facts__item:hover .about-facts__line {
+    width: 54px;
+    background-color: var(--color-dark);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .about-facts__item,
+  .about-facts__item::before,
+  .about-facts__item::after,
+  .about-facts__icon,
+  .about-facts__icon svg,
+  .about-facts__line {
+    transition: none;
+  }
+
+  .about-facts__item:hover {
+    transform: none;
+  }
 }
 
 .about-story {
@@ -631,6 +711,9 @@
 }
 
 .mindset-card {
+  position: relative;
+  isolation: isolate;
+  overflow: hidden;
   display: flex;
   flex-direction: column;
   padding: 26px 26px 30px;
@@ -638,6 +721,34 @@
   border: 1px solid rgba(255, 255, 255, 0.9);
   border-radius: 24px;
   box-shadow: 0 10px 30px rgba(30, 50, 70, 0.05);
+  transition: transform var(--transition), background-color var(--transition), box-shadow var(--transition);
+}
+
+.mindset-card::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  background: url("../images/card-light-bg.svg") center / 100% 100% no-repeat;
+  opacity: 0;
+  transform: translate3d(40px, -40px, 0) scale(1.08);
+  transition: opacity 0.5s ease, transform 0.9s cubic-bezier(0.22, 1, 0.36, 1);
+  pointer-events: none;
+}
+
+.mindset-card::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  background: radial-gradient(
+    380px circle at var(--mx, 70%) var(--my, 20%),
+    var(--card-glow, rgba(182, 204, 224, 0.28)),
+    transparent 70%
+  );
+  opacity: 0;
+  transition: opacity 0.5s ease;
+  pointer-events: none;
 }
 
 .mindset-card__icon {
@@ -648,8 +759,10 @@
   height: 44px;
   margin-bottom: 34px;
   color: var(--color-dark);
-  background-color: #e6ecf1;
+  background: linear-gradient(145deg, #eef3f6, #e2e9ee);
   border-radius: 50%;
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.9);
+  transition: background var(--transition), box-shadow var(--transition);
 }
 
 .mindset-card__icon svg {
@@ -660,6 +773,7 @@
   stroke-width: 1.5;
   stroke-linecap: round;
   stroke-linejoin: round;
+  transition: transform 0.5s cubic-bezier(0.34, 1.56, 0.64, 1);
 }
 
 .mindset-card__num {
@@ -682,30 +796,36 @@
   color: var(--color-text-secondary);
 }
 
-.mindset-card:not(.mindset-card--dark)::after {
-  content: "";
+.mindset-card__line {
   width: 28px;
   height: 1px;
   margin-top: auto;
   padding-top: 24px;
   background-color: #d5dee6;
   background-clip: content-box;
+  transition: width var(--transition), background-color var(--transition);
 }
 
 .mindset-card--dark {
+  --card-glow: rgba(170, 200, 225, 0.3);
+
   color: #fff;
-  background-color: var(--color-dark);
-  background-image: url("../images/card-dark-bg.svg");
-  background-position: center;
-  background-size: 100% 100%;
-  background-repeat: no-repeat;
-  border-color: transparent;
+  background: linear-gradient(160deg, #283742 0%, #1b2731 55%, #141e26 100%);
+  border-color: rgba(255, 255, 255, 0.06);
   box-shadow: 0 24px 60px rgba(16, 28, 40, 0.22);
+}
+
+.mindset-card--dark::before {
+  background-image: url("../images/card-dark-bg.svg");
+  opacity: 1;
+  transform: translate3d(var(--px, 0px), var(--py, 0px), 0) scale(1.08);
+  transition: transform 0.6s cubic-bezier(0.22, 1, 0.36, 1);
 }
 
 .mindset-card--dark .mindset-card__icon {
   color: #fff;
-  background-color: rgba(255, 255, 255, 0.1);
+  background: rgba(255, 255, 255, 0.1);
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.12);
 }
 
 .mindset-card--dark .mindset-card__num {
@@ -731,6 +851,73 @@
   stroke-linecap: round;
   stroke-linejoin: round;
   box-sizing: content-box;
+  transition: transform var(--transition);
+}
+
+@media (hover: hover) {
+  .mindset-card:hover {
+    transform: translateY(-6px);
+    background-color: rgba(255, 255, 255, 0.95);
+    box-shadow: 0 1px 2px rgba(20, 28, 35, 0.03), 0 28px 56px rgba(30, 50, 70, 0.12);
+  }
+
+  .mindset-card:hover::before {
+    opacity: 1;
+    transform: translate3d(0, 0, 0) scale(1);
+  }
+
+  .mindset-card:hover::after {
+    opacity: 1;
+  }
+
+  .mindset-card:hover .mindset-card__icon {
+    background: var(--color-surface);
+    box-shadow: 0 8px 20px rgba(30, 50, 70, 0.1);
+  }
+
+  .mindset-card:hover .mindset-card__icon svg {
+    transform: scale(1.12) rotate(-6deg);
+  }
+
+  .mindset-card:hover .mindset-card__line {
+    width: 54px;
+    background-color: var(--color-dark);
+  }
+
+  .mindset-card--dark:hover {
+    background: linear-gradient(160deg, #283742 0%, #1b2731 55%, #141e26 100%);
+    box-shadow: 0 32px 64px rgba(20, 28, 35, 0.3);
+  }
+
+  .mindset-card--dark:hover::before {
+    transform: translate3d(var(--px, 0px), var(--py, 0px), 0) scale(1.08);
+  }
+
+  .mindset-card--dark:hover .mindset-card__icon {
+    color: var(--color-dark);
+    background: #fff;
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.25);
+  }
+
+  .mindset-card--dark:hover .mindset-card__arrow {
+    transform: translateX(3px);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .mindset-card,
+  .mindset-card::before,
+  .mindset-card::after,
+  .mindset-card__icon,
+  .mindset-card__icon svg,
+  .mindset-card__line,
+  .mindset-card__arrow {
+    transition: none;
+  }
+
+  .mindset-card:hover {
+    transform: none;
+  }
 }
 
 .about-mindset__foot {
@@ -1645,6 +1832,88 @@
 
 .values__item--active + .values__item {
   border-top: 0;
+}
+
+/* ---------- auto-running highlight (added by JS) ---------- */
+
+.values--auto .values__item {
+  position: relative;
+  z-index: 1;
+  transition: opacity 0.45s ease, border-color 0.45s ease;
+}
+
+/* the marker draws the highlight instead */
+.values--auto .values__item--active {
+  background-color: transparent;
+}
+
+.values--auto .values__item:not(.values__item--active) {
+  opacity: 0.58;
+}
+
+.values--auto .values__item--active,
+.values--auto .values__item--active + .values__item {
+  border-top-color: transparent;
+}
+
+.values__marker {
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 0;
+  overflow: hidden;
+  background-color: rgba(255, 255, 255, 0.08);
+  border-radius: 18px;
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.08);
+  transition: transform 0.6s cubic-bezier(0.22, 1, 0.36, 1), height 0.6s cubic-bezier(0.22, 1, 0.36, 1);
+  pointer-events: none;
+}
+
+.values__marker-bar {
+  position: absolute;
+  right: 16px;
+  bottom: 0;
+  left: 16px;
+  height: 2px;
+  background-color: rgba(255, 255, 255, 0.55);
+  border-radius: 2px;
+  transform: scaleX(0);
+  transform-origin: left center;
+  animation: values-step var(--values-dwell, 3.4s) linear infinite;
+}
+
+.values--paused .values__marker-bar {
+  animation-play-state: paused;
+}
+
+@keyframes values-step {
+  from {
+    transform: scaleX(0);
+  }
+
+  to {
+    transform: scaleX(1);
+  }
+}
+
+.values--auto .values__icon {
+  transition: background-color 0.45s ease, transform 0.45s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+.values--auto .values__item--active .values__icon {
+  background-color: rgba(255, 255, 255, 0.2);
+  transform: scale(1.06);
+}
+
+.values--auto .values__arrow {
+  opacity: 0;
+  transform: translateX(-6px);
+  transition: opacity 0.45s ease, transform 0.45s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.values--auto .values__item--active .values__arrow {
+  opacity: 1;
+  transform: none;
 }
 
 .values__icon {

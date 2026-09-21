@@ -523,6 +523,102 @@
   --anim-delay: 1s;
 }
 
+/* ---------- about page ---------- */
+
+/* staggered cards: --a shifts the start, so --d has to be < 1 for --q to reach 1 */
+.has-anim .about-facts__item,
+.has-anim .about-journey__item,
+.has-anim .mindset-card,
+.has-anim .steps__item,
+.has-anim .flow__item {
+  --d: 0.6;
+}
+
+/* intros follow the scroll, like on the home page */
+
+.has-anim .about-team__content > *,
+.has-anim .about-team__media,
+.has-anim .about-story__content > *,
+.has-anim .about-story__media,
+.has-anim .about-story__top .about-specs,
+.has-anim .about-mindset__content > *,
+.has-anim .about-process__intro > *,
+.has-anim .about-process__aside,
+.has-anim .about-collab__content > *,
+.has-anim .about-collab__media,
+.has-anim .about-collab__top .traits,
+.has-anim .about-values__content > *,
+.has-anim .about-values__media,
+.has-anim .about-values__inner .values {
+  --d: 0.24;
+  --q: clamp(0, calc((var(--p, 1) - var(--a, 0)) / var(--d)), 1);
+
+  opacity: var(--q);
+  transform: translate3d(0, calc((1 - var(--q)) * 30px), 0);
+}
+
+.has-anim .about-team__text,
+.has-anim .about-story__text,
+.has-anim .about-mindset__text,
+.has-anim .about-process__text,
+.has-anim .about-collab__text,
+.has-anim .about-values__text {
+  --a: 0.24;
+}
+
+.has-anim .about-team__text--soft,
+.has-anim .about-mindset__text--soft,
+.has-anim .about-values__motto {
+  --a: 0.34;
+}
+
+.has-anim .about-team__btn,
+.has-anim .about-story__btn,
+.has-anim .about-collab__btn {
+  --a: 0.42;
+
+  transform: translate3d(0, calc((1 - var(--q)) * 30px), 0) scale(calc(0.94 + var(--q) * 0.06));
+}
+
+.has-anim .about-team__media,
+.has-anim .about-story__media,
+.has-anim .about-collab__media,
+.has-anim .about-values__media,
+.has-anim .about-mindset__image {
+  --a: 0.16;
+  --d: 0.32;
+}
+
+.has-anim .about-story__top .about-specs,
+.has-anim .about-process__aside,
+.has-anim .about-collab__top .traits,
+.has-anim .about-values__inner .values {
+  --a: 0.3;
+  --d: 0.3;
+}
+
+.has-anim .about-team__title,
+.has-anim .about-story__title,
+.has-anim .about-mindset__title,
+.has-anim .about-process__title,
+.has-anim .about-collab__heading,
+.has-anim .about-values__title {
+  opacity: 1;
+  transform: none;
+}
+
+.has-anim .about-team__title .split__inner,
+.has-anim .about-story__title .split__inner,
+.has-anim .about-mindset__title .split__inner,
+.has-anim .about-process__title .split__inner,
+.has-anim .about-collab__heading .split__inner,
+.has-anim .about-values__title .split__inner {
+  --wq: clamp(0, calc((var(--p, 1) - 0.06 - var(--i, 0) * 0.03) / 0.2), 1);
+
+  opacity: var(--wq);
+  transform: translate3d(0, calc((1 - var(--wq)) * 105%), 0);
+}
+
 @media (prefers-reduced-motion: reduce) {
   .has-anim [data-animate].is-inview,
   .has-anim [data-animate="split"].is-inview .split__inner {
@@ -553,6 +649,20 @@
   .has-anim .cta__tagline,
   .has-anim .cta__benefit,
   .has-anim .cta__spiral,
+  .has-anim .about-team__content > *,
+  .has-anim .about-team__media,
+  .has-anim .about-story__content > *,
+  .has-anim .about-story__media,
+  .has-anim .about-story__top .about-specs,
+  .has-anim .about-mindset__content > *,
+  .has-anim .about-process__intro > *,
+  .has-anim .about-process__aside,
+  .has-anim .about-collab__content > *,
+  .has-anim .about-collab__media,
+  .has-anim .about-collab__top .traits,
+  .has-anim .about-values__content > *,
+  .has-anim .about-values__media,
+  .has-anim .about-values__inner .values,
   .has-anim [data-split] .split__inner {
     opacity: 1;
     transform: none;

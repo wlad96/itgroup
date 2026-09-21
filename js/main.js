@@ -520,7 +520,7 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 
   if (window.matchMedia('(hover: hover)').matches) {
-    document.querySelectorAll('.service-card, .case-card, .step-card, .advantage-card').forEach((card) => {
+    document.querySelectorAll('.service-card, .case-card, .step-card, .advantage-card, .about-facts__item, .mindset-card').forEach((card) => {
       card.addEventListener('pointermove', (event) => {
         const rect = card.getBoundingClientRect();
         const x = event.clientX - rect.left;
@@ -536,6 +536,103 @@ document.addEventListener('DOMContentLoaded', () => {
         card.style.removeProperty('--px');
         card.style.removeProperty('--py');
       });
+    });
+  }
+
+  const valuesList = document.querySelector('.values');
+  const valuesItems = valuesList ? [...valuesList.querySelectorAll('.values__item')] : [];
+
+  if (valuesItems.length > 1 && !window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+    const DWELL = 3400;
+
+    const marker = document.createElement('span');
+    marker.className = 'values__marker';
+    marker.setAttribute('aria-hidden', 'true');
+
+    const bar = document.createElement('span');
+    bar.className = 'values__marker-bar';
+    marker.append(bar);
+
+    valuesList.prepend(marker);
+    valuesList.classList.add('values--auto');
+
+    let index = Math.max(0, valuesItems.findIndex((item) => item.classList.contains('values__item--active')));
+    let onScreen = false;
+    let held = false;
+
+    const placeMarker = () => {
+      const item = valuesItems[index];
+
+      marker.style.width = `${item.offsetWidth}px`;
+      marker.style.height = `${item.offsetHeight}px`;
+      marker.style.transform = `translate(${item.offsetLeft}px, ${item.offsetTop}px)`;
+    };
+
+    const setActive = (next) => {
+      index = (next + valuesItems.length) % valuesItems.length;
+
+      valuesItems.forEach((item, i) => item.classList.toggle('values__item--active', i === index));
+      placeMarker();
+    };
+
+    // the progress bar is the timer: it loops, and every lap moves the highlight on
+    const setPaused = () => valuesList.classList.toggle('values--paused', held || !onScreen);
+
+    const restartBar = () => {
+      bar.style.animation = 'none';
+      void bar.offsetWidth;
+      bar.style.animation = '';
+    };
+
+    bar.addEventListener('animationiteration', () => setActive(index + 1));
+
+    const hold = () => {
+      held = true;
+      setPaused();
+    };
+
+    const release = () => {
+      held = false;
+      restartBar();
+      setPaused();
+    };
+
+    valuesList.style.setProperty('--values-dwell', `${DWELL}ms`);
+    setActive(index);
+    setPaused();
+    document.fonts?.ready.then(placeMarker);
+
+    new IntersectionObserver((entries) => {
+      entries.forEach((entry) => {
+        const wasOff = !onScreen;
+
+        onScreen = entry.isIntersecting;
+
+        if (onScreen) {
+          placeMarker();
+          if (wasOff && !held) restartBar();
+        }
+
+        setPaused();
+      });
+    }, { threshold: 0.35 }).observe(valuesList);
+
+    if (window.matchMedia('(hover: hover)').matches) {
+      valuesItems.forEach((item, i) => {
+        item.addEventListener('pointerenter', () => {
+          hold();
+          setActive(i);
+        });
+      });
+
+      valuesList.addEventListener('pointerleave', release);
+    }
+
+    let placeFrame = 0;
+
+    window.addEventListener('resize', () => {
+      cancelAnimationFrame(placeFrame);
+      placeFrame = requestAnimationFrame(placeMarker);
     });
   }
 
