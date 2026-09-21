@@ -192,11 +192,13 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   };
 
-  document.querySelectorAll('[data-split]').forEach(splitText);
+  const motionOff = !document.documentElement.classList.contains('has-anim');
+
+  if (!motionOff) document.querySelectorAll('[data-split]').forEach(splitText);
 
   const animated = [...document.querySelectorAll('[data-animate]')];
 
-  if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+  if (motionOff) {
     animated.forEach((el) => el.classList.add('is-inview'));
   } else {
     const animObserver = new IntersectionObserver((entries) => {
@@ -290,10 +292,64 @@ document.addEventListener('DOMContentLoaded', () => {
 
     const shown = new Map();
 
-    const onceQuery = window.matchMedia('(max-width: 1024px)');
-    const peak = new Map();
+    const setProgress = (el, progress) => {
+      const value = progress.toFixed(3);
 
-    onceQuery.addEventListener('change', () => peak.clear());
+      if (shown.get(el) === value) return;
+      shown.set(el, value);
+
+      el.style.setProperty('--p', value);
+
+      if (counters.has(el)) showCount(el, progress);
+    };
+
+    const onceQuery = window.matchMedia('(max-width: 1024px)');
+
+    const TWEEN_MS = 1250;
+    const ease = (t) => (t < 0.5 ? 2 * t * t : 1 - ((2 - 2 * t) ** 2) / 2);
+
+    const tweenManaged = (el) => onceQuery.matches && !el.hasAttribute('data-progress-live');
+
+    const starts = new Map();
+    const tweening = new Set();
+    const finished = new Set();
+    let tweenFrame = 0;
+
+    const stepTweens = (now) => {
+      tweenFrame = 0;
+
+      tweening.forEach((el) => {
+        const time = Math.min(1, (now - starts.get(el)) / TWEEN_MS);
+
+        setProgress(el, ease(time));
+
+        if (time === 1) {
+          tweening.delete(el);
+          finished.add(el);
+          el.style.willChange = '';
+        }
+      });
+
+      if (tweening.size) tweenFrame = requestAnimationFrame(stepTweens);
+    };
+
+    const tweenObserver = new IntersectionObserver((entries) => {
+      entries.forEach((entry) => {
+        if (!entry.isIntersecting) return;
+
+        const el = entry.target;
+
+        tweenObserver.unobserve(el);
+
+        if (finished.has(el) || tweening.has(el)) return;
+
+        el.style.willChange = 'opacity, transform';
+        starts.set(el, performance.now());
+        tweening.add(el);
+
+        if (!tweenFrame) tweenFrame = requestAnimationFrame(stepTweens);
+      });
+    }, { rootMargin: '0px 0px -15% 0px' });
 
     const updateProgress = () => {
       const vh = window.innerHeight;
@@ -303,6 +359,8 @@ document.addEventListener('DOMContentLoaded', () => {
       const tops = progressed.map((el) => el.getBoundingClientRect().top);
 
       progressed.forEach((el, index) => {
+        if (tweenManaged(el)) return;
+
         const [from, to] = ranges.get(el);
         const top = tops[index];
         const docTop = top + scrolled;
@@ -310,26 +368,38 @@ document.addEventListener('DOMContentLoaded', () => {
         const end = Math.max(vh * to, docTop - maxScroll);
 
         const start = Math.max(Math.min(vh * from, docTop), end + 1);
-        let progress = Math.min(1, Math.max(0, (start - top) / (start - end)));
+        const progress = Math.min(1, Math.max(0, (start - top) / (start - end)));
 
-        if (onceQuery.matches && !el.hasAttribute('data-progress-live')) {
-          if (peak.has(el)) progress = 1;
-          else if (progress > 0.9) {
-            peak.set(el, 1);
-            progress = 1;
-          }
-        }
-
-        if (shown.get(el) === progress.toFixed(3)) return;
-        shown.set(el, progress.toFixed(3));
-
-        el.style.setProperty('--p', progress.toFixed(3));
-
-        if (counters.has(el)) showCount(el, progress);
+        setProgress(el, progress);
       });
     };
 
-    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+    const applyMode = () => {
+      tweenObserver.disconnect();
+
+      if (!onceQuery.matches) {
+        cancelAnimationFrame(tweenFrame);
+        tweenFrame = 0;
+        tweening.clear();
+      } else {
+        progressed.forEach((el) => {
+          if (el.hasAttribute('data-progress-live')) return;
+
+          if (finished.has(el)) {
+            setProgress(el, 1);
+            return;
+          }
+
+          if (!tweening.has(el)) setProgress(el, 0);
+
+          tweenObserver.observe(el);
+        });
+      }
+
+      updateProgress();
+    };
+
+    if (motionOff) {
       progressed.forEach((el) => el.style.setProperty('--p', '1'));
     } else {
       let progressTicking = false;
@@ -356,8 +426,10 @@ document.addEventListener('DOMContentLoaded', () => {
         staggerLists.forEach((list) => staggerObserver.observe(list));
       }
 
+      onceQuery.addEventListener('change', applyMode);
+
       setAllStaggers();
-      updateProgress();
+      applyMode();
     }
   }
 

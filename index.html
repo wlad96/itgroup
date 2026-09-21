@@ -26,7 +26,23 @@
   <link rel="stylesheet" href="css/modal.css?v=1">
   <link rel="stylesheet" href="css/anim.css?v=1">
 
-  <script>document.documentElement.classList.add("has-anim");</script>
+  <script>
+    (function () {
+      var nav = navigator;
+      var mm = window.matchMedia;
+      var weak =
+        !window.IntersectionObserver ||
+        !window.requestAnimationFrame ||
+        !mm ||
+        !(window.CSS && CSS.supports && CSS.supports("aspect-ratio", "1 / 1")) ||
+        mm("(prefers-reduced-motion: reduce)").matches ||
+        (nav.deviceMemory > 0 && nav.deviceMemory <= 2) ||
+        (nav.hardwareConcurrency > 0 && nav.hardwareConcurrency <= 2) ||
+        !!(nav.connection && nav.connection.saveData);
+
+      document.documentElement.classList.add(weak ? "no-anim" : "has-anim");
+    })();
+  </script>
 </head>
 <body>
 
