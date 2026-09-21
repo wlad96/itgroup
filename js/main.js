@@ -305,7 +305,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     const onceQuery = window.matchMedia('(max-width: 1024px)');
 
-    const TWEEN_MS = 1250;
+    const TWEEN_MS = 1000;
     const ease = (t) => (t < 0.5 ? 2 * t * t : 1 - ((2 - 2 * t) ** 2) / 2);
 
     const tweenManaged = (el) => onceQuery.matches && !el.hasAttribute('data-progress-live');
@@ -349,7 +349,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
         if (!tweenFrame) tweenFrame = requestAnimationFrame(stepTweens);
       });
-    }, { rootMargin: '0px 0px -15% 0px' });
+    }, { rootMargin: '0px 0px -5% 0px' });
 
     const updateProgress = () => {
       const vh = window.innerHeight;
