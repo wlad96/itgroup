@@ -455,7 +455,7 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 
   const idleTargets = [...document.querySelectorAll(
-    '.services__visual, .process__visual, .reviews__visual, .cta__spiral, .reviews__viewport, .page-hero__glow, .contact-hero__glow',
+    '.services__visual, .process__visual, .reviews__visual, .cta__spiral, .reviews__viewport, .page-hero__glow, .contact-hero__glow, .pf-hero__glow',
   )];
 
   if (idleTargets.length) {
@@ -963,6 +963,111 @@ document.addEventListener('DOMContentLoaded', () => {
 
       modalForm.hidden = true;
       modalSuccess.hidden = false;
+    });
+  }
+
+  const pfGrid = document.querySelector('#pf-grid');
+
+  if (pfGrid) {
+    const pfCards = [...pfGrid.children];
+    const pfEmpty = document.querySelector('#pf-empty');
+    const filterButtons = [...document.querySelectorAll('.pf-filter__btn')];
+    const sortBox = document.querySelector('[data-sort]');
+
+    let activeFilter = 'all';
+    let activeOrder = 'newest';
+
+    const applyList = () => {
+      let shown = 0;
+
+      pfCards.forEach((card) => {
+        const cats = (card.dataset.cats || '').split(' ');
+        const match = activeFilter === 'all' || cats.includes(activeFilter);
+
+        card.classList.toggle('pf-card--hidden', !match);
+        if (match) shown += 1;
+      });
+
+      const sorted = [...pfCards].sort((a, b) => {
+        if (activeOrder === 'name') return a.dataset.name.localeCompare(b.dataset.name);
+
+        const diff = Number(a.dataset.date) - Number(b.dataset.date);
+        return activeOrder === 'oldest' ? diff : -diff;
+      });
+
+      sorted.forEach((card) => pfGrid.append(card));
+
+      if (pfEmpty) pfEmpty.hidden = shown > 0;
+    };
+
+    filterButtons.forEach((button) => {
+      button.addEventListener('click', () => {
+        activeFilter = button.dataset.filter;
+
+        filterButtons.forEach((item) => {
+          item.classList.toggle('pf-filter__btn--active', item === button);
+        });
+
+        applyList();
+      });
+    });
+
+    if (sortBox) {
+      const sortBtn = sortBox.querySelector('.pf-sort__btn');
+      const sortValue = sortBox.querySelector('.pf-sort__value');
+      const sortOptions = [...sortBox.querySelectorAll('.pf-sort__option')];
+
+      const setSort = (open) => {
+        sortBox.classList.toggle('pf-sort--open', open);
+        sortBtn.setAttribute('aria-expanded', String(open));
+      };
+
+      sortBtn.addEventListener('click', () => {
+        setSort(!sortBox.classList.contains('pf-sort--open'));
+      });
+
+      sortOptions.forEach((option) => {
+        option.addEventListener('click', () => {
+          activeOrder = option.dataset.order;
+          sortValue.textContent = option.textContent;
+
+          sortOptions.forEach((item) => {
+            item.classList.toggle('pf-sort__option--active', item === option);
+          });
+
+          setSort(false);
+          applyList();
+        });
+      });
+
+      document.addEventListener('click', (event) => {
+        if (!sortBox.contains(event.target)) setSort(false);
+      });
+    }
+
+    applyList();
+  }
+
+  const pfFeatured = document.querySelector('.pf-featured');
+
+  if (pfFeatured) {
+    const slides = [...pfFeatured.querySelectorAll('[data-featured]')];
+    const dots = [...pfFeatured.querySelectorAll('.pf-featured__dot')];
+    const num = pfFeatured.querySelector('.pf-featured__num');
+
+    const showSlide = (index) => {
+      slides.forEach((slide, i) => slide.classList.toggle('pf-featured__item--active', i === index));
+
+      dots.forEach((dot, i) => {
+        dot.classList.toggle('pf-featured__dot--active', i === index);
+        dot.setAttribute('aria-selected', String(i === index));
+      });
+
+      if (num) num.textContent = String(index + 1).padStart(2, '0');
+    };
+
+    dots.forEach((dot, index) => {
+      dot.addEventListener('click', () => showSlide(index));
     });
   }
 

@@ -3,8 +3,8 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Contact — IT Group</title>
-  <meta name="description" content="Have an idea? Tell us about your project and let’s explore how we can help your business grow.">
+  <title>Portfolio — IT Group</title>
+  <meta name="description" content="Selected work by IT Group — websites, e-commerce and digital products built for real businesses.">
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -26,6 +26,7 @@
   <link rel="stylesheet" href="css/modal.css?v=1">
   <link rel="stylesheet" href="css/about.css?v=6">
   <link rel="stylesheet" href="css/contact.css?v=1">
+  <link rel="stylesheet" href="css/portfolio.css?v=1">
   <link rel="stylesheet" href="css/anim.css?v=3">
 
   <script>
@@ -161,9 +162,9 @@
               </div>
             </div>
           </li>
-          <li class="header__nav-item"><a class="header__nav-link" href="portfolio.html">Cases</a></li>
+          <li class="header__nav-item"><a class="header__nav-link header__nav-link--active" href="portfolio.html">Cases</a></li>
           <li class="header__nav-item"><a class="header__nav-link" href="index.html#blog">Blog</a></li>
-          <li class="header__nav-item"><a class="header__nav-link header__nav-link--active" href="contact.html">Contacts</a></li>
+          <li class="header__nav-item"><a class="header__nav-link" href="contact.html">Contacts</a></li>
         </ul>
         <a class="btn btn--dark header__nav-btn" data-modal-open href="#contacts">
           Get a consultation
@@ -330,212 +331,272 @@
         </button>
       </div>
     </div>
-  </div>
-  <main>
+  </div>  <main>
 
-    <section class="contact-hero" id="contact-top">
-      <div class="container contact-hero__inner">
+    <section class="pf-hero" id="portfolio-top">
+      <div class="container pf-hero__inner">
 
         <nav class="crumbs" aria-label="Breadcrumb" data-animate="fade-up">
           <ol class="crumbs__list">
             <li class="crumbs__item"><a class="crumbs__link" href="index.html">Home</a></li>
-            <li class="crumbs__item crumbs__item--current" aria-current="page">Contact</li>
+            <li class="crumbs__item crumbs__item--current" aria-current="page">Portfolio</li>
           </ol>
         </nav>
 
-        <div class="contact-hero__content">
-          <p class="contact-hero__eyebrow" data-animate="fade-up">
-            <span class="contact-hero__eyebrow-num">08</span>
-            <span class="contact-hero__eyebrow-name">Contact</span>
-          </p>
+        <div class="pf-hero__content">
+          <div class="pf-hero__tags" data-animate="fade-up">
+            <span class="tag tag--solid">Our work</span>
+            <span class="tag">01 / 05</span>
+          </div>
 
-          <h1 class="contact-hero__title" data-animate="split" data-split="words">Have an idea?<br>Let&rsquo;s make it real.</h1>
+          <h1 class="pf-hero__title" data-animate="split" data-split="words">Digital work.<br>Real impact.</h1>
 
-          <p class="contact-hero__text" data-animate="fade-up">Tell us a little about your project, and let&rsquo;s explore how we can help your business grow.</p>
+          <p class="pf-hero__text" data-animate="fade-up">We create thoughtful digital experiences that help businesses move forward.</p>
 
-          <div class="contact-hero__actions" data-animate="fade-up">
-            <a class="btn btn--dark contact-hero__btn" href="#contact-form">
-              Start a project
+          <div class="pf-hero__actions" data-animate="fade-up">
+            <a class="btn btn--dark" href="#portfolio-grid">
+              Explore our projects
               <svg class="btn__icon" viewBox="0 0 16 16" aria-hidden="true"><path d="M2.5 8h11M9 3.5 13.5 8 9 12.5"/></svg>
             </a>
           </div>
         </div>
 
-        <div class="contact-hero__media" data-animate="slide-left">
-          <span class="contact-hero__glow" aria-hidden="true"></span>
-          <img class="contact-hero__image" src="images/contact/contact-spirale.webp" width="1213" height="926"
-               alt="" fetchpriority="high" decoding="async">
+        <div class="pf-hero__media" data-animate="slide-left">
+          <span class="pf-hero__glow" aria-hidden="true"></span>
+          <img class="pf-hero__image" src="images/spiral2.webp" width="1292" height="881"
+               alt="" fetchpriority="high">
         </div>
 
-        <ul class="contact-hero__keys" data-animate="fade-up">
-          <li class="contact-hero__key">Ideas</li>
-          <li class="contact-hero__key">Technology</li>
-          <li class="contact-hero__key">People</li>
-          <li class="contact-hero__key">Results</li>
-        </ul>
-
-        <p class="contact-hero__note" data-animate="fade-up">Your next digital<br>experience starts here.</p>
       </div>
     </section>
 
-    <section class="contact-main" id="contact-form">
-      <div class="container contact-main__inner">
+    <section class="pf-work" id="portfolio-grid">
+      <div class="container">
 
-        <div class="contact-card" data-progress="0.9 0.42">
-          <div class="contact-card__head">
-            <p class="contact-card__label">Get in touch</p>
-            <h2 class="section-title contact-card__title" data-split="words">Tell us about your project.</h2>
-          </div>
+        <div class="pf-bar" data-reveal="0.94 0.6">
+          <ul class="pf-filter" role="list">
+            <li><button class="pf-filter__btn pf-filter__btn--active" type="button" data-filter="all">All</button></li>
+            <li><button class="pf-filter__btn" type="button" data-filter="web">Web Development</button></li>
+            <li><button class="pf-filter__btn" type="button" data-filter="ecommerce">E-commerce</button></li>
+            <li><button class="pf-filter__btn" type="button" data-filter="design">UI/UX Design</button></li>
+            <li><button class="pf-filter__btn" type="button" data-filter="branding">Branding</button></li>
+          </ul>
 
-          <form class="contact-form" id="contact-request" novalidate>
-            <div class="contact-form__row">
-              <div class="field">
-                <label class="field__label" for="contact-first">First name <span aria-hidden="true">*</span></label>
-                <input class="field__input" id="contact-first" name="firstName" type="text" placeholder="John"
-                       autocomplete="given-name" required>
-              </div>
+          <div class="pf-sort" data-sort>
+            <button class="pf-sort__btn" type="button" aria-expanded="false" aria-controls="pf-sort-menu">
+              Sort by
+              <span class="pf-sort__value">Newest</span>
+              <svg class="pf-sort__arrow" viewBox="0 0 12 12" aria-hidden="true"><path d="m3 4.5 3 3 3-3"/></svg>
+            </button>
 
-              <div class="field">
-                <label class="field__label" for="contact-last">Last name <span aria-hidden="true">*</span></label>
-                <input class="field__input" id="contact-last" name="lastName" type="text" placeholder="Doe"
-                       autocomplete="family-name" required>
-              </div>
-            </div>
-
-            <div class="contact-form__row">
-              <div class="field">
-                <label class="field__label" for="contact-email">Email <span aria-hidden="true">*</span></label>
-                <input class="field__input" id="contact-email" name="email" type="email" placeholder="you@company.com"
-                       autocomplete="email" required>
-              </div>
-
-              <div class="field">
-                <label class="field__label" for="contact-phone">Phone</label>
-                <input class="field__input" id="contact-phone" name="phone" type="tel" placeholder="+371 20 000 000"
-                       autocomplete="tel">
-              </div>
-            </div>
-
-            <div class="field">
-              <label class="field__label" for="contact-message">
-                Tell us briefly what you&rsquo;d like to build with us <span aria-hidden="true">*</span>
-              </label>
-              <textarea class="field__input contact-form__message" id="contact-message" name="message"
-                        placeholder="Describe your project, goals and challenges&hellip;" required></textarea>
-            </div>
-
-            <label class="checkbox contact-form__consent">
-              <input class="checkbox__input" type="checkbox" name="consent" required>
-              <span class="checkbox__mark">
-                <svg viewBox="0 0 16 16" aria-hidden="true"><path d="m3.5 8.5 3 3 6-7"/></svg>
-              </span>
-              <span class="checkbox__text">I agree to the processing of my personal data and accept the terms of the privacy policy.</span>
-            </label>
-
-            <div class="contact-form__foot">
-              <p class="contact-form__hint">
-                <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M12 7.5V12l3 2"/></svg>
-                We usually reply within 1&ndash;2 business days.
-              </p>
-
-              <button class="btn btn--dark contact-form__submit" type="submit">
-                Send request
-                <svg class="btn__icon" viewBox="0 0 16 16" aria-hidden="true"><path d="M2.5 8h11M9 3.5 13.5 8 9 12.5"/></svg>
-              </button>
-            </div>
-          </form>
-
-          <div class="contact-card__success" id="contact-success" role="status" hidden>
-            <span class="contact-card__success-icon">
-              <svg viewBox="0 0 24 24" aria-hidden="true"><path d="m5 12.5 4.5 4.5L19 7.5"/></svg>
-            </span>
-            <p class="contact-card__success-title">Thank you!</p>
-            <p class="contact-card__success-text">We&rsquo;ve received your request and will get back to you within 1&ndash;2 business days.</p>
-
-            <span class="contact-card__success-timer" aria-hidden="true">
-              <span class="contact-card__success-bar"></span>
-            </span>
-
-            <p class="contact-card__success-hint">Returning to the form&hellip;</p>
+            <ul class="pf-sort__menu" id="pf-sort-menu" role="list">
+              <li><button class="pf-sort__option pf-sort__option--active" type="button" data-order="newest">Newest</button></li>
+              <li><button class="pf-sort__option" type="button" data-order="oldest">Oldest</button></li>
+              <li><button class="pf-sort__option" type="button" data-order="name">Name A–Z</button></li>
+            </ul>
           </div>
         </div>
 
-        <aside class="dark-card contact-direct" data-progress="0.9 0.42">
-          <p class="contact-direct__label">Direct contact</p>
-          <h2 class="contact-direct__title">Prefer a direct<br>conversation?</h2>
-          <p class="contact-direct__text">We&rsquo;re always open to discussing new ideas and opportunities. Reach out to us directly.</p>
+        <div class="pf-featured" data-reveal="0.9 0.42">
+          <ul class="pf-featured__list" role="list">
+            <li class="pf-featured__item pf-featured__item--active" data-featured>
+              <div class="pf-featured__body">
+                <p class="pf-featured__label">Featured project</p>
+                <h2 class="pf-featured__title">Lanos — E-commerce platform</h2>
+                <p class="pf-featured__tags">Web Development / UI/UX Design / E-commerce</p>
+                <p class="pf-featured__text">We built a modern e-commerce platform with a focus on performance, clean design and seamless user experience.</p>
 
-          <ul class="contact-direct__list">
-            <li class="contact-direct__item">
-              <span class="contact-direct__icon">
-                <svg viewBox="0 0 24 24" aria-hidden="true">
-                  <rect x="3" y="5.5" width="18" height="13" rx="2.5"/>
-                  <path d="m3.8 7 7.1 5.2a2 2 0 0 0 2.2 0L20.2 7"/>
-                </svg>
-              </span>
-              <span class="contact-direct__body">
-                <span class="contact-direct__name">Email</span>
-                <a class="contact-direct__value" href="mailto:hello@itgroup.lv">hello@itgroup.lv</a>
-              </span>
+                <a class="link-arrow pf-featured__link" href="index.html#cases">
+                  View case study
+                  <svg class="link-arrow__icon" viewBox="0 0 16 16" aria-hidden="true"><path d="M2.5 8h11M9 3.5 13.5 8 9 12.5"/></svg>
+                </a>
+              </div>
+
+              <div class="pf-featured__media">
+                <span class="pf-featured__cat">E-commerce</span>
+                <img src="images/projects/lanos.webp" width="1200" height="800" alt="Lanos project" loading="lazy" decoding="async">
+              </div>
             </li>
 
-            <li class="contact-direct__item">
-              <span class="contact-direct__icon">
-                <svg viewBox="0 0 24 24" aria-hidden="true">
-                  <path d="M12 21s-6.5-5.6-6.5-11a6.5 6.5 0 0 1 13 0c0 5.4-6.5 11-6.5 11Z"/>
-                  <circle cx="12" cy="10" r="2.4"/>
-                </svg>
-              </span>
-              <span class="contact-direct__body">
-                <span class="contact-direct__name">Location</span>
-                <span class="contact-direct__value">Latvia / Europe / Remote</span>
-              </span>
+            <li class="pf-featured__item" data-featured>
+              <div class="pf-featured__body">
+                <p class="pf-featured__label">Featured project</p>
+                <h2 class="pf-featured__title">Smiltenes Tehnikums — School portal</h2>
+                <p class="pf-featured__tags">Web Development / UI/UX Design</p>
+                <p class="pf-featured__text">A clear, fast and accessible portal that brings together news, schedules and admissions for thousands of students.</p>
+
+                <a class="link-arrow pf-featured__link" href="index.html#cases">
+                  View case study
+                  <svg class="link-arrow__icon" viewBox="0 0 16 16" aria-hidden="true"><path d="M2.5 8h11M9 3.5 13.5 8 9 12.5"/></svg>
+                </a>
+              </div>
+
+              <div class="pf-featured__media">
+                <span class="pf-featured__cat">Corporate</span>
+                <img src="images/projects/smiltenes.webp" width="1200" height="800" alt="Smiltenes Tehnikums project" loading="lazy" decoding="async">
+              </div>
             </li>
 
-            <li class="contact-direct__item">
-              <span class="contact-direct__icon">
-                <svg viewBox="0 0 24 24" aria-hidden="true">
-                  <circle cx="12" cy="12" r="8.5"/><path d="M12 7v5l3.2 2.2"/>
-                </svg>
-              </span>
-              <span class="contact-direct__body">
-                <span class="contact-direct__name">Response time</span>
-                <span class="contact-direct__value">Usually within 1&ndash;2 business days</span>
-              </span>
+            <li class="pf-featured__item" data-featured>
+              <div class="pf-featured__body">
+                <p class="pf-featured__label">Featured project</p>
+                <h2 class="pf-featured__title">Rīgas Latviešu biedrība — Culture hub</h2>
+                <p class="pf-featured__tags">Web Development / Branding</p>
+                <p class="pf-featured__text">A digital home for one of the oldest cultural societies in Latvia, built around events, history and community.</p>
+
+                <a class="link-arrow pf-featured__link" href="index.html#cases">
+                  View case study
+                  <svg class="link-arrow__icon" viewBox="0 0 16 16" aria-hidden="true"><path d="M2.5 8h11M9 3.5 13.5 8 9 12.5"/></svg>
+                </a>
+              </div>
+
+              <div class="pf-featured__media">
+                <span class="pf-featured__cat">Branding</span>
+                <img src="images/projects/rlb.webp" width="1200" height="800" alt="Rīgas Latviešu biedrība project" loading="lazy" decoding="async">
+              </div>
             </li>
           </ul>
 
-          <a class="contact-direct__more" href="https://www.google.com/maps/place/Latvia" target="_blank" rel="noopener">
-            View on map
-            <svg viewBox="0 0 16 16" aria-hidden="true"><path d="M2.5 8h11M9 3.5 13.5 8 9 12.5"/></svg>
-          </a>
-        </aside>
-      </div>
-    </section>
+          <div class="pf-featured__nav">
+            <span class="pf-featured__num">01</span>
+            <span class="pf-featured__rule" aria-hidden="true"></span>
 
-    <section class="contact-why">
-      <div class="container contact-why__inner" data-progress="0.94 0.52">
-        <div class="contact-why__intro">
-          <p class="contact-why__label">Why IT Group</p>
-          <h2 class="section-title contact-why__title" data-split="words">Built around<br>your goals.</h2>
+            <div class="pf-featured__dots" role="tablist" aria-label="Featured projects">
+              <button class="pf-featured__dot pf-featured__dot--active" type="button" role="tab" aria-selected="true" aria-label="Project 1"></button>
+              <button class="pf-featured__dot" type="button" role="tab" aria-selected="false" aria-label="Project 2"></button>
+              <button class="pf-featured__dot" type="button" role="tab" aria-selected="false" aria-label="Project 3"></button>
+            </div>
+          </div>
         </div>
 
-        <p class="contact-why__text">From the first idea to the final launch, we stay close, communicate clearly and focus on what matters.</p>
+        <ul class="pf-grid" id="pf-grid" data-reveal-stagger>
+          <li class="pf-card" data-reveal="0.9 0.44" data-cats="web ecommerce" data-date="6" data-name="Lanos">
+            <a class="pf-card__link" href="index.html#cases">
+              <span class="pf-card__media">
+                <img src="images/projects/lanos.webp" width="1200" height="800" alt="" loading="lazy" decoding="async">
+              </span>
 
-        <ul class="contact-why__stats">
-          <li class="contact-why__stat">
-            <span class="contact-why__value" data-count="0.95 0.55">50+</span>
-            <span class="contact-why__caption">Projects</span>
+              <span class="pf-card__body">
+                <span class="pf-card__cat">E-commerce</span>
+                <span class="pf-card__row">
+                  <span class="pf-card__title">Lanos — Steel &amp; aluminium</span>
+                  <svg class="pf-card__arrow" viewBox="0 0 16 16" aria-hidden="true"><path d="M2.5 8h11M9 3.5 13.5 8 9 12.5"/></svg>
+                </span>
+                <span class="pf-card__tags">Web Development / E-commerce</span>
+              </span>
+            </a>
           </li>
-          <li class="contact-why__stat">
-            <span class="contact-why__value">Remote</span>
-            <span class="contact-why__caption">Team</span>
+
+          <li class="pf-card" data-reveal="0.9 0.44" data-cats="web design" data-date="5" data-name="Smiltenes">
+            <a class="pf-card__link" href="index.html#cases">
+              <span class="pf-card__media">
+                <img src="images/projects/smiltenes.webp" width="1200" height="800" alt="" loading="lazy" decoding="async">
+              </span>
+
+              <span class="pf-card__body">
+                <span class="pf-card__cat">Corporate Website</span>
+                <span class="pf-card__row">
+                  <span class="pf-card__title">Smiltenes Tehnikums — School portal</span>
+                  <svg class="pf-card__arrow" viewBox="0 0 16 16" aria-hidden="true"><path d="M2.5 8h11M9 3.5 13.5 8 9 12.5"/></svg>
+                </span>
+                <span class="pf-card__tags">Web Development / UI/UX Design</span>
+              </span>
+            </a>
           </li>
-          <li class="contact-why__stat">
-            <span class="contact-why__value">Direct</span>
-            <span class="contact-why__caption">Communication</span>
+
+          <li class="pf-card" data-reveal="0.9 0.44" data-cats="web branding" data-date="4" data-name="Riga">
+            <a class="pf-card__link" href="index.html#cases">
+              <span class="pf-card__media">
+                <img src="images/projects/rlb.webp" width="1200" height="800" alt="" loading="lazy" decoding="async">
+              </span>
+
+              <span class="pf-card__body">
+                <span class="pf-card__cat">Culture portal</span>
+                <span class="pf-card__row">
+                  <span class="pf-card__title">Rīgas Latviešu biedrība — Culture hub</span>
+                  <svg class="pf-card__arrow" viewBox="0 0 16 16" aria-hidden="true"><path d="M2.5 8h11M9 3.5 13.5 8 9 12.5"/></svg>
+                </span>
+                <span class="pf-card__tags">Web Development / Branding</span>
+              </span>
+            </a>
+          </li>
+
+          <li class="pf-card" data-reveal="0.9 0.44" data-cats="web ecommerce" data-date="3" data-name="Lanos">
+            <a class="pf-card__link" href="index.html#cases">
+              <span class="pf-card__media">
+                <img src="images/projects/lanos.webp" width="1200" height="800" alt="" loading="lazy" decoding="async">
+              </span>
+
+              <span class="pf-card__body">
+                <span class="pf-card__cat">E-commerce</span>
+                <span class="pf-card__row">
+                  <span class="pf-card__title">Lanos — Steel &amp; aluminium</span>
+                  <svg class="pf-card__arrow" viewBox="0 0 16 16" aria-hidden="true"><path d="M2.5 8h11M9 3.5 13.5 8 9 12.5"/></svg>
+                </span>
+                <span class="pf-card__tags">Web Development / E-commerce</span>
+              </span>
+            </a>
+          </li>
+
+          <li class="pf-card" data-reveal="0.9 0.44" data-cats="web design" data-date="2" data-name="Smiltenes">
+            <a class="pf-card__link" href="index.html#cases">
+              <span class="pf-card__media">
+                <img src="images/projects/smiltenes.webp" width="1200" height="800" alt="" loading="lazy" decoding="async">
+              </span>
+
+              <span class="pf-card__body">
+                <span class="pf-card__cat">Corporate Website</span>
+                <span class="pf-card__row">
+                  <span class="pf-card__title">Smiltenes Tehnikums — School portal</span>
+                  <svg class="pf-card__arrow" viewBox="0 0 16 16" aria-hidden="true"><path d="M2.5 8h11M9 3.5 13.5 8 9 12.5"/></svg>
+                </span>
+                <span class="pf-card__tags">Web Development / UI/UX Design</span>
+              </span>
+            </a>
+          </li>
+
+          <li class="pf-card" data-reveal="0.9 0.44" data-cats="web branding" data-date="1" data-name="Riga">
+            <a class="pf-card__link" href="index.html#cases">
+              <span class="pf-card__media">
+                <img src="images/projects/rlb.webp" width="1200" height="800" alt="" loading="lazy" decoding="async">
+              </span>
+
+              <span class="pf-card__body">
+                <span class="pf-card__cat">Culture portal</span>
+                <span class="pf-card__row">
+                  <span class="pf-card__title">Rīgas Latviešu biedrība — Culture hub</span>
+                  <svg class="pf-card__arrow" viewBox="0 0 16 16" aria-hidden="true"><path d="M2.5 8h11M9 3.5 13.5 8 9 12.5"/></svg>
+                </span>
+                <span class="pf-card__tags">Web Development / Branding</span>
+              </span>
+            </a>
           </li>
         </ul>
+
+        <p class="pf-empty" id="pf-empty" hidden>No projects in this category yet.</p>
+
+        <div class="dark-card pf-banner" data-reveal="0.92 0.5">
+          <div class="pf-banner__media">
+            <img src="images/spiral3.webp" width="1292" height="881" alt="" loading="lazy" decoding="async">
+          </div>
+
+          <div class="pf-banner__body">
+            <p class="pf-banner__label">Let’s work together</p>
+            <h2 class="pf-banner__title">Have a project in mind?</h2>
+            <p class="pf-banner__text">We’re ready to help you build something great.</p>
+
+            <a class="btn pf-banner__btn" data-modal-open href="contact.html">
+              Get in touch
+              <svg class="btn__icon" viewBox="0 0 16 16" aria-hidden="true"><path d="M2.5 8h11M9 3.5 13.5 8 9 12.5"/></svg>
+            </a>
+          </div>
+
+          <p class="pf-banner__note">
+            Your idea.<br>
+            Our expertise.
+          </p>
+        </div>
+
       </div>
     </section>
 

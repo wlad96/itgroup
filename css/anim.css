@@ -783,6 +783,62 @@ html.no-anim .cta__spiral-band,
   --d: 0.3;
 }
 
+.has-anim .pf-featured,
+.has-anim .pf-banner {
+  --qp: clamp(0, calc(var(--p, 1) / 0.34), 1);
+
+  opacity: var(--qp);
+  transform: translate3d(0, calc((1 - var(--qp)) * 46px), 0);
+}
+
+.has-anim .pf-bar > * {
+  --d: 0.3;
+  --q: clamp(0, calc((var(--p, 1) - var(--a, 0)) / var(--d)), 1);
+
+  opacity: var(--q);
+  transform: translate3d(0, calc((1 - var(--q)) * 18px), 0);
+}
+
+.has-anim .pf-bar .pf-sort {
+  --a: 0.2;
+}
+
+.has-anim .pf-featured__item--active > * {
+  --d: 0.3;
+  --q: clamp(0, calc((var(--p, 1) - var(--a, 0)) / var(--d)), 1);
+
+  opacity: var(--q);
+  transform: translate3d(0, calc((1 - var(--q)) * 24px), 0);
+}
+
+.has-anim .pf-featured__item--active .pf-featured__media {
+  --a: 0.16;
+}
+
+.has-anim .pf-banner__media,
+.has-anim .pf-banner__body,
+.has-anim .pf-banner__note {
+  --d: 0.3;
+  --q: clamp(0, calc((var(--p, 1) - var(--a, 0)) / var(--d)), 1);
+
+  opacity: var(--q);
+  transform: translate3d(0, calc((1 - var(--q)) * 22px), 0);
+}
+
+.has-anim .pf-banner__body {
+  --a: 0.14;
+}
+
+.has-anim .pf-banner__note {
+  --a: 0.26;
+}
+
+.has-anim .pf-card {
+  --d: 0.6;
+  --reveal-shift: 44px;
+}
+
+html.no-anim .pf-hero__glow,
 html.no-anim .contact-hero__glow,
 html.no-anim .page-hero__glow,
 html.no-anim .navmenu--open .navmenu__pane::before {
