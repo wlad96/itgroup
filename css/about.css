@@ -1834,15 +1834,12 @@
   border-top: 0;
 }
 
-/* ---------- auto-running highlight (added by JS) ---------- */
-
 .values--auto .values__item {
   position: relative;
   z-index: 1;
   transition: opacity 0.45s ease, border-color 0.45s ease;
 }
 
-/* the marker draws the highlight instead */
 .values--auto .values__item--active {
   background-color: transparent;
 }
@@ -2311,15 +2308,7 @@
   }
 }
 
-/* =================================================================
-   mobile refinements — rhythm, decor scale and card-shaped steps
-   (appended last on purpose: overrides the per-section blocks above)
-   ================================================================= */
-
 @media (max-width: 768px) {
-
-  /* ---------- vertical rhythm, matched to the home page ---------- */
-
   .page-hero {
     padding-block: 24px 48px;
   }
@@ -2351,8 +2340,6 @@
     padding-top: 32px;
   }
 
-  /* ---------- hero: text first, ribbon after and much smaller ---------- */
-
   .page-hero__inner {
     grid-template-areas:
       "crumbs"
@@ -2366,10 +2353,6 @@
     width: 38%;
   }
 
-  /* ---------- every ribbon gets the same ceiling ---------- */
-
-  /* width stays 100% so lazy images still reserve space from their
-     width/height attributes; the caps do the shrinking */
   .page-hero__image,
   .about-team__image,
   .about-story__image,
@@ -2384,8 +2367,6 @@
     margin-inline: auto;
   }
 
-  /* ---------- dark cards: into the flow, full width ---------- */
-
   .about-team__media,
   .about-collab__media {
     display: block;
@@ -2399,8 +2380,6 @@
     width: 100%;
     margin-top: 18px;
   }
-
-  /* ---------- steps 01-04: row cards on a timeline ---------- */
 
   .steps {
     grid-template-columns: minmax(0, 1fr);
@@ -2422,7 +2401,6 @@
     margin-top: 14px;
   }
 
-  /* connector between the rows */
   .steps__item:not(:last-child)::after {
     content: "";
     position: absolute;
@@ -2433,7 +2411,6 @@
     background-color: #cdd7e0;
   }
 
-  /* fixed slot: the row keeps its height even before the icon loads */
   .steps__figure {
     flex-shrink: 0;
     width: 84px;
@@ -2481,7 +2458,6 @@
     display: none;
   }
 
-  /* the dark step: the whole row goes dark, not just its text half */
   .steps__item--dark {
     color: #fff;
     background: linear-gradient(160deg, #283742 0%, #1b2731 55%, #141e26 100%);
@@ -2510,8 +2486,6 @@
   .steps__item--dark .steps__text {
     color: rgba(255, 255, 255, 0.75);
   }
-
-  /* ---------- flow 01-04: the same rows ---------- */
 
   .flow {
     grid-template-columns: minmax(0, 1fr);
@@ -2555,8 +2529,6 @@
     height: 12px;
     background-color: #cdd7e0;
   }
-
-  /* ---------- traits: separators instead of loose spacing ---------- */
 
   .traits {
     gap: 0;

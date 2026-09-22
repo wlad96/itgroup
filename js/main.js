@@ -455,7 +455,7 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 
   const idleTargets = [...document.querySelectorAll(
-    '.services__visual, .process__visual, .reviews__visual, .cta__spiral, .reviews__viewport, .page-hero__glow, .contact-hero__glow, .pf-hero__glow',
+    '.services__visual, .process__visual, .reviews__visual, .cta__spiral, .reviews__viewport, .page-hero__glow, .contact-hero__glow, .pf-hero__glow, .pd-results__glow',
   )];
 
   if (idleTargets.length) {
@@ -575,7 +575,6 @@ document.addEventListener('DOMContentLoaded', () => {
       placeMarker();
     };
 
-    // the progress bar is the timer: it loops, and every lap moves the highlight on
     const setPaused = () => valuesList.classList.toggle('values--paused', held || !onScreen);
 
     const restartBar = () => {
@@ -1186,6 +1185,187 @@ document.addEventListener('DOMContentLoaded', () => {
     track.addEventListener('pointercancel', endDrag);
 
     play();
+  }
+
+  const pdSteps = document.querySelector('.pd-steps');
+  const stepItems = pdSteps ? [...pdSteps.querySelectorAll('.pd-steps__item')] : [];
+
+  if (stepItems.length > 1 && !motionOff) {
+    const DWELL = 3200;
+
+    let index = 0;
+    let onScreen = false;
+    let held = false;
+
+    const setActive = (next) => {
+      index = (next + stepItems.length) % stepItems.length;
+      stepItems.forEach((item, i) => item.classList.toggle('pd-steps__item--active', i === index));
+    };
+
+    const setPaused = () => pdSteps.classList.toggle('pd-steps--paused', held || !onScreen);
+
+    const restart = () => {
+      const item = stepItems[index];
+
+      item.classList.remove('pd-steps__item--active');
+      void item.offsetWidth;
+      item.classList.add('pd-steps__item--active');
+    };
+
+    pdSteps.style.setProperty('--steps-dwell', `${DWELL}ms`);
+    pdSteps.classList.add('pd-steps--auto');
+    setPaused();
+
+    pdSteps.addEventListener('animationend', (event) => {
+      if (event.animationName === 'pd-step-fill') setActive(index + 1);
+    });
+
+    new IntersectionObserver((entries) => {
+      entries.forEach((entry) => {
+        onScreen = entry.isIntersecting;
+        setPaused();
+      });
+    }, { threshold: 0.4 }).observe(pdSteps);
+
+    stepItems.forEach((item, i) => {
+      item.addEventListener('click', () => {
+        setActive(i);
+        restart();
+      });
+    });
+
+    if (window.matchMedia('(hover: hover)').matches) {
+      stepItems.forEach((item, i) => {
+        item.addEventListener('pointerenter', () => {
+          held = true;
+          setActive(i);
+          setPaused();
+        });
+      });
+
+      pdSteps.addEventListener('pointerleave', () => {
+        held = false;
+        restart();
+        setPaused();
+      });
+    }
+  }
+
+  const pdGallery = document.querySelector('.pd-gallery');
+
+  if (pdGallery) {
+    const viewport = pdGallery.querySelector('.pd-gallery__viewport');
+    const items = [...pdGallery.querySelectorAll('.pd-gallery__item')];
+    const current = pdGallery.querySelector('.pd-gallery__current');
+    const prev = pdGallery.querySelector('.pd-gallery__arrow--prev');
+    const next = pdGallery.querySelector('.pd-gallery__arrow--next');
+
+    const EDGE = 4;
+    const SETTLE_TIME = 700;
+
+    const pad = (n) => String(n).padStart(2, '0');
+    const maxScroll = () => Math.max(0, viewport.scrollWidth - viewport.clientWidth);
+    const offsets = () => items.map((item) => Math.min(item.offsetLeft - items[0].offsetLeft, maxScroll()));
+
+    pdGallery.querySelector('.pd-gallery__total').textContent = pad(items.length);
+
+    const update = () => {
+      const x = viewport.scrollLeft;
+      const max = maxScroll();
+      const stops = offsets();
+
+      let active = 0;
+
+      stops.forEach((stop, i) => {
+        if (Math.abs(stop - x) < Math.abs(stops[active] - x)) active = i;
+      });
+
+      if (x >= max - EDGE) active = items.length - 1;
+
+      current.textContent = pad(active + 1);
+      prev.disabled = x <= EDGE;
+      next.disabled = x >= max - EDGE;
+    };
+
+    const scrollToStop = (left) => {
+      viewport.scrollTo({ left, behavior: motionOff ? 'auto' : 'smooth' });
+    };
+
+    const step = (dir) => {
+      const x = viewport.scrollLeft;
+      const stops = offsets();
+
+      const target = dir > 0
+        ? stops.find((stop) => stop > x + EDGE)
+        : [...stops].reverse().find((stop) => stop < x - EDGE);
+
+      scrollToStop(target ?? (dir > 0 ? maxScroll() : 0));
+    };
+
+    prev.addEventListener('click', () => step(-1));
+    next.addEventListener('click', () => step(1));
+
+    let updateFrame = 0;
+
+    const requestUpdate = () => {
+      cancelAnimationFrame(updateFrame);
+      updateFrame = requestAnimationFrame(update);
+    };
+
+    viewport.addEventListener('scroll', update, { passive: true });
+    window.addEventListener('resize', requestUpdate);
+
+    let dragging = false;
+    let startX = 0;
+    let startScroll = 0;
+    let moved = 0;
+    let settleTimer;
+
+    viewport.addEventListener('pointerdown', (event) => {
+      if (event.pointerType !== 'mouse' || event.button !== 0) return;
+
+      dragging = true;
+      moved = 0;
+      startX = event.clientX;
+      startScroll = viewport.scrollLeft;
+      viewport.setPointerCapture(event.pointerId);
+    });
+
+    viewport.addEventListener('pointermove', (event) => {
+      if (!dragging) return;
+
+      const dx = event.clientX - startX;
+
+      if (!moved && Math.abs(dx) < EDGE) return;
+
+      moved = dx;
+      clearTimeout(settleTimer);
+      viewport.classList.add('pd-gallery__viewport--dragging');
+      viewport.scrollLeft = startScroll - dx;
+    });
+
+    const endDrag = () => {
+      if (!dragging) return;
+      dragging = false;
+
+      if (!moved) return;
+
+      const aim = viewport.scrollLeft - moved * 0.35;
+      const stops = [...new Set(offsets())];
+
+      const target = stops.reduce((best, stop) => (Math.abs(stop - aim) < Math.abs(best - aim) ? stop : best), stops[0]);
+
+      scrollToStop(target);
+
+      settleTimer = window.setTimeout(() => {
+        viewport.classList.remove('pd-gallery__viewport--dragging');
+      }, SETTLE_TIME);
+    };
+
+    viewport.addEventListener('pointerup', endDrag);
+    viewport.addEventListener('pointercancel', endDrag);
+
+    update();
   }
 
   const contactForm = document.querySelector('#contact-request');

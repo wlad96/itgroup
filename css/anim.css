@@ -523,9 +523,6 @@
   --anim-delay: 1s;
 }
 
-/* ---------- about page ---------- */
-
-/* staggered cards: --a shifts the start, so --d has to be < 1 for --q to reach 1 */
 .has-anim .about-facts__item,
 .has-anim .about-journey__item,
 .has-anim .mindset-card,
@@ -533,8 +530,6 @@
 .has-anim .flow__item {
   --d: 0.6;
 }
-
-/* intros follow the scroll, like on the home page */
 
 .has-anim .about-team__content > *,
 .has-anim .about-team__media,
@@ -673,12 +668,6 @@
   }
 }
 
-html.no-anim .services__spiral,
-html.no-anim .process__spiral,
-html.no-anim .reviews__spiral,
-html.no-anim .reviews__item--active .review-card::after,
-html.no-anim .cta__glow,
-html.no-anim .cta__spiral-band,
 .has-anim .contact-card,
 .has-anim .contact-direct,
 .has-anim .contact-why__inner {
@@ -838,6 +827,174 @@ html.no-anim .cta__spiral-band,
   --reveal-shift: 44px;
 }
 
+.has-anim .pd-overview__content > *,
+.has-anim .pd-overview__media,
+.has-anim .pd-split__content > *,
+.has-anim .pd-split__media,
+.has-anim .pd-points__item,
+.has-anim .pd-steps__item,
+.has-anim .pd-gallery__intro > *,
+.has-anim .pd-gallery__nav,
+.has-anim .pd-gallery__item,
+.has-anim .pd-results__content > *,
+.has-anim .pd-results__stat,
+.has-anim .pd-results__btn {
+  --d: 0.24;
+  --q: clamp(0, calc((var(--p, 1) - var(--a, 0)) / var(--d)), 1);
+
+  opacity: var(--q);
+  transform: translate3d(0, calc((1 - var(--q)) * 30px), 0);
+}
+
+.has-anim .pd-text,
+.has-anim .pd-results__text {
+  --a: 0.2;
+}
+
+.has-anim .pd-overview__link,
+.has-anim .pd-split__content .pd-btn-line {
+  --a: 0.34;
+
+  transform: translate3d(0, calc((1 - var(--q)) * 30px), 0) scale(calc(0.94 + var(--q) * 0.06));
+}
+
+.has-anim .pd-split__content .pd-points {
+  opacity: 1;
+  transform: none;
+}
+
+.has-anim .pd-points__item {
+  --d: 0.26;
+  --a: calc(0.3 + var(--n, 0) * 0.07);
+
+  transform: translate3d(calc((1 - var(--q)) * 26px), 0, 0);
+}
+
+.has-anim .pd-points__item:nth-child(2),
+.has-anim .pd-steps__item:nth-child(2),
+.has-anim .pd-results__stat:nth-child(2) {
+  --n: 1;
+}
+
+.has-anim .pd-points__item:nth-child(3),
+.has-anim .pd-steps__item:nth-child(3),
+.has-anim .pd-results__stat:nth-child(3) {
+  --n: 2;
+}
+
+.has-anim .pd-points__item:nth-child(4),
+.has-anim .pd-steps__item:nth-child(4) {
+  --n: 3;
+}
+
+.has-anim .pd-overview__media,
+.has-anim .pd-split__media {
+  --a: 0.1;
+  --d: 0.36;
+
+  transform: translate3d(0, calc((1 - var(--q)) * 44px), 0) scale(calc(0.96 + var(--q) * 0.04));
+}
+
+.has-anim .pd-approach__visual.pd-split__media {
+  transform: translate3d(calc((1 - var(--q)) * 60px), 0, 0);
+}
+
+.has-anim .pd-steps__item {
+  --d: 0.22;
+  --a: calc(0.34 + var(--n, 0) * 0.08);
+}
+
+.has-anim .pd-gallery__nav {
+  --a: 0.24;
+}
+
+.has-anim .pd-gallery__item {
+  --d: 0.36;
+  --a: calc(var(--n, 0) * 0.08);
+
+  transform: translate3d(calc((1 - var(--q)) * 90px), 0, 0);
+}
+
+.has-anim .pd-gallery__item:nth-child(2) {
+  --n: 1;
+}
+
+.has-anim .pd-gallery__item:nth-child(3) {
+  --n: 2;
+}
+
+.has-anim .pd-gallery__item:nth-child(4) {
+  --n: 3;
+}
+
+.has-anim .pd-gallery__item:nth-child(5) {
+  --n: 4;
+}
+
+.has-anim .pd-gallery__item:nth-child(6) {
+  --n: 5;
+}
+
+.has-anim .pd-results__card {
+  --qp: clamp(0, calc(var(--p, 1) / 0.34), 1);
+
+  opacity: var(--qp);
+  transform: translate3d(0, calc((1 - var(--qp)) * 46px), 0);
+}
+
+.has-anim .pd-results__content > * {
+  --a: 0.12;
+}
+
+.has-anim .pd-results__content .pd-results__text {
+  --a: 0.3;
+}
+
+.has-anim .pd-results__stat {
+  --a: calc(0.34 + var(--n, 0) * 0.08);
+}
+
+.has-anim .pd-results__btn {
+  --a: 0.56;
+}
+
+.has-anim .pd-results__glow {
+  --q: clamp(0, calc((var(--p, 1) - 0.08) / 0.5), 1);
+
+  opacity: var(--q);
+  transform: translate3d(calc((1 - var(--q)) * 70px), 0, 0);
+}
+
+.has-anim .pd-title,
+.has-anim .pd-results__title {
+  opacity: 1;
+  transform: none;
+}
+
+.has-anim .pd-title .split__inner,
+.has-anim .pd-results__title .split__inner {
+  --wq: clamp(0, calc((var(--p, 1) - 0.06 - var(--i, 0) * 0.03) / 0.2), 1);
+
+  opacity: var(--wq);
+  transform: translate3d(0, calc((1 - var(--wq)) * 105%), 0);
+}
+
+.has-anim .pd-results__title .split__inner {
+  --wq: clamp(0, calc((var(--p, 1) - 0.16 - var(--i, 0) * 0.025) / 0.2), 1);
+}
+
+.has-anim .pd-stats__item {
+  --d: 0.6;
+}
+
+html.no-anim .services__spiral,
+html.no-anim .process__spiral,
+html.no-anim .reviews__spiral,
+html.no-anim .reviews__item--active .review-card::after,
+html.no-anim .cta__glow,
+html.no-anim .cta__spiral-band,
+html.no-anim .pd-results__petals,
+html.no-anim .pd-results__flare,
 html.no-anim .pf-featured__dot--active::after,
 html.no-anim .pf-hero__glow,
 html.no-anim .contact-hero__glow,
