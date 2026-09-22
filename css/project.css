@@ -863,6 +863,10 @@
     gap: 36px;
   }
 
+  .pd-split--reverse {
+    row-gap: 44px;
+  }
+
   .pd-overview__top {
     margin-bottom: 44px;
   }
@@ -918,7 +922,8 @@
   }
 
   .pd-approach__art {
-    min-height: 0;
+    align-self: start;
+    min-height: clamp(220px, 62vw, 460px);
     aspect-ratio: 16 / 11;
   }
 
