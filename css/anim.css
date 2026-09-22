@@ -679,6 +679,111 @@ html.no-anim .reviews__spiral,
 html.no-anim .reviews__item--active .review-card::after,
 html.no-anim .cta__glow,
 html.no-anim .cta__spiral-band,
+.has-anim .contact-card,
+.has-anim .contact-direct,
+.has-anim .contact-why__inner {
+  --qp: clamp(0, calc(var(--p, 1) / 0.34), 1);
+
+  opacity: var(--qp);
+  transform: translate3d(0, calc((1 - var(--qp)) * 48px), 0);
+}
+
+.has-anim .contact-card__head > *,
+.has-anim .contact-form > *,
+.has-anim .contact-direct > *,
+.has-anim .contact-why__intro > *,
+.has-anim .contact-why__text,
+.has-anim .contact-why__stat {
+  --d: 0.26;
+  --q: clamp(0, calc((var(--p, 1) - var(--a, 0)) / var(--d)), 1);
+
+  opacity: var(--q);
+  transform: translate3d(0, calc((1 - var(--q)) * 28px), 0);
+}
+
+.has-anim .contact-card__label {
+  --a: 0.08;
+}
+
+.has-anim .contact-card__title,
+.has-anim .contact-why__title {
+  opacity: 1;
+  transform: none;
+}
+
+.has-anim .contact-card__title .split__inner,
+.has-anim .contact-why__title .split__inner {
+  --wq: clamp(0, calc((var(--p, 1) - 0.14 - var(--i, 0) * 0.03) / 0.2), 1);
+
+  opacity: var(--wq);
+  transform: translate3d(0, calc((1 - var(--wq)) * 105%), 0);
+}
+
+.has-anim .contact-form > *:nth-child(1) {
+  --a: 0.3;
+}
+
+.has-anim .contact-form > *:nth-child(2) {
+  --a: 0.38;
+}
+
+.has-anim .contact-form > *:nth-child(3) {
+  --a: 0.46;
+}
+
+.has-anim .contact-form > *:nth-child(4) {
+  --a: 0.54;
+}
+
+.has-anim .contact-form > *:nth-child(5) {
+  --a: 0.62;
+}
+
+.has-anim .contact-direct__label {
+  --a: 0.1;
+}
+
+.has-anim .contact-direct__title {
+  --a: 0.18;
+}
+
+.has-anim .contact-direct__text {
+  --a: 0.28;
+}
+
+.has-anim .contact-direct__list {
+  --a: 0.38;
+}
+
+.has-anim .contact-direct__more {
+  --a: 0.5;
+}
+
+.has-anim .contact-why__intro > * {
+  --a: 0.08;
+}
+
+.has-anim .contact-why__text {
+  --a: 0.26;
+}
+
+.has-anim .contact-why__stat:nth-child(1) {
+  --a: 0.38;
+}
+
+.has-anim .contact-why__stat:nth-child(2) {
+  --a: 0.48;
+}
+
+.has-anim .contact-why__stat:nth-child(3) {
+  --a: 0.58;
+}
+
+.has-anim .contact-hero__key {
+  --d: 0.3;
+}
+
+html.no-anim .contact-hero__glow,
 html.no-anim .page-hero__glow,
 html.no-anim .navmenu--open .navmenu__pane::before {
   animation: none !important;

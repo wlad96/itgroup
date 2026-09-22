@@ -455,7 +455,7 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 
   const idleTargets = [...document.querySelectorAll(
-    '.services__visual, .process__visual, .reviews__visual, .cta__spiral, .reviews__viewport, .page-hero__glow',
+    '.services__visual, .process__visual, .reviews__visual, .cta__spiral, .reviews__viewport, .page-hero__glow, .contact-hero__glow',
   )];
 
   if (idleTargets.length) {
@@ -963,6 +963,26 @@ document.addEventListener('DOMContentLoaded', () => {
 
       modalForm.hidden = true;
       modalSuccess.hidden = false;
+    });
+  }
+
+  const contactForm = document.querySelector('#contact-request');
+  const contactSuccess = document.querySelector('#contact-success');
+
+  if (contactForm && contactSuccess) {
+    contactForm.addEventListener('submit', (event) => {
+      event.preventDefault();
+      contactForm.classList.add('contact-form--checked');
+
+      if (!contactForm.checkValidity()) {
+        contactForm.reportValidity();
+        return;
+      }
+
+      contactForm.hidden = true;
+      contactSuccess.hidden = false;
+      contactSuccess.setAttribute('tabindex', '-1');
+      contactSuccess.focus({ preventScroll: true });
     });
   }
 
