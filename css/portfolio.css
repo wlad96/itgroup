@@ -224,6 +224,13 @@
 
 .pf-featured__list {
   display: grid;
+  touch-action: pan-y;
+  cursor: grab;
+}
+
+.pf-featured--dragging .pf-featured__list {
+  cursor: grabbing;
+  user-select: none;
 }
 
 .pf-featured__item {
@@ -234,11 +241,19 @@
   column-gap: 32px;
   opacity: 0;
   visibility: hidden;
-  transform: translate3d(5%, 0, 0);
+  transform: translate3d(var(--from, 5%), 0, 0);
   transition:
     opacity 0.5s ease,
     transform 0.75s cubic-bezier(0.22, 1, 0.36, 1),
     visibility 0.5s;
+}
+
+.pf-featured--back {
+  --from: -5%;
+}
+
+.pf-featured--dragging .pf-featured__item {
+  transition: none;
 }
 
 .pf-featured__item--active {
@@ -429,6 +444,41 @@
 .pf-featured__dot--active {
   width: 26px;
   background-color: var(--color-dark);
+}
+
+.pf-featured--auto .pf-featured__dot {
+  position: relative;
+  overflow: hidden;
+}
+
+.pf-featured--auto .pf-featured__dot--active {
+  background-color: #c2ccd6;
+}
+
+.pf-featured--auto .pf-featured__dot--active::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background-color: var(--color-dark);
+  border-radius: inherit;
+  transform-origin: left center;
+  animation: pf-dot-fill var(--slide-time, 6s) linear forwards;
+}
+
+.pf-featured--auto.pf-featured--held .pf-featured__dot--active::after,
+.pf-featured--auto.pf-featured--off .pf-featured__dot--active::after,
+.pf-featured--auto.pf-featured--dragging .pf-featured__dot--active::after {
+  animation-play-state: paused;
+}
+
+@keyframes pf-dot-fill {
+  from {
+    transform: scaleX(0);
+  }
+
+  to {
+    transform: scaleX(1);
+  }
 }
 
 .pf-grid {

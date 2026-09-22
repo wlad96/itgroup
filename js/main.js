@@ -1051,12 +1051,31 @@ document.addEventListener('DOMContentLoaded', () => {
   const pfFeatured = document.querySelector('.pf-featured');
 
   if (pfFeatured) {
+    const track = pfFeatured.querySelector('.pf-featured__list');
     const slides = [...pfFeatured.querySelectorAll('[data-featured]')];
     const dots = [...pfFeatured.querySelectorAll('.pf-featured__dot')];
     const num = pfFeatured.querySelector('.pf-featured__num');
 
-    const showSlide = (index) => {
-      slides.forEach((slide, i) => slide.classList.toggle('pf-featured__item--active', i === index));
+    const SLIDE_TIME = 6000;
+    const DRAG_MIN = 60;
+    const autoplay = slides.length > 1 && !motionOff;
+
+    let index = 0;
+    let timer = 0;
+    let held = false;
+    let onScreen = true;
+
+    pfFeatured.style.setProperty('--slide-time', `${SLIDE_TIME}ms`);
+    pfFeatured.classList.toggle('pf-featured--auto', autoplay);
+
+    const showSlide = (next, back) => {
+      index = (next + slides.length) % slides.length;
+
+      pfFeatured.classList.toggle('pf-featured--back', Boolean(back));
+
+      slides.forEach((slide, i) => {
+        slide.classList.toggle('pf-featured__item--active', i === index);
+      });
 
       dots.forEach((dot, i) => {
         dot.classList.toggle('pf-featured__dot--active', i === index);
@@ -1066,9 +1085,107 @@ document.addEventListener('DOMContentLoaded', () => {
       if (num) num.textContent = String(index + 1).padStart(2, '0');
     };
 
-    dots.forEach((dot, index) => {
-      dot.addEventListener('click', () => showSlide(index));
+    const stop = () => {
+      clearInterval(timer);
+      timer = 0;
+    };
+
+    const play = () => {
+      if (!autoplay || timer || held || !onScreen || document.hidden) return;
+      timer = setInterval(() => showSlide(index + 1), SLIDE_TIME);
+    };
+
+    const setHeld = (state) => {
+      held = state;
+      pfFeatured.classList.toggle('pf-featured--held', state);
+
+      if (state) stop();
+      else play();
+    };
+
+    const restart = () => {
+      stop();
+      play();
+    };
+
+    dots.forEach((dot, i) => {
+      dot.addEventListener('click', () => {
+        if (i === index) return;
+
+        showSlide(i, i < index);
+        restart();
+      });
     });
+
+    if (window.matchMedia('(hover: hover)').matches) {
+      pfFeatured.addEventListener('pointerenter', () => setHeld(true));
+      pfFeatured.addEventListener('pointerleave', () => setHeld(false));
+    }
+
+    const featuredObserver = new IntersectionObserver((entries) => {
+      entries.forEach((entry) => {
+        onScreen = entry.isIntersecting;
+        pfFeatured.classList.toggle('pf-featured--off', !onScreen);
+
+        if (onScreen) play();
+        else stop();
+      });
+    }, { threshold: 0.2 });
+
+    featuredObserver.observe(pfFeatured);
+
+    document.addEventListener('visibilitychange', () => {
+      if (document.hidden) stop();
+      else play();
+    });
+
+    let startX = 0;
+    let shift = 0;
+    let dragging = false;
+
+    track.addEventListener('pointerdown', (event) => {
+      if (event.button !== 0 || slides.length < 2) return;
+
+      dragging = true;
+      startX = event.clientX;
+      shift = 0;
+
+      track.setPointerCapture(event.pointerId);
+      pfFeatured.classList.add('pf-featured--dragging');
+      stop();
+    });
+
+    track.addEventListener('pointermove', (event) => {
+      if (!dragging) return;
+
+      shift = event.clientX - startX;
+      slides[index].style.transform = `translate3d(${(shift * 0.35).toFixed(1)}px, 0, 0)`;
+    });
+
+    const endDrag = () => {
+      if (!dragging) return;
+      dragging = false;
+
+      pfFeatured.classList.remove('pf-featured--dragging');
+      slides[index].style.transform = '';
+
+      if (Math.abs(shift) > 8) {
+        track.addEventListener('click', (event) => {
+          event.preventDefault();
+          event.stopPropagation();
+        }, { capture: true, once: true });
+      }
+
+      if (Math.abs(shift) > DRAG_MIN) showSlide(index + (shift < 0 ? 1 : -1), shift > 0);
+
+      shift = 0;
+      play();
+    };
+
+    track.addEventListener('pointerup', endDrag);
+    track.addEventListener('pointercancel', endDrag);
+
+    play();
   }
 
   const contactForm = document.querySelector('#contact-request');

@@ -838,6 +838,7 @@ html.no-anim .cta__spiral-band,
   --reveal-shift: 44px;
 }
 
+html.no-anim .pf-featured__dot--active::after,
 html.no-anim .pf-hero__glow,
 html.no-anim .contact-hero__glow,
 html.no-anim .page-hero__glow,
