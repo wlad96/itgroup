@@ -970,6 +970,32 @@ document.addEventListener('DOMContentLoaded', () => {
   const contactSuccess = document.querySelector('#contact-success');
 
   if (contactForm && contactSuccess) {
+    const SUCCESS_TIME = 6000;
+    const LEAVE_TIME = 360;
+
+    contactSuccess.style.setProperty('--success-time', `${SUCCESS_TIME}ms`);
+
+    let leaveTimer;
+    let returnTimer;
+
+    const restoreForm = () => {
+      contactSuccess.hidden = true;
+      contactSuccess.style.minHeight = '';
+      contactSuccess.classList.remove('contact-card__success--leaving');
+
+      contactForm.reset();
+      contactForm.classList.remove('contact-form--checked');
+      contactForm.hidden = false;
+
+      contactForm.classList.remove('contact-form--returning');
+      void contactForm.offsetWidth;
+      contactForm.classList.add('contact-form--returning');
+    };
+
+    contactForm.addEventListener('animationend', (event) => {
+      if (event.target === contactForm) contactForm.classList.remove('contact-form--returning');
+    });
+
     contactForm.addEventListener('submit', (event) => {
       event.preventDefault();
       contactForm.classList.add('contact-form--checked');
@@ -979,10 +1005,20 @@ document.addEventListener('DOMContentLoaded', () => {
         return;
       }
 
+      clearTimeout(leaveTimer);
+      clearTimeout(returnTimer);
+
+      contactSuccess.style.minHeight = `${Math.round(contactForm.getBoundingClientRect().height)}px`;
+
       contactForm.hidden = true;
       contactSuccess.hidden = false;
       contactSuccess.setAttribute('tabindex', '-1');
       contactSuccess.focus({ preventScroll: true });
+
+      leaveTimer = setTimeout(() => {
+        contactSuccess.classList.add('contact-card__success--leaving');
+        returnTimer = setTimeout(restoreForm, LEAVE_TIME);
+      }, SUCCESS_TIME);
     });
   }
 
