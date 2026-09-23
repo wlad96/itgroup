@@ -26,7 +26,7 @@
 .hero__title {
   max-width: 700px;
   margin-bottom: 28px;
-  font-size: 76px;
+  font-size: 66px;
   font-weight: 500;
   line-height: 1;
   letter-spacing: -0.035em;
@@ -46,6 +46,32 @@
   align-items: center;
   flex-wrap: wrap;
   gap: 20px 36px;
+}
+
+.hero__facts {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px 24px;
+  margin-top: 36px;
+  font-size: 14px;
+  line-height: 1.4;
+  color: var(--color-text-secondary);
+}
+
+.hero__fact {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.hero__fact::before {
+  content: "";
+  flex-shrink: 0;
+  width: 16px;
+  height: 16px;
+  background-color: var(--color-dark);
+  -webkit-mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16' fill='none' stroke='%23000' stroke-width='1.6' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='m3.5 8.5 3 3 6-7'/%3E%3C/svg%3E") center / contain no-repeat;
+  mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16' fill='none' stroke='%23000' stroke-width='1.6' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='m3.5 8.5 3 3 6-7'/%3E%3C/svg%3E") center / contain no-repeat;
 }
 
 .play {
@@ -75,6 +101,15 @@
   height: 20px;
   margin-left: 3px;
   fill: currentColor;
+}
+
+.play__icon--arrow svg {
+  margin-left: 0;
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 1.5;
+  stroke-linecap: round;
+  stroke-linejoin: round;
 }
 
 .play:hover .play__icon {

@@ -184,6 +184,42 @@
   color: var(--color-muted);
 }
 
+.step-card__meta {
+  display: grid;
+  gap: 14px;
+  margin-top: auto;
+  padding-top: 20px;
+  border-top: 1px solid rgba(20, 28, 35, 0.08);
+}
+
+.step-card__row {
+  display: grid;
+  gap: 4px;
+}
+
+.step-card__row dt {
+  font-size: 12px;
+  font-weight: 500;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: #9aa8b4;
+}
+
+.step-card__row dd {
+  margin: 0;
+  font-size: 15px;
+  font-weight: 500;
+  line-height: 1.4;
+}
+
+.step-card--dark .step-card__meta {
+  border-top-color: rgba(255, 255, 255, 0.12);
+}
+
+.step-card--dark .step-card__row dt {
+  color: rgba(255, 255, 255, 0.5);
+}
+
 .step-card__more {
   display: inline-flex;
   align-items: center;

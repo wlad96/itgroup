@@ -515,6 +515,10 @@
   --anim-delay: 0.78s;
 }
 
+.hero__facts {
+  --anim-delay: 0.9s;
+}
+
 .hero__image {
   --anim-delay: 0.1s;
 }
