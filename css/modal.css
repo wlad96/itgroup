@@ -228,6 +228,18 @@ textarea.field__input {
   cursor: pointer;
 }
 
+.checkbox__link {
+  color: var(--color-dark);
+  text-decoration: underline;
+  text-decoration-color: #c3ced7;
+  text-underline-offset: 3px;
+  transition: text-decoration-color var(--transition);
+}
+
+.checkbox__link:hover {
+  text-decoration-color: currentColor;
+}
+
 .checkbox__input {
   position: absolute;
   width: 1px;

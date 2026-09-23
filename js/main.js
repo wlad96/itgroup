@@ -520,7 +520,7 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 
   if (window.matchMedia('(hover: hover)').matches) {
-    document.querySelectorAll('.service-card, .case-card, .step-card, .advantage-card, .about-facts__item, .mindset-card').forEach((card) => {
+    document.querySelectorAll('.service-card, .case-card, .step-card, .advantage-card, .about-facts__item, .mindset-card, .bl-card__link, .bl-guide__link').forEach((card) => {
       card.addEventListener('pointermove', (event) => {
         const rect = card.getBoundingClientRect();
         const x = event.clientX - rect.left;

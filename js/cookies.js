@@ -165,7 +165,7 @@
       <span class="cookie__icon">${COOKIE}</span>
       <h2 class="cookie__title" id="cookie-title">We use cookies</h2>
     </div>
-    <p class="cookie__text">Necessary cookies keep the site working. With your consent, we’d also use analytics and marketing cookies to see how the site is used and improve it. You can change your choice at any time.</p>
+    <p class="cookie__text">Necessary cookies keep the site working. With your consent, we’d also use analytics and marketing cookies to see how the site is used and improve it. You can change your choice at any time. <a class="cookie__link" href="cookie-policy.html">Cookie Policy</a></p>
     <div class="cookie__actions">
       <button class="btn btn--sm cookie-btn-line" type="button" data-cookie-action="reject">Reject all</button>
       <button class="btn btn--dark btn--sm" type="button" data-cookie-action="accept">Accept all</button>
@@ -184,7 +184,7 @@
       <div class="cookie-dialog__head">
         <p class="cookie-dialog__pill">Privacy</p>
         <h2 class="cookie-dialog__title" id="cookie-dialog-title">Cookie settings</h2>
-        <p class="cookie-dialog__text">Choose which cookies we can use. Your choice is saved for 12 months, and you can change it at any time via “Cookie settings” at the bottom of any page.</p>
+        <p class="cookie-dialog__text">Choose which cookies we can use. Your choice is saved for 12 months, and you can change it at any time via “Cookie settings” at the bottom of any page. Read more in our <a class="cookie__link" href="cookie-policy.html">Cookie Policy</a>.</p>
       </div>
 
       <div class="cookie-dialog__body">${CATEGORIES.map(categoryHtml).join('')}

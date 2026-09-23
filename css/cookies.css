@@ -81,6 +81,19 @@
   color: var(--color-muted);
 }
 
+.cookie__link {
+  font-weight: 500;
+  color: var(--color-dark);
+  text-decoration: underline;
+  text-decoration-color: #c3ced7;
+  text-underline-offset: 3px;
+  transition: text-decoration-color var(--transition);
+}
+
+.cookie__link:hover {
+  text-decoration-color: currentColor;
+}
+
 .cookie__actions {
   display: grid;
   grid-template-columns: 1fr 1fr;
@@ -471,6 +484,10 @@
   text-decoration-color: #c3ced7;
   text-underline-offset: 3px;
   transition: color var(--transition), text-decoration-color var(--transition);
+}
+
+.footer__cookies + .footer__cookies {
+  margin-left: 14px;
 }
 
 .footer__cookies:hover {

@@ -3,8 +3,17 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Portfolio — IT Group</title>
-  <meta name="description" content="Selected work by IT Group — websites, e-commerce and digital products built for real businesses.">
+  <title>Page not found — IT Group</title>
+  <meta name="description" content="The page you are looking for doesn’t exist or has been moved.">
+  <meta name="robots" content="noindex">
+  <script>
+    (function () {
+      var parts = location.pathname.split("/");
+      if (/\.github\.io$/.test(location.hostname) && parts[1]) {
+        document.write('<base href="/' + parts[1] + '/">');
+      }
+    })();
+  </script>
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -26,8 +35,7 @@
   <link rel="stylesheet" href="css/modal.css?v=3">
   <link rel="stylesheet" href="css/cookies.css?v=2">
   <link rel="stylesheet" href="css/about.css?v=8">
-  <link rel="stylesheet" href="css/contact.css?v=1">
-  <link rel="stylesheet" href="css/portfolio.css?v=1">
+  <link rel="stylesheet" href="css/404.css?v=1">
   <link rel="stylesheet" href="css/anim.css?v=7">
 
   <script>
@@ -175,7 +183,7 @@
               </div>
             </div>
           </li>
-          <li class="header__nav-item"><a class="header__nav-link header__nav-link--active" href="portfolio.html">Cases</a></li>
+          <li class="header__nav-item"><a class="header__nav-link" href="portfolio.html">Cases</a></li>
           <li class="header__nav-item"><a class="header__nav-link" href="blog.html">Blog</a></li>
           <li class="header__nav-item"><a class="header__nav-link" href="contact.html">Contacts</a></li>
         </ul>
@@ -354,284 +362,73 @@
         </button>
       </div>
     </div>
-  </div>  <main>
+  </div>
+  <main>
 
-    <section class="pf-hero" id="portfolio-top">
-      <div class="container pf-hero__inner">
-
-        <nav class="crumbs" aria-label="Breadcrumb" data-animate="fade-up">
-          <ol class="crumbs__list">
-            <li class="crumbs__item"><a class="crumbs__link" href="index.html">Home</a></li>
-            <li class="crumbs__item crumbs__item--current" aria-current="page">Portfolio</li>
-          </ol>
-        </nav>
-
-        <div class="pf-hero__content">
-          <div class="pf-hero__tags" data-animate="fade-up">
-            <span class="tag tag--solid">Our work</span>
-            <span class="tag">01 / 05</span>
+    <section class="nf">
+      <div class="container nf__inner">
+        <div class="nf__stage" data-animate="fade-up">
+          <span class="nf__glow" aria-hidden="true"></span>
+          <span class="nf__ring" aria-hidden="true"></span>
+          <div class="nf__art">
+            <img class="nf__image" src="images/404.webp" width="1596" height="657" alt="404" fetchpriority="high">
           </div>
+          <span class="nf__shadow" aria-hidden="true"></span>
+        </div>
 
-          <h1 class="pf-hero__title" data-animate="split" data-split="words">Digital work.<br>Real impact.</h1>
+        <div class="nf__content">
+          <span class="tag tag--solid nf__tag" data-animate="fade-up">Error 404</span>
+          <h1 class="nf__title" data-animate="split" data-split="words">This page got lost in the digital space.</h1>
+          <p class="nf__text" data-animate="fade-up">The link may be broken, or the page has been moved or removed. Let’s get you back on track.</p>
 
-          <p class="pf-hero__text" data-animate="fade-up">We create thoughtful digital experiences that help businesses move forward.</p>
-
-          <div class="pf-hero__actions" data-animate="fade-up">
-            <a class="btn btn--dark" href="#portfolio-grid">
-              Explore our projects
+          <div class="nf__actions" data-animate="fade-up">
+            <a class="btn btn--dark" href="index.html">
+              Back to home
               <svg class="btn__icon" viewBox="0 0 16 16" aria-hidden="true"><path d="M2.5 8h11M9 3.5 13.5 8 9 12.5"/></svg>
             </a>
+            <a class="link-arrow" data-modal-open href="contact.html">
+              Contact us
+              <svg class="link-arrow__icon" viewBox="0 0 16 16" aria-hidden="true"><path d="M2.5 8h11M9 3.5 13.5 8 9 12.5"/></svg>
+            </a>
           </div>
         </div>
 
-        <div class="pf-hero__media" data-animate="slide-left">
-          <span class="pf-hero__glow" aria-hidden="true"></span>
-          <img class="pf-hero__image" src="images/spiral2.webp" width="1292" height="881"
-               alt="" fetchpriority="high">
-        </div>
+        <p class="nf__label" data-animate="fade-up">Or try one of these pages</p>
 
-      </div>
-    </section>
-
-    <section class="pf-work" id="portfolio-grid">
-      <div class="container">
-
-        <div class="pf-bar" data-reveal="0.94 0.6">
-          <ul class="pf-filter" role="list">
-            <li><button class="pf-filter__btn pf-filter__btn--active" type="button" data-filter="all">All</button></li>
-            <li><button class="pf-filter__btn" type="button" data-filter="web">Web Development</button></li>
-            <li><button class="pf-filter__btn" type="button" data-filter="ecommerce">E-commerce</button></li>
-            <li><button class="pf-filter__btn" type="button" data-filter="design">UI/UX Design</button></li>
-            <li><button class="pf-filter__btn" type="button" data-filter="branding">Branding</button></li>
-          </ul>
-
-          <div class="pf-sort" data-sort>
-            <button class="pf-sort__btn" type="button" aria-expanded="false" aria-controls="pf-sort-menu">
-              Sort by
-              <span class="pf-sort__value">Newest</span>
-              <svg class="pf-sort__arrow" viewBox="0 0 12 12" aria-hidden="true"><path d="m3 4.5 3 3 3-3"/></svg>
-            </button>
-
-            <ul class="pf-sort__menu" id="pf-sort-menu" role="list">
-              <li><button class="pf-sort__option pf-sort__option--active" type="button" data-order="newest">Newest</button></li>
-              <li><button class="pf-sort__option" type="button" data-order="oldest">Oldest</button></li>
-              <li><button class="pf-sort__option" type="button" data-order="name">Name A–Z</button></li>
-            </ul>
-          </div>
-        </div>
-
-        <div class="pf-featured" data-reveal="0.9 0.42">
-          <ul class="pf-featured__list" role="list">
-            <li class="pf-featured__item pf-featured__item--active" data-featured>
-              <div class="pf-featured__body">
-                <p class="pf-featured__label">Featured project</p>
-                <h2 class="pf-featured__title">Lanos — E&#8209;commerce platform</h2>
-                <p class="pf-featured__tags">Web Development / UI/UX Design / E-commerce</p>
-                <p class="pf-featured__text">We built a modern e-commerce platform with a focus on performance, clean design and seamless user experience.</p>
-
-                <a class="link-arrow pf-featured__link" href="project.html">
-                  View case study
-                  <svg class="link-arrow__icon" viewBox="0 0 16 16" aria-hidden="true"><path d="M2.5 8h11M9 3.5 13.5 8 9 12.5"/></svg>
-                </a>
-              </div>
-
-              <div class="pf-featured__media">
-                <span class="pf-featured__cat">E&#8209;commerce</span>
-                <img src="images/projects/lanos.webp" width="1200" height="800" alt="Lanos project" loading="lazy" decoding="async">
-              </div>
-            </li>
-
-            <li class="pf-featured__item" data-featured>
-              <div class="pf-featured__body">
-                <p class="pf-featured__label">Featured project</p>
-                <h2 class="pf-featured__title">Smiltenes Tehnikums — School portal</h2>
-                <p class="pf-featured__tags">Web Development / UI/UX Design</p>
-                <p class="pf-featured__text">A clear, fast and accessible portal that brings together news, schedules and admissions for thousands of students.</p>
-
-                <a class="link-arrow pf-featured__link" href="project.html">
-                  View case study
-                  <svg class="link-arrow__icon" viewBox="0 0 16 16" aria-hidden="true"><path d="M2.5 8h11M9 3.5 13.5 8 9 12.5"/></svg>
-                </a>
-              </div>
-
-              <div class="pf-featured__media">
-                <span class="pf-featured__cat">Corporate</span>
-                <img src="images/projects/smiltenes.webp" width="1200" height="800" alt="Smiltenes Tehnikums project" loading="lazy" decoding="async">
-              </div>
-            </li>
-
-            <li class="pf-featured__item" data-featured>
-              <div class="pf-featured__body">
-                <p class="pf-featured__label">Featured project</p>
-                <h2 class="pf-featured__title">Rīgas Latviešu biedrība — Culture hub</h2>
-                <p class="pf-featured__tags">Web Development / Branding</p>
-                <p class="pf-featured__text">A digital home for one of the oldest cultural societies in Latvia, built around events, history and community.</p>
-
-                <a class="link-arrow pf-featured__link" href="project.html">
-                  View case study
-                  <svg class="link-arrow__icon" viewBox="0 0 16 16" aria-hidden="true"><path d="M2.5 8h11M9 3.5 13.5 8 9 12.5"/></svg>
-                </a>
-              </div>
-
-              <div class="pf-featured__media">
-                <span class="pf-featured__cat">Branding</span>
-                <img src="images/projects/rlb.webp" width="1200" height="800" alt="Rīgas Latviešu biedrība project" loading="lazy" decoding="async">
-              </div>
-            </li>
-          </ul>
-
-          <div class="pf-featured__nav">
-            <span class="pf-featured__num">01</span>
-            <span class="pf-featured__rule" aria-hidden="true"></span>
-
-            <div class="pf-featured__dots" role="tablist" aria-label="Featured projects">
-              <button class="pf-featured__dot pf-featured__dot--active" type="button" role="tab" aria-selected="true" aria-label="Project 1"></button>
-              <button class="pf-featured__dot" type="button" role="tab" aria-selected="false" aria-label="Project 2"></button>
-              <button class="pf-featured__dot" type="button" role="tab" aria-selected="false" aria-label="Project 3"></button>
-            </div>
-          </div>
-        </div>
-
-        <ul class="pf-grid" id="pf-grid" data-reveal-stagger>
-          <li class="pf-card" data-reveal="0.9 0.44" data-cats="web ecommerce" data-date="6" data-name="Lanos">
-            <a class="case-card" href="project.html">
-              <div class="case-card__media">
-                <img class="case-card__image" src="images/projects/lanos.webp" width="1536" height="1024" alt="Lanos website shown on a laptop" loading="lazy" decoding="async">
-                <span class="case-card__badge">E-commerce</span>
-              </div>
-
-              <div class="case-card__info">
-                <div class="case-card__text">
-                  <h3 class="case-card__title">Lanos</h3>
-                  <p class="case-card__subtitle">Steel &amp; aluminium store</p>
-                  <p class="case-card__tag">Web Development / E-commerce</p>
-                </div>
-
-                <span class="case-card__arrow"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
-              </div>
+        <ul class="nf-links" role="list" data-reveal-stagger>
+          <li class="nf-links__item" data-reveal="0.98 0.6">
+            <a class="nf-link" href="index.html#services">
+              <span class="nf-link__icon"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3.5" y="3.5" width="7" height="7" rx="2"/><rect x="13.5" y="3.5" width="7" height="7" rx="2"/><rect x="3.5" y="13.5" width="7" height="7" rx="2"/><rect x="13.5" y="13.5" width="7" height="7" rx="3.5"/></svg></span>
+              <span class="nf-link__title">Services</span>
+              <span class="nf-link__text">Websites, stores, apps, SEO and design.</span>
+              <span class="nf-link__arrow"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 17 17 7M8.5 7H17v8.5"/></svg></span>
             </a>
           </li>
-
-          <li class="pf-card" data-reveal="0.9 0.44" data-cats="web design" data-date="5" data-name="Smiltenes">
-            <a class="case-card" href="project.html">
-              <div class="case-card__media">
-                <img class="case-card__image" src="images/projects/smiltenes.webp" width="1536" height="1024" alt="Smiltenes Tehnikums website shown on a desktop monitor" loading="lazy" decoding="async">
-                <span class="case-card__badge">Education</span>
-              </div>
-
-              <div class="case-card__info">
-                <div class="case-card__text">
-                  <h3 class="case-card__title">Smiltenes Tehnikums</h3>
-                  <p class="case-card__subtitle">Education portal</p>
-                  <p class="case-card__tag">Web Development / UI/UX Design</p>
-                </div>
-
-                <span class="case-card__arrow"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
-              </div>
+          <li class="nf-links__item" data-reveal="0.98 0.6">
+            <a class="nf-link" href="portfolio.html">
+              <span class="nf-link__icon"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3.5" y="6.5" width="17" height="13" rx="2.5"/><path d="M8.5 6.5V5a1.5 1.5 0 0 1 1.5-1.5h4A1.5 1.5 0 0 1 15.5 5v1.5M3.5 12h17"/></svg></span>
+              <span class="nf-link__title">Cases</span>
+              <span class="nf-link__text">Projects we built for real businesses.</span>
+              <span class="nf-link__arrow"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 17 17 7M8.5 7H17v8.5"/></svg></span>
             </a>
           </li>
-
-          <li class="pf-card" data-reveal="0.9 0.44" data-cats="web branding" data-date="4" data-name="Riga">
-            <a class="case-card" href="project.html">
-              <div class="case-card__media">
-                <img class="case-card__image" src="images/projects/rlb.webp" width="1536" height="1024" alt="Rīgas Latviešu biedrība website shown on a desktop monitor" loading="lazy" decoding="async">
-                <span class="case-card__badge">Culture</span>
-              </div>
-
-              <div class="case-card__info">
-                <div class="case-card__text">
-                  <h3 class="case-card__title">Rīgas Latviešu biedrība</h3>
-                  <p class="case-card__subtitle">Culture hub</p>
-                  <p class="case-card__tag">Web Development / Branding</p>
-                </div>
-
-                <span class="case-card__arrow"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
-              </div>
+          <li class="nf-links__item" data-reveal="0.98 0.6">
+            <a class="nf-link" href="blog.html">
+              <span class="nf-link__icon"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 5.5A2.5 2.5 0 0 1 6.5 3H20v15H6.5A2.5 2.5 0 0 0 4 20.5v-15Z"/><path d="M4 20.5A2.5 2.5 0 0 1 6.5 18H20v3H6.5"/></svg></span>
+              <span class="nf-link__title">Blog</span>
+              <span class="nf-link__text">Guides, checklists and company news.</span>
+              <span class="nf-link__arrow"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 17 17 7M8.5 7H17v8.5"/></svg></span>
             </a>
           </li>
-
-          <li class="pf-card" data-reveal="0.9 0.44" data-cats="web ecommerce" data-date="3" data-name="Lanos">
-            <a class="case-card" href="project.html">
-              <div class="case-card__media">
-                <img class="case-card__image" src="images/projects/lanos.webp" width="1536" height="1024" alt="Lanos website shown on a laptop" loading="lazy" decoding="async">
-                <span class="case-card__badge">E-commerce</span>
-              </div>
-
-              <div class="case-card__info">
-                <div class="case-card__text">
-                  <h3 class="case-card__title">Lanos</h3>
-                  <p class="case-card__subtitle">Steel &amp; aluminium store</p>
-                  <p class="case-card__tag">Web Development / E-commerce</p>
-                </div>
-
-                <span class="case-card__arrow"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
-              </div>
-            </a>
-          </li>
-
-          <li class="pf-card" data-reveal="0.9 0.44" data-cats="web design" data-date="2" data-name="Smiltenes">
-            <a class="case-card" href="project.html">
-              <div class="case-card__media">
-                <img class="case-card__image" src="images/projects/smiltenes.webp" width="1536" height="1024" alt="Smiltenes Tehnikums website shown on a desktop monitor" loading="lazy" decoding="async">
-                <span class="case-card__badge">Education</span>
-              </div>
-
-              <div class="case-card__info">
-                <div class="case-card__text">
-                  <h3 class="case-card__title">Smiltenes Tehnikums</h3>
-                  <p class="case-card__subtitle">Education portal</p>
-                  <p class="case-card__tag">Web Development / UI/UX Design</p>
-                </div>
-
-                <span class="case-card__arrow"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
-              </div>
-            </a>
-          </li>
-
-          <li class="pf-card" data-reveal="0.9 0.44" data-cats="web branding" data-date="1" data-name="Riga">
-            <a class="case-card" href="project.html">
-              <div class="case-card__media">
-                <img class="case-card__image" src="images/projects/rlb.webp" width="1536" height="1024" alt="Rīgas Latviešu biedrība website shown on a desktop monitor" loading="lazy" decoding="async">
-                <span class="case-card__badge">Culture</span>
-              </div>
-
-              <div class="case-card__info">
-                <div class="case-card__text">
-                  <h3 class="case-card__title">Rīgas Latviešu biedrība</h3>
-                  <p class="case-card__subtitle">Culture hub</p>
-                  <p class="case-card__tag">Web Development / Branding</p>
-                </div>
-
-                <span class="case-card__arrow"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
-              </div>
+          <li class="nf-links__item" data-reveal="0.98 0.6">
+            <a class="nf-link" href="contact.html">
+              <span class="nf-link__icon"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="5.5" width="18" height="13" rx="2.5"/><path d="m4 7.5 8 5.5 8-5.5"/></svg></span>
+              <span class="nf-link__title">Contacts</span>
+              <span class="nf-link__text">Tell us about your project.</span>
+              <span class="nf-link__arrow"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 17 17 7M8.5 7H17v8.5"/></svg></span>
             </a>
           </li>
         </ul>
-
-        <p class="pf-empty" id="pf-empty" hidden>No projects in this category yet.</p>
-
-        <div class="dark-card pf-banner" data-reveal="0.92 0.5">
-          <div class="pf-banner__media">
-            <img src="images/spiral3.webp" width="1292" height="881" alt="" loading="lazy" decoding="async">
-          </div>
-
-          <div class="pf-banner__body">
-            <p class="pf-banner__label">Let’s work together</p>
-            <h2 class="pf-banner__title">Have a project in mind?</h2>
-            <p class="pf-banner__text">We’re ready to help you build something great.</p>
-
-            <a class="btn pf-banner__btn" data-modal-open href="contact.html">
-              Get in touch
-              <svg class="btn__icon" viewBox="0 0 16 16" aria-hidden="true"><path d="M2.5 8h11M9 3.5 13.5 8 9 12.5"/></svg>
-            </a>
-          </div>
-
-          <p class="pf-banner__note">
-            Your idea.<br>
-            Our expertise.
-          </p>
-        </div>
-
       </div>
     </section>
 
@@ -772,6 +569,7 @@
 
   <script src="js/main.js?v=9"></script>
 
+  <script src="js/404.js?v=1"></script>
   <script src="js/cookies.js?v=2"></script>
 </body>
 </html>
