@@ -1185,4 +1185,13 @@ html.no-anim .navmenu--open .navmenu__pane::before {
   html.has-anim .is-revealing .split__inner {
     transition-delay: calc(var(--i, 0) * 0.045s);
   }
+
+  .has-anim .wd-reasons__item,
+  .has-anim .pd-points__item {
+    transform: translate3d(0, calc((1 - var(--q)) * 24px), 0);
+  }
+
+  .has-anim .pd-approach__visual.pd-split__media {
+    transform: translate3d(0, calc((1 - var(--q)) * 44px), 0);
+  }
 }

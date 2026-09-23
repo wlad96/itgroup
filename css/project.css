@@ -923,6 +923,7 @@
 
   .pd-approach__art {
     align-self: start;
+    width: 100%;
     min-height: clamp(220px, 62vw, 460px);
     aspect-ratio: 16 / 11;
   }

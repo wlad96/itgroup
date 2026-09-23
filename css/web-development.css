@@ -1813,3 +1813,16 @@
     padding-left: 0;
   }
 }
+
+@media (max-width: 576px) {
+  .wd-services__steps {
+    align-items: flex-start;
+    line-height: 1.6;
+    white-space: normal;
+  }
+
+  .wd-services__star {
+    flex-shrink: 0;
+    margin-top: 2px;
+  }
+}
