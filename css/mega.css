@@ -87,6 +87,7 @@
 .mega__item:nth-child(3) { --i: 3; }
 .mega__item:nth-child(4) { --i: 4; }
 .mega__item:nth-child(5) { --i: 5; }
+.mega__item:nth-child(6) { --i: 6; }
 .mega__aside { --i: 3; }
 
 .mega__intro {
