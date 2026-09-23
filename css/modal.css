@@ -442,16 +442,28 @@ textarea.field__input {
 @media (max-width: 900px) {
   .modal {
     width: min(560px, calc(100vw - 24px));
+    max-height: calc(100vh - 24px);
+    max-height: calc(100dvh - 24px);
   }
 
   .modal__box {
-    grid-template-columns: 1fr;
+    display: flex;
+    flex-direction: column;
+    max-height: calc(100vh - 24px);
+    max-height: calc(100dvh - 24px);
+  }
+
+  .modal__aside {
+    flex-shrink: 0;
   }
 
   .modal__form,
   .modal__success {
-    grid-column: 1;
-    grid-row: 2;
+    flex: 1 1 auto;
+    min-height: 0;
+    overflow-y: auto;
+    overscroll-behavior: contain;
+    -webkit-overflow-scrolling: touch;
   }
 
   .modal__aside {
@@ -494,6 +506,7 @@ textarea.field__input {
   .modal {
     width: 100vw;
     max-height: 92vh;
+    max-height: 92dvh;
     margin: 0;
     margin-top: auto;
     margin-bottom: 0;
@@ -501,6 +514,7 @@ textarea.field__input {
 
   .modal__box {
     max-height: 92vh;
+    max-height: 92dvh;
     border-radius: 22px 22px 0 0;
     transform: translate3d(0, 40px, 0);
   }
@@ -551,6 +565,44 @@ textarea.field__input {
 
   .modal__submit {
     height: 52px;
+  }
+}
+
+@media (max-width: 576px) and (max-height: 820px) {
+  .modal__aside {
+    padding: 20px 20px 16px;
+  }
+
+  .modal__pill {
+    margin-bottom: 12px;
+  }
+
+  .modal__title {
+    margin-bottom: 8px;
+    padding-right: 44px;
+    font-size: 23px;
+  }
+
+  .modal__text {
+    font-size: 14px;
+    line-height: 1.45;
+  }
+
+  .modal__form {
+    gap: 12px;
+    padding: 18px 20px 22px;
+  }
+
+  .field {
+    gap: 6px;
+  }
+
+  textarea.field__input {
+    min-height: 72px;
+  }
+
+  .modal__submit {
+    height: 50px;
   }
 }
 
