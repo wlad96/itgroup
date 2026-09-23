@@ -987,6 +987,175 @@
   --d: 0.6;
 }
 
+.has-anim .wd-approach__intro > *,
+.has-anim .wd-goal,
+.has-anim .wd-approach__card,
+.has-anim .wd-services__intro-content > *,
+.has-anim .wd-services__steps,
+.has-anim .wd-service,
+.has-anim .wd-why__intro > *,
+.has-anim .wd-reasons__item,
+.has-anim .wd-next,
+.has-anim .wd-trust > *,
+.has-anim .wd-plans__intro > *,
+.has-anim .wd-plans__aside > *,
+.has-anim .wd-plan,
+.has-anim .wd-included > *,
+.has-anim .wd-faq__intro-content > *,
+.has-anim .wd-faq__item {
+  --d: 0.24;
+  --q: clamp(0, calc((var(--p, 1) - var(--a, 0)) / var(--d)), 1);
+
+  opacity: var(--q);
+  transform: translate3d(0, calc((1 - var(--q)) * 30px), 0);
+}
+
+.has-anim .wd-approach__intro .wd-text,
+.has-anim .wd-services__intro .wd-text,
+.has-anim .wd-why__intro .wd-text {
+  --a: 0.2;
+}
+
+.has-anim .wd-approach__intro .wd-text--soft {
+  --a: 0.28;
+}
+
+.has-anim .wd-approach__intro .wd-link,
+.has-anim .wd-services__intro .wd-services__btn,
+.has-anim .wd-why__intro .wd-link {
+  --a: 0.36;
+
+  transform: translate3d(0, calc((1 - var(--q)) * 30px), 0) scale(calc(0.94 + var(--q) * 0.06));
+}
+
+.has-anim .wd-services__intro .wd-services__steps {
+  --a: 0.46;
+}
+
+.has-anim .wd-goal,
+.has-anim .wd-approach__card,
+.has-anim .wd-service,
+.has-anim .wd-next {
+  --d: 0.34;
+
+  transform: translate3d(0, calc((1 - var(--q)) * 56px), 0) scale(calc(0.96 + var(--q) * 0.04));
+}
+
+.has-anim .wd-goal,
+.has-anim .wd-service--main {
+  --a: 0.12;
+}
+
+.has-anim .wd-approach__card,
+.has-anim .wd-services__side .wd-service:first-child {
+  --a: 0.24;
+}
+
+.has-anim .wd-services__side .wd-service:last-child {
+  --a: 0.34;
+}
+
+.has-anim .wd-reasons__item {
+  --a: calc(0.16 + var(--n, 0) * 0.1);
+
+  transform: translate3d(calc((1 - var(--q)) * 30px), 0, 0);
+}
+
+.has-anim .wd-reasons__item:nth-child(2) {
+  --n: 1;
+}
+
+.has-anim .wd-reasons__item:nth-child(3) {
+  --n: 2;
+}
+
+.has-anim .wd-next {
+  --a: 0.3;
+}
+
+.has-anim .wd-trust > * {
+  --d: 0.34;
+}
+
+.has-anim .wd-quote {
+  --a: 0.16;
+}
+
+.has-anim .wd-plans__aside > * {
+  --a: 0.2;
+}
+
+.has-anim .wd-plans__aside .wd-flow {
+  --a: 0.32;
+}
+
+.has-anim .wd-plan {
+  --d: 0.34;
+  --a: calc(var(--n, 0) * 0.12);
+
+  transform: translate3d(0, calc((1 - var(--q)) * 60px), 0) scale(calc(0.96 + var(--q) * 0.04));
+}
+
+.has-anim .wd-plan:nth-child(2),
+.has-anim .wd-faq__item:nth-child(2) {
+  --n: 1;
+}
+
+.has-anim .wd-plan:nth-child(3),
+.has-anim .wd-faq__item:nth-child(3) {
+  --n: 2;
+}
+
+.has-anim .wd-faq__item:nth-child(4) {
+  --n: 3;
+}
+
+.has-anim .wd-faq__item:nth-child(5) {
+  --n: 4;
+}
+
+.has-anim .wd-faq__item:nth-child(6) {
+  --n: 5;
+}
+
+.has-anim .wd-included > * {
+  --d: 0.4;
+}
+
+.has-anim .wd-included__list {
+  --a: 0.16;
+}
+
+.has-anim .wd-faq__intro-content .wd-text {
+  --a: 0.2;
+}
+
+.has-anim .wd-faq__intro-content .wd-link {
+  --a: 0.32;
+}
+
+.has-anim .wd-faq__item {
+  --d: 0.3;
+  --a: calc(var(--n, 0) * 0.08);
+}
+
+.has-anim .wd-title {
+  opacity: 1;
+  transform: none;
+}
+
+.has-anim .wd-title .split__inner {
+  --wq: clamp(0, calc((var(--p, 1) - 0.06 - var(--i, 0) * 0.03) / 0.2), 1);
+
+  opacity: var(--wq);
+  transform: translate3d(0, calc((1 - var(--wq)) * 105%), 0);
+}
+
+.has-anim .wd-features__item,
+.has-anim .wd-pillars__item {
+  --d: 0.6;
+}
+
 html.no-anim .services__spiral,
 html.no-anim .process__spiral,
 html.no-anim .reviews__spiral,

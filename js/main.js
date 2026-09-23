@@ -1251,6 +1251,25 @@ document.addEventListener('DOMContentLoaded', () => {
     }
   }
 
+  const faqList = document.querySelector('.wd-faq__list');
+
+  if (faqList) {
+    const faqItems = [...faqList.querySelectorAll('.wd-faq__item')];
+
+    const setFaq = (item, open) => {
+      item.classList.toggle('wd-faq__item--open', open);
+      item.querySelector('.wd-faq__question').setAttribute('aria-expanded', String(open));
+    };
+
+    faqItems.forEach((item) => {
+      item.querySelector('.wd-faq__question').addEventListener('click', () => {
+        const open = !item.classList.contains('wd-faq__item--open');
+
+        faqItems.forEach((other) => setFaq(other, other === item && open));
+      });
+    });
+  }
+
   const pdGallery = document.querySelector('.pd-gallery');
 
   if (pdGallery) {
